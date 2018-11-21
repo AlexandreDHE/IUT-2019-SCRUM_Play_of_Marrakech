@@ -1,6 +1,6 @@
 # Marrakech 
 ## Description
-Jeu Marrakech.
+Jeu Marrakech.  
 **Nombre de joueurs :** 2 à 4
 
 ## Scrum Master
