@@ -11,12 +11,12 @@ Projet Java du jeu Marrakech.
 ## Auteurs
  
 **Maxime BLANCHON** _alias_ [@blanchon](https://dwarves.iut-fbleau.fr/git/blanchon)  
-**Faïza BOUMALLOUK** _alias_ [@boumallouk](https://dwarves.iut-fbleau.fr/git/boumallouk)
-**Alexandre DELAHOUSSE** _alias_ [@delahousse](https://dwarves.iut-fbleau.fr/git/delahousse)
-**Rabah DJADI** _alias_ [@djadi](https://dwarves.iut-fbleau.fr/git/djadi)   
+**Faïza BOUMALLOUK** _alias_ [@boumallouk](https://dwarves.iut-fbleau.fr/git/boumallouk)  
+**Alexandre DELAHOUSSE** _alias_ [@delahousse](https://dwarves.iut-fbleau.fr/git/delahousse)  
+**Rabah DJADI** _alias_ [@djadi](https://dwarves.iut-fbleau.fr/git/djadi)    
 **Erwan MATIGNON** _alias_ [@matignon](https://dwarves.iut-fbleau.fr/git/matignon)  
-**Flavien PERINEAU** _alias_ [@perineau](https://dwarves.iut-fbleau.fr/git/perineau) 
-Étudiants en seconde année de DUT informatique à l'IUT de Fontainebleau.
+**Flavien PERINEAU** _alias_ [@perineau](https://dwarves.iut-fbleau.fr/git/perineau)  
+Étudiants en seconde année de DUT informatique à l'IUT de Fontainebleau.  
 
 Product Owner : Alexandre DELAHOUSSE
 Scrum Master  : Rabah     DJADI
