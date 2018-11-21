@@ -11,7 +11,7 @@ Projet Java du jeu Marrakech.
 ## Auteurs
  
 **Maxime BLANCHON** _alias_ [@blanchon](https://dwarves.iut-fbleau.fr/git/blanchon)  
-**Faïza BOUMALLOUK** _alias_ [@boumallo](https://dwarves.iut-fbleau.fr/git/	boumallo )  
+**Faïza BOUMALLOUK** _alias_ [@boumallo](https://dwarves.iut-fbleau.fr/git/boumallo)  
 **Alexandre DELAHOUSSE** _alias_ [@Delahousse](https://dwarves.iut-fbleau.fr/git/delahous)  
 **Rabah DJADI** _alias_ [@djadi](https://dwarves.iut-fbleau.fr/git/djadi)    
 **Erwan MATIGNON** _alias_ [@matignon](https://dwarves.iut-fbleau.fr/git/matignon)  
