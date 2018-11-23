@@ -25,7 +25,7 @@ Jeu Marrakech.
   - Moteur de jeu  
       - Erwan et Flavien    
           - Plateau de jeu - In progress (Pose de tapis)       
-       - Rabah et Faïza    
+       - Faïza et Rabah   
          - Joueur - Done  
          - De - Done  
     - IHM  
