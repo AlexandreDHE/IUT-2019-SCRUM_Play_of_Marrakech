@@ -28,7 +28,6 @@ Jeu Marrakech.
               - constructeur : Done 
               - pose de tapis : In progress 
               - calcul prix de la dîme : To Do  
-              
        - Faïza et Rabah   
          - Joueur  
              - constructeur : Done  
@@ -38,8 +37,8 @@ Jeu Marrakech.
              - payer une dîme : To Do (En attente de la finalisation du Plateau de jeu)    
              - poser un tapis  : To Do (En attente de la finalisation du Plateau de jeu)  
          - De
-             - Singleton - Done
-             - getters - Done  
+             - singleton - Done
+             - getValeur - In progress  
              
     - IHM  
         - Alexandre et Maxime     
@@ -55,7 +54,9 @@ Jeu Marrakech.
               - pose de tapis : Done  
               - calcul prix de la dîme : In progress  
               
-       - Faïza et Rabah    
+       - Faïza et Rabah 
+           - De
+               - getValeur - Done
     - IHM    
               
 
