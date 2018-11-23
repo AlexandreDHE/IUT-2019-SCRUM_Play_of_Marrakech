@@ -65,7 +65,7 @@ Jeu Marrakech.
                - payer une dîme : **Done**
                - poser un tapis : **Done**
            - Partie
-               - constructeur : **Done**
+               - attribution des tapis en fonction du nombre nombre de joueurs : **Done**
                - deroulement d'une partie : **In progress**
     - IHM    
               
