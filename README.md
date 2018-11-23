@@ -18,7 +18,7 @@ Jeu Marrakech.
 ## Avancement
 **Mercredi 21 Novembre 2018 :**     
 - Lancement du projet  
-- Création du Product Backlog   
+- Création du Product Backlog  
 **Vendredi 23 Novembre 2018 :**  
 - Répartition des tâches   
 
