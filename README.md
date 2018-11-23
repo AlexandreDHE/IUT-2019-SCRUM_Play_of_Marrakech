@@ -25,7 +25,7 @@ Jeu Marrakech.
   - Moteur de jeu
       - Erwan et Flavien    
           - Plateau de jeu
-              - constructeur : <span style="color:blue">Done text</span> 
+              - constructeur : **Done** 
               - pose de tapis : **In progress** 
               - calcul prix de la dîme : **To Do**  
        - Faïza et Rabah   
