@@ -27,12 +27,12 @@ Jeu Marrakech.
           - Plateau de jeu - In progress (Pose de tapis)       
        - Faïza et Rabah   
          - Joueur  
-            - constructeur : Done  
-            - getters : Done  
-            - lancer le dé : In progress  
-            - choisir l'orientation d'Assam : to do (En attente de la finalisation d'Assam)  
-            - payer une dîme : to do  (En attente de la finalisation du Plateau de jeu)  
-            - poser un tapis  : to do (En attente de la finalisation du Plateau de jeu)  
+             - constructeur : Done  
+             - getters : Done  
+             - lancer le dé : In progress  
+             - choisir l'orientation d'Assam : to do (En attente de la finalisation d'Assam)  
+             - payer une dîme : to do  (En attente de la finalisation du Plateau de jeu)  
+             - poser un tapis  : to do (En attente de la finalisation du Plateau de jeu)  
          - De - Done  
     - IHM  
         - Alexandre et Maxime     
