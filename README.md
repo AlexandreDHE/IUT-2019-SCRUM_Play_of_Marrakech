@@ -23,12 +23,11 @@ Jeu Marrakech.
 **Vendredi 23 Novembre 2018 de 11:15 à 12:30**  
 - Répartition des tâches
   - Moteur de jeu  
-  
       - Erwan et Flavien    
           - Plateau de jeu
               - constructeur : Done 
               - pose de tapis : In progress 
-              - calcul prix de la dîme : To Do  
+              - calcul prix de la dîme : To Do   
        - Faïza et Rabah   
          - Joueur  
              - constructeur : Done  
