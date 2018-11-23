@@ -2,13 +2,13 @@
 
 public class Tapis {
 
-    private Joueur joueur;
+    private int couleur;
     private Coord coord1;
     private Coord coord2;
 
 
-    public Tapis(Joueur j, Coord coord1, Coord coord2){
-        joueur = j;
+    public Tapis(int c, Coord coord1, Coord coord2){
+        couleur = c;
         this.coord1 = coord1;
         this.coord2 = coord2;
 
@@ -24,5 +24,11 @@ public class Tapis {
         return new Coord[]{coord1,coord2};
     }
 
+    /**
+     * @return the couleur
+     */
+    public int getCouleur() {
+    	return couleur;
+    }
 
 }

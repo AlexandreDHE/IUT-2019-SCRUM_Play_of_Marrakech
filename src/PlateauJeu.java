@@ -36,11 +36,46 @@ public class PlateauJeu {
 
     }
 
-    // public int compteDime(Coord coord){
-    //
-    //
-    // }
+    public void payerDime(Assam ass, Joueur j){
+
+        /* position assam */
+
+        Tapis tapi = cases[][].recupererTapis();
+        int cjoueur = j.couleur;
+        int cadversaire = tapi.getCouleur();
 
 
+        if (cjoueur == cadversaire) {
+            return null;
+        }
+
+        int due = compter(cadversaire, new Coord(), 1);
+
+    }
+
+    private int compter(int cadversaire,Coord coord, int i){
+
+        int x = coord.getX();
+        int y = coord.getY();
+
+        if (cases[x+1][y].getCouleur() == cadversaire) {
+            i++;
+            i = compter(cadversaire, new Coord(x+1,y),i);
+        }
+        if (cases[x-1][y].getCouleur() == cadversaire) {
+            i++;
+            i = compter(cadversaire, new Coord(x-1,y),i);
+        }
+        if (cases[x][y+1].getCouleur() == cadversaire) {
+            i++;
+            i = compter(cadversaire, new Coord(x,y+1),i);
+        }
+        if (cases[x][y-1].getCouleur() == cadversaire) {
+            i++;
+            i = compter(cadversaire, new Coord(x,y-1),i);
+        }
+
+        return i;
+    }
 
 }
