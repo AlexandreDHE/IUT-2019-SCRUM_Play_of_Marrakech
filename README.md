@@ -31,7 +31,8 @@ Jeu Marrakech.
     - IHM  
         - Alexandre et Maxime     
               - Ecran d'accueil - Done  
-              - Contrôleur - In progress  
+              - Contrôleur - In progress   
+              
 **Vendredi 23 Novembre 2018 de 15:00 à 16:15**  
 
 ## Langages
