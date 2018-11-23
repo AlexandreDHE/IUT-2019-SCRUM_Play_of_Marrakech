@@ -6,7 +6,7 @@ public class SelectPlayerControler implements ActionListener{
 
 	SelectPlayer selectplayer;
 
-	int nbplayer = 0;
+	int nbplayers = 0;
 
 	public SelectPlayerControler(SelectPlayer selectplayer){
 
@@ -16,18 +16,41 @@ public class SelectPlayerControler implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 
+		if(e.getActionCommand() == "2 players"){
+
+			this.nbplayers = 2;
+			selectplayer.getPlayButton().setEnabled(true);
+			selectplayer.repaint();
+
+		}
+
+		if(e.getActionCommand() == "3 players"){
+
+			this.nbplayers = 3;
+			selectplayer.getPlayButton().setEnabled(true);
+			selectplayer.repaint();
+
+		}
+
+		if(e.getActionCommand() == "4 players"){
+
+			this.nbplayers = 4;
+			selectplayer.getPlayButton().setEnabled(true);
+			selectplayer.repaint();
+
+		}
+
 		if(e.getActionCommand() == "Play"){
 
 			selectplayer.dispose();
 			PlayScreen playscreen = new PlayScreen();
 			playscreen.setVisible(true);
-			System.out.println(this.nbplayer+" joueurs");
+			System.out.println(nbplayers);
 
 		}
 
 		if(e.getActionCommand() == "Back"){
 
-			this.nbplayer = 0;
 			selectplayer.dispose();
 			Menu backtomenu = new Menu();
 			backtomenu.setVisible(true);

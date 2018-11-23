@@ -9,6 +9,7 @@ public class SelectPlayer extends JFrame{
 
 	public SelectPlayer(){
 
+		SelectPlayerControler spc = new SelectPlayerControler(this);
 
 		JPanel toppan = new JPanel();
 		JPanel centerpan = new JPanel();
@@ -28,11 +29,11 @@ public class SelectPlayer extends JFrame{
 		centerpan.add(players3);
 		centerpan.add(players4);
 
-		players2.addActionListener(new TwoPlayersControler(this));
-		players3.addActionListener(new ThreePlayersControler(this));
-		players4.addActionListener(new FourPlayersControler(this));
-		play.addActionListener(new SelectPlayerControler(this));
-		back.addActionListener(new SelectPlayerControler(this));
+		players2.addActionListener(spc);
+		players3.addActionListener(spc);
+		players4.addActionListener(spc);
+		play.addActionListener(spc);
+		back.addActionListener(spc);
 
 		bottompan.add(back);
 		bottompan.add(play);
