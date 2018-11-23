@@ -25,48 +25,48 @@ Jeu Marrakech.
   - Moteur de jeu
       - Erwan et Flavien    
           - Plateau de jeu
-              - constructeur : Done 
-              - pose de tapis : In progress 
-              - calcul prix de la dîme : To Do  
+              - constructeur : **Done** 
+              - pose de tapis : **In progress** 
+              - calcul prix de la dîme : **To Do**  
        - Faïza et Rabah   
          - Joueur  
-             - constructeur : Done  
-             - getters : Done  
-             - lancer le dé : In progress  
-             - choisir l'orientation d'Assam : To Do   
-             - payer une dîme : To Do     
-             - poser un tapis  : To Do   
+             - constructeur : **Done**  
+             - getters : **Done**  
+             - lancer le dé : **In progress**  
+             - choisir l'orientation d'Assam : **To Do**   
+             - payer une dîme : **To Do**     
+             - poser un tapis  : **To Do**   
          - De
-             - singleton - Done
-             - getValeur - In progress  
+             - singleton - **Done**
+             - getValeur - **In progress**  
     - IHM  
         - Alexandre et Maxime     
-              - Ecran d'accueil : Done  
-              - Contrôleur : In progress   
+              - Ecran d'accueil : **Done**  
+              - Contrôleur : **In progress**   
               
 **Vendredi 23 Novembre 2018 de 15:00 à 16:15**  
 - Répartition des tâches
   - Moteur de jeu  
       - Erwan et Flavien    
           - Plateau de jeu
-              - verification si le joueur peut poser le tapis : Done  
-              - pose de tapis : Done  
-              - calcul prix de la dîme : In progress             
+              - verification si le joueur peut poser le tapis : **Done**  
+              - pose de tapis : **Done**  
+              - calcul prix de la dîme : **In progress**             
        - Faïza et Rabah 
            - De
-               - getValeur : Done
+               - getValeur : **Done**
            - Assam
-               - singleton : Done
-               - orienter Assam : Done
-               - faire avancer Assam : In progress (Reste la gestion des flêches quand Assam arrive au bout)
+               - singleton : **Done**
+               - orienter Assam : **Done**
+               - faire avancer Assam : **In progress** (Reste la gestion des flêches quand Assam arrive au bout)
            - Couleur
-               - attribution de couleurs à tous les joueurs : Done
+               - attribution de couleurs à tous les joueurs : **Done**
            - Joueur
-               - payer une dîme : Done
-               - poser un tapis : Done
+               - payer une dîme : **Done**
+               - poser un tapis : **Done**
            - Partie
-               - constructeur : Done
-               - deroulement d'une partie : In progress
+               - constructeur : **Done**
+               - deroulement d'une partie : **In progress**
     - IHM    
               
 
