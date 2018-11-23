@@ -26,7 +26,13 @@ Jeu Marrakech.
       - Erwan et Flavien    
           - Plateau de jeu - In progress (Pose de tapis)       
        - Faïza et Rabah   
-         - Joueur - In progress (Orientation de joueur)   
+         - Joueur  
+           - constructeur : Done  
+           - getters : Done  
+           - lancer le dé : In progress  
+           - choisir l'orientation d'Assam : to do (En attente de la finalisation d'Assam)  
+           - payer une dîme : to do  (En attente de la finalisation du Plateau de jeu)  
+           - poser un tapis  : to do (En attente de la finalisation du Plateau de jeu)  
          - De - Done  
     - IHM  
         - Alexandre et Maxime     
