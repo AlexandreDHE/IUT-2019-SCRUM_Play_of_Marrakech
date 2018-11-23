@@ -37,6 +37,62 @@ public class Joueur
 		return this.argent[typePiece];
 	}
 
+	public void tournerAssamHorraire(Assam assam)
+	{
+		assam.tournerHorraire();
+	}
+
+	public void tournerAssamAntiHorraire(Assam assam)
+	{
+		assam.tournerAntiHorraire();
+	}
+
+	public int lancerDe(De de)
+	{
+		return de.getValeur();
+	}
+
+	public int getArgentTotal()
+	{
+		return argent[PIECEUN] * 1 + argent[PIECECINQ] * 5;
+	}
+
+	public void ajouterPiece(int nombrePieceUn, int nombrePieceCinq)
+	{
+		this.argent[PIECEUN] = this.argent[PIECEUN] + nombrePieceUn;
+		this.argent[PIECECINQ] = this.argent[PIECECINQ] + nombrePieceCinq;
+	}
+
+	public void payerDime(int cout, Joueur adversaire)
+	{
+		if(this.getArgentTotal() <= cout)
+		{
+			adversaire.ajouterPiece(this.argent[PIECEUN], this.argent[PIECECINQ]);
+			this.argent[PIECEUN] = 0;
+			this.argent[PIECECINQ] = 0;
+		}
+		else
+		{
+			int nombrePieceUn = 0;
+			int nombrePieceCinq = 0;
+
+			do
+			{
+				nombrePieceCinq++;
+			} while((nombrePieceCinq * 5) < cout);
+
+			do
+			{
+				nombrePieceUn++;
+			} while((nombrePieceCinq * 5) + (nombrePieceUn) != cout);
+
+			adversaire.ajouterPiece(nombrePieceUn, nombrePieceCinq);
+			this.argent[PIECEUN] = this.argent[PIECEUN] - nombrePieceUn;
+			this.argent[PIECECINQ] = this.argent[PIECECINQ] - nombrePieceCinq;
+		}
+
+	}
+
 	public int getTapis()
 	{
 		return this.tapis;
