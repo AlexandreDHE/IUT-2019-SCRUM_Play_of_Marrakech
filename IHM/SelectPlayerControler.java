@@ -6,11 +6,16 @@ public class SelectPlayerControler implements ActionListener{
 
 	SelectPlayer selectplayer;
 
+	JButton jb1, jb2, jb3;
+
 	int nbplayers = 0;
 
-	public SelectPlayerControler(SelectPlayer selectplayer){
+	public SelectPlayerControler(SelectPlayer selectplayer, JButton jb1, JButton jb2, JButton jb3){
 
 		this.selectplayer = selectplayer;
+		this.jb1 = jb1;
+		this.jb2 = jb2;
+		this.jb3 = jb3;
 
 	}
 
@@ -21,6 +26,9 @@ public class SelectPlayerControler implements ActionListener{
 			this.nbplayers = 2;
 			selectplayer.getPlayButton().setEnabled(true);
 			selectplayer.repaint();
+			jb1.setBackground(Color.GRAY);
+			jb2.setBackground(null);
+			jb3.setBackground(null);
 
 		}
 
@@ -29,6 +37,9 @@ public class SelectPlayerControler implements ActionListener{
 			this.nbplayers = 3;
 			selectplayer.getPlayButton().setEnabled(true);
 			selectplayer.repaint();
+			jb1.setBackground(null);
+			jb2.setBackground(Color.GRAY);
+			jb3.setBackground(null);
 
 		}
 
@@ -37,6 +48,9 @@ public class SelectPlayerControler implements ActionListener{
 			this.nbplayers = 4;
 			selectplayer.getPlayButton().setEnabled(true);
 			selectplayer.repaint();
+			jb1.setBackground(null);
+			jb2.setBackground(null);
+			jb3.setBackground(Color.GRAY);
 
 		}
 
@@ -56,6 +70,5 @@ public class SelectPlayerControler implements ActionListener{
 			backtomenu.setVisible(true);
 
 		}
-
 	}
 }

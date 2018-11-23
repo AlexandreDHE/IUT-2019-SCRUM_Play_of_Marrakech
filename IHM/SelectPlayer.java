@@ -9,7 +9,7 @@ public class SelectPlayer extends JFrame{
 
 	public SelectPlayer(){
 
-		SelectPlayerControler spc = new SelectPlayerControler(this);
+		OpenImage openimage = new OpenImage(500, 500, "img/background.jpg");
 
 		JPanel toppan = new JPanel();
 		JPanel centerpan = new JPanel();
@@ -28,6 +28,9 @@ public class SelectPlayer extends JFrame{
 		centerpan.add(players2);
 		centerpan.add(players3);
 		centerpan.add(players4);
+		centerpan.add(new OpenImage(600, 500, "img/background2.jpg"));
+
+		SelectPlayerControler spc = new SelectPlayerControler(this, players2, players3, players4);
 
 		players2.addActionListener(spc);
 		players3.addActionListener(spc);
@@ -51,6 +54,8 @@ public class SelectPlayer extends JFrame{
 		this.setLocationRelativeTo(null);
 
 	}
+
+	//Accesseurs
 
 	public JButton getPlayButton(){
 		return this.play;
