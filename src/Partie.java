@@ -42,7 +42,8 @@ public class Partie
 		{
 			OrientationListener o = new OrientationTerminal();
 			o.orienter(this.assam);
-			System.out.println(this.assam.getOrientation());
+			int babouche = this.joueurs[i].lancerDe(this.de);
+			this.assam.avancer(babouche);
 		}
 	}
 }

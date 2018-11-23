@@ -40,10 +40,15 @@ public class Assam
 		return this.orientation;
 	}
 
-	public void setCoord(int x, int y)
+	public void avancer(int babouche)
 	{
-		this.coord.setX(x);
-		this.coord.setY(y);
+		switch(orientation)
+		{
+			case NORD : this.coord.setY(this.coord.getY() + babouche); break;
+			case EST : this.coord.setX(this.coord.getX() + babouche); break;
+			case SUD : this.coord.setY(this.coord.getY() - babouche); break;
+			case OUEST : this.coord.setX(this.coord.getX() - babouche); break;
+		}
 	}
 
 	public static Assam getAssam()
