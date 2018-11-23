@@ -21,6 +21,8 @@ public class De
 
 	public int getValeur()
 	{
-		return this.aleatoire.nextInt(6) + 1;
+		int[] valeurs = {1,2,2,3,3,4};
+		int nombre = this.aleatoire.nextInt(6) + 1;
+		return valeurs[nombre];
 	}
 }

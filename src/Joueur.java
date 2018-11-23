@@ -37,16 +37,6 @@ public class Joueur
 		return this.argent[typePiece];
 	}
 
-	public void tournerAssamHorraire(Assam assam)
-	{
-		assam.tournerHorraire();
-	}
-
-	public void tournerAssamAntiHorraire(Assam assam)
-	{
-		assam.tournerAntiHorraire();
-	}
-
 	public int lancerDe(De de)
 	{
 		return de.getValeur();
@@ -92,7 +82,6 @@ public class Joueur
 			this.argent[PIECEUN] = this.argent[PIECEUN] - nombrePieceUn;
 			this.argent[PIECECINQ] = this.argent[PIECECINQ] - nombrePieceCinq;
 		}
-
 	}
 
 	public int getTapis()
