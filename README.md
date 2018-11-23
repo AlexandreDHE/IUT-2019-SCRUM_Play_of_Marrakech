@@ -26,7 +26,7 @@ Jeu Marrakech.
       - Erwan et Flavien    
           - Plateau de jeu - In progress (Pose de tapis)       
        - Faïza et Rabah   
-         - Joueur  
+         - Classe Joueur  
              - constructeur : Done  
              - getters : Done  
              - lancer le dé : In progress  
