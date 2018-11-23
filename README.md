@@ -56,7 +56,11 @@ Jeu Marrakech.
               
        - Faïza et Rabah 
            - De
-               - getValeur - Done
+               - getValeur : Done
+           - Assam
+               - singleton : Done
+               - orienter Assam : Done
+               - faire avancer Assam : In progress (Reste la gestion des flêches quand Assam arrive au bout)
     - IHM    
               
 
