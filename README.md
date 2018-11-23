@@ -23,11 +23,13 @@ Jeu Marrakech.
 **Vendredi 23 Novembre 2018 de 11:15 à 12:30**  
 - Répartition des tâches
   - Moteur de jeu  
+  
       - Erwan et Flavien    
           - Plateau de jeu
               - constructeur : Done 
               - pose de tapis : In progress 
               - calcul prix de la dîme : To Do 
+              - 
        - Faïza et Rabah   
          - Joueur  
              - constructeur : Done  
@@ -39,6 +41,7 @@ Jeu Marrakech.
          - De
              - Singleton - Done
              - getters - Done  
+             
     - IHM  
         - Alexandre et Maxime     
               - Ecran d'accueil : Done  
@@ -53,21 +56,8 @@ Jeu Marrakech.
               - pose de tapis : Done  
               - calcul prix de la dîme : In progress  
               
-       - Faïza et Rabah   
-         - Joueur  
-             - constructeur : Done  
-             - getters : Done  
-             - lancer le dé : In progress  
-             - choisir l'orientation d'Assam : To Do (En attente de la finalisation d'Assam)   
-             - payer une dîme : To Do (En attente de la finalisation du Plateau de jeu)    
-             - poser un tapis  : To Do (En attente de la finalisation du Plateau de jeu)  
-         - De
-             - Singleton - Done
-             - getters - Done  
-    - IHM  
-        - Alexandre et Maxime     
-              - Ecran d'accueil : Done  
-              - Contrôleur : In progress   
+       - Faïza et Rabah    
+    - IHM    
               
 
 ## Langages
