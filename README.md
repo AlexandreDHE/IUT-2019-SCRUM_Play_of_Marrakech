@@ -27,7 +27,8 @@ Jeu Marrakech.
           - Plateau de jeu
               - constructeur : Done 
               - pose de tapis : In progress 
-              - calcul prix de la dîme : To Do   
+              - calcul prix de la dîme : To Do  
+              
        - Faïza et Rabah   
          - Joueur  
              - constructeur : Done  
