@@ -23,7 +23,7 @@ Jeu Marrakech.
 **Vendredi 23 Novembre 2018 :**  
 - Répartition des tâches :  
   - Erwan et Flavien :   
-    - Plateau de jeu - In progress  
+      - Plateau de jeu - In progress  
     Pose de tapis  
   - Alexandre et Maxime :  
     Ecran d'accueil - Done  
