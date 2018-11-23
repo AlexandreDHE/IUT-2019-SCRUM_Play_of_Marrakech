@@ -9,9 +9,12 @@ public class Assam
 
 	private int orientation;
 
+	private Coord coord;
+
 	private Assam()
 	{
 		this.orientation = NORD;
+		this.coord = new Coord(3,3);
 	}
 
 	public void tournerHorraire()
@@ -35,6 +38,12 @@ public class Assam
 	public int getOrientation()
 	{
 		return this.orientation;
+	}
+
+	public void setCoord(int x, int y)
+	{
+		this.coord.setX(x);
+		this.coord.setY(y);
 	}
 
 	public static Assam getAssam()
