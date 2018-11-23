@@ -81,10 +81,12 @@ public class Joueur
 				nombrePieceCinq++;
 			} while((nombrePieceCinq * 5) < cout);
 
+			nombrePieceCinq--;
+
 			do
 			{
 				nombrePieceUn++;
-			} while((nombrePieceCinq * 5) + (nombrePieceUn) != cout);
+			} while(((nombrePieceCinq * 5) + (nombrePieceUn)) != cout);
 
 			adversaire.ajouterPiece(nombrePieceUn, nombrePieceCinq);
 			this.argent[PIECEUN] = this.argent[PIECEUN] - nombrePieceUn;
