@@ -26,7 +26,7 @@ Jeu Marrakech.
       - Erwan et Flavien    
           - Plateau de jeu - In progress (Pose de tapis)       
        - Faïza et Rabah   
-         - Joueur - Done  
+         - Joueur - In progress (Orientation de joueur)   
          - De - Done  
     - IHM  
         - Alexandre et Maxime     
