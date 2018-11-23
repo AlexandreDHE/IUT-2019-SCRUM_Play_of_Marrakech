@@ -33,9 +33,9 @@ Jeu Marrakech.
              - constructeur : Done  
              - getters : Done  
              - lancer le dé : In progress  
-             - choisir l'orientation d'Assam : To Do (En attente de la finalisation d'Assam)   
-             - payer une dîme : To Do (En attente de la finalisation du Plateau de jeu)    
-             - poser un tapis  : To Do (En attente de la finalisation du Plateau de jeu)  
+             - choisir l'orientation d'Assam : To Do   
+             - payer une dîme : To Do     
+             - poser un tapis  : To Do   
          - De
              - singleton - Done
              - getValeur - In progress  
@@ -51,8 +51,7 @@ Jeu Marrakech.
           - Plateau de jeu
               - verification si le joueur peut poser le tapis : Done  
               - pose de tapis : Done  
-              - calcul prix de la dîme : In progress  
-              
+              - calcul prix de la dîme : In progress             
        - Faïza et Rabah 
            - De
                - getValeur : Done
@@ -60,6 +59,14 @@ Jeu Marrakech.
                - singleton : Done
                - orienter Assam : Done
                - faire avancer Assam : In progress (Reste la gestion des flêches quand Assam arrive au bout)
+           - Couleur
+               - attribution de couleurs à tous les joueurs : Done
+           - Joueur
+               - payer une dîme : Done
+               - poser un tapis : Done
+           - Partie
+               - constructeur : Done
+               - deroulement d'une partie : In progress
     - IHM    
               
 
