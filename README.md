@@ -20,7 +20,7 @@ Jeu Marrakech.
 - Lancement du projet  
 - Création du Product Backlog
   
-**Vendredi 23 Novembre 2018**  
+**Vendredi 23 Novembre 2018 : 11:15 - 12:30**  
 - Répartition des tâches
   - Moteur de jeu  
       - Erwan et Flavien    
