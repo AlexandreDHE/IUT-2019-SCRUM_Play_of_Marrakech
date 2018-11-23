@@ -24,7 +24,10 @@ Jeu Marrakech.
 - Répartition des tâches
   - Moteur de jeu  
       - Erwan et Flavien    
-          - Plateau de jeu - In progress (Pose de tapis)       
+          - Plateau de jeu
+              - constructeur : Done 
+              - pose de tapis : In progress 
+              - calcul prix de la dîme : To Do 
        - Faïza et Rabah   
          - Joueur  
              - constructeur : Done  
@@ -38,8 +41,8 @@ Jeu Marrakech.
              - getters - Done  
     - IHM  
         - Alexandre et Maxime     
-              - Ecran d'accueil - Done  
-              - Contrôleur - In progress   
+              - Ecran d'accueil : Done  
+              - Contrôleur : In progress   
               
 **Vendredi 23 Novembre 2018 de 15:00 à 16:15**  
 
