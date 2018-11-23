@@ -22,7 +22,7 @@ Jeu Marrakech.
   
 **Vendredi 23 Novembre 2018 de 11:15 à 12:30**  
 - Répartition des tâches
-  - Moteur de jeu  
+  - Moteur de jeu
       - Erwan et Flavien    
           - Plateau de jeu
               - constructeur : Done 
@@ -39,7 +39,6 @@ Jeu Marrakech.
          - De
              - singleton - Done
              - getValeur - In progress  
-             
     - IHM  
         - Alexandre et Maxime     
               - Ecran d'accueil : Done  
