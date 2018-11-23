@@ -33,7 +33,9 @@ Jeu Marrakech.
              - choisir l'orientation d'Assam : to do (En attente de la finalisation d'Assam)  
              - payer une dîme : to do  (En attente de la finalisation du Plateau de jeu)  
              - poser un tapis  : to do (En attente de la finalisation du Plateau de jeu)  
-         - De - Done  
+         - De
+             - Singleton : Done
+             - getters : Done  
     - IHM  
         - Alexandre et Maxime     
               - Ecran d'accueil - Done  
