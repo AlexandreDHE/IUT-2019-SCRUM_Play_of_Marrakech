@@ -29,10 +29,10 @@ Jeu Marrakech.
          - Classe Joueur  
              - constructeur : Done  
              - getters : Done  
-             - lancer le dé - In progress  
-             - choisir l'orientation d'Assam - To Do : En attente de la finalisation d'Assam   
-             - payer une dîme - To Do : En attente de la finalisation du Plateau de jeu    
-             - poser un tapis  - To Do : En attente de la finalisation du Plateau de jeu)  
+             - lancer le dé : In progress  
+             - choisir l'orientation d'Assam : To Do (En attente de la finalisation d'Assam)   
+             - payer une dîme : To Do (En attente de la finalisation du Plateau de jeu)    
+             - poser un tapis  : To Do (En attente de la finalisation du Plateau de jeu)  
          - De
              - Singleton - Done
              - getters - Done  
