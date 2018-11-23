@@ -15,16 +15,21 @@ public class Joueur
 
 	protected int couleur;
 	protected int[] argent;
-	protected int tapis;
+	protected Tapis[] tapis;
 
 	public Joueur(int couleur, int nombreTapis)
 	{
 		this.couleur = couleur;
-		this.tapis = nombreTapis;
 
 		argent = new int[2];
 		argent[PIECEUN] = 5;
 		argent[PIECECINQ] = 5;
+
+		this.tapis = new Tapis[nombreTapis];
+		for(int i = 0; i < nombreTapis; i++)
+		{
+			this.tapis[i] = new Tapis(this.couleur, -1, -1);
+		}
 	}
 
 	public int getCouleur()
@@ -84,7 +89,13 @@ public class Joueur
 		}
 	}
 
-	public int getTapis()
+	public setTapisCoord(int tapisIndex, int x, int y)
+	{
+		this.tapis[tapisIndex].set(x);
+		this.tapis[tapisIndex].set(y);
+	}
+
+	public Tapis[] getTapis()
 	{
 		return this.tapis;
 	}
