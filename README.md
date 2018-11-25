@@ -41,9 +41,13 @@ Jeu Marrakech.
              - getValeur - **In progress**  
     - IHM  
         - Alexandre et Maxime     
-              - Ecran d'accueil : **Done**  
-              - Contrôleur : **In progress**   
-              
+              - Ecran d'accueil : **Done**
+              - Contrôleur écran d'accueil : **Done**   
+              - Ecran de sélection des joueurs : **In progress** 
+              - Contrôleur écran de sélection des joueurs : **In progress** 
+              - Affichage du plateau de jeu : **To Do**
+              - Contrôleur plateau de jeu : **To Do**
+
 **Vendredi 23 Novembre 2018 de 15:00 à 16:15**  
 - Répartition des tâches
   - Moteur de jeu  
@@ -67,7 +71,14 @@ Jeu Marrakech.
            - Partie
                - attribution des tapis en fonction du nombre de joueurs : **Done**
                - deroulement d'une partie : **In progress**
-    - IHM    
+    - IHM  
+        - Alexandre et Maxime     
+              - Ecran d'accueil : **Done**
+              - Contrôleur écran d'accueil : **Done**   
+              - Ecran de sélection des joueurs : **Done** 
+              - Contrôleur écran de sélection des joueurs : **Done** 
+              - Affichage du plateau de jeu : **To Do**
+              - Contrôleur plateau de jeu : **To Do**   
               
 
 ## Langages
