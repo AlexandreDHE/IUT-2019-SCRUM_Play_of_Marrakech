@@ -89,7 +89,7 @@ public class Joueur
 		}
 	}
 
-	public setTapisCoord(int tapisIndex, Coord x, Coord y)
+	public void setTapisCoord(int tapisIndex, Coord x, Coord y)
 	{
 		this.tapis[tapisIndex].nouvelPosition(x,y);
 	}
