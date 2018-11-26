@@ -16,7 +16,7 @@ Jeu Marrakech.
 **Flavien PERINEAU** _alias_ [@perineau](https://dwarves.iut-fbleau.fr/git/perineau)  
 
 ## Avancement
-**Mercredi 21 Novembre 2018**     
+### **Mercredi 21 Novembre 2018**     
 - Lancement du projet  
 - Création du Product Backlog
   
@@ -48,7 +48,7 @@ Jeu Marrakech.
               - Affichage du plateau de jeu : **To Do**
               - Contrôleur plateau de jeu : **To Do**
 
-**Vendredi 23 Novembre 2018 de 15:00 à 16:15**  
+### **Vendredi 23 Novembre 2018 de 15:00 à 16:15**  
 - Répartition des tâches
   - Moteur de jeu  
       - Erwan et Flavien    
