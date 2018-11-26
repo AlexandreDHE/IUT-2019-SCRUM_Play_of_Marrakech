@@ -28,7 +28,7 @@ public class Joueur
 		this.tapis = new Tapis[nombreTapis];
 		for(int i = 0; i < nombreTapis; i++)
 		{
-			this.tapis[i] = new Tapis(this.couleur, -1, -1);
+			this.tapis[i] = new Tapis(this.couleur, new Coord(-1,-1), new Coord(-1,-1));
 		}
 	}
 
@@ -89,10 +89,9 @@ public class Joueur
 		}
 	}
 
-	public setTapisCoord(int tapisIndex, int x, int y)
+	public setTapisCoord(int tapisIndex, Coord x, Coord y)
 	{
-		this.tapis[tapisIndex].set(x);
-		this.tapis[tapisIndex].set(y);
+		this.tapis[tapisIndex].nouvelPosition(x,y);
 	}
 
 	public Tapis[] getTapis()
