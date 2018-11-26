@@ -58,13 +58,18 @@ public class Joueur
 		this.argent[PIECECINQ] = this.argent[PIECECINQ] + nombrePieceCinq;
 	}
 
+	public void retirerPiece(int nombrePieceUn, int nombrePieceCinq)
+	{
+		this.argent[PIECEUN] = this.argent[PIECEUN] - nombrePieceUn;
+		this.argent[PIECECINQ] = this.argent[PIECECINQ] - nombrePieceCinq;
+	}
+
 	public void payerDime(int cout, Joueur adversaire)
 	{
 		if(this.getArgentTotal() <= cout)
 		{
 			adversaire.ajouterPiece(this.argent[PIECEUN], this.argent[PIECECINQ]);
-			this.argent[PIECEUN] = 0;
-			this.argent[PIECECINQ] = 0;
+			this.retirerPiece(this.argent[PIECEUN], this.argent[PIECECINQ]);
 		}
 		else
 		{
@@ -84,8 +89,7 @@ public class Joueur
 			} while(((nombrePieceCinq * 5) + (nombrePieceUn)) != cout);
 
 			adversaire.ajouterPiece(nombrePieceUn, nombrePieceCinq);
-			this.argent[PIECEUN] = this.argent[PIECEUN] - nombrePieceUn;
-			this.argent[PIECECINQ] = this.argent[PIECECINQ] - nombrePieceCinq;
+			this.retirerPiece(nombrePieceUn, nombrePieceCinq);
 		}
 	}
 
