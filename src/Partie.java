@@ -36,12 +36,18 @@ public class Partie
 		de = De.getDe();
 	}
 
-	public void deroulement()
+	public void deroulement(Interface ihm)
 	{
 		for(int i = 0; i < this.joueurs.length; i++)
 		{
-			OrientationListener o = new OrientationTerminal();
-			o.orienter(this.assam);
+			Interface terminal = new InterfaceTerminal();
+			ihm.setMessage("Le joueur " + (i+1) + " choisit une orientation d'Assam");
+			ihm.setMessage("1 - Sens horraire\n2 - Sens trigo\nAutre - Ne pas changer l'orientation\n");
+
+
+			StrategieOrientationTerminal str = new StrategieOrientationTerminal();
+			str.orienter(this.assam);
+			this.assam.tournerHorraire();
 			int babouche = this.joueurs[i].lancerDe(this.de);
 			this.assam.avancer(babouche);
 		}
