@@ -1,12 +1,17 @@
+import javax.swing.event.EventListenerList;
+
 public class Partie
 {
 	protected Assam assam;
 	protected De de;
 	protected Joueur[] joueurs;
 
+	protected final EventListenerList listeners;
+
 	public Partie(int nombreJoueurs)
 	{
-		joueurs = new Joueur[nombreJoueurs];
+		this.listeners = new EventListenerList();
+		this.joueurs = new Joueur[nombreJoueurs];
 
 		if (nombreJoueurs == 2)
 		{
@@ -36,20 +41,27 @@ public class Partie
 		de = De.getDe();
 	}
 
-	public void deroulement(Interface ihm)
+	public void addInterfaceListener(InterfaceListener listener)
 	{
-		for(int i = 0; i < this.joueurs.length; i++)
+		this.listeners.add(InterfaceListener.class, listener);
+	}
+
+	 public InterfaceListener[] getInterfaceListeners() 
+	 {
+        return listeners.getListeners(InterfaceListener.class);
+    }
+
+	public void updateIHM(String message)
+	{
+		for(InterfaceListener listener : this.getInterfaceListeners()) 
 		{
-			ihm.setMessage("Le joueur " + (i+1) + " choisit une orientation d'Assam");
-			ihm.setMessage("1 - Sens horraire\n2 - Sens trigo\nAutre - Ne pas changer l'orientation\n");
+            listener.messageChanged(message);
+        }
+	}
 
-
-			StrategieOrientationTerminal str = new StrategieOrientationTerminal();
-			str.orienter(this.assam);
-			this.assam.tournerHorraire();
-			int babouche = this.joueurs[i].lancerDe(this.de);
-			this.assam.avancer(babouche);
-		}
+	public void run()
+	{
+		this.updateIHM("Le joueur " + 1 + " choisit une orientation d'Assam");
 	}
 
 	public Joueur[] getJoueurs()
@@ -57,4 +69,8 @@ public class Partie
 		return this.joueurs;
 	}
 
+	public De getDe()
+	{
+		return this.de;
+	}
 }
