@@ -52,4 +52,10 @@ public class Partie
 			this.assam.avancer(babouche);
 		}
 	}
+
+	public Joueur[] getJoueurs()
+	{
+		return this.joueurs;
+	}
+
 }
