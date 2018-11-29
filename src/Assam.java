@@ -2,10 +2,10 @@ public class Assam
 {
 	private static Assam assam = null;
 
-	public static final int NORD = 0;
-	public static final int EST = 1;
-	public static final int SUD = 2;
-	public static final int OUEST = 3;
+	private static final int NORD = 0;
+	private static final int EST = 1;
+	private static final int SUD = 2;
+	private static final int OUEST = 3;
 
 	private int orientation;
 
@@ -17,7 +17,7 @@ public class Assam
 		this.coord = new Coord(3,3);
 	}
 
-	public void tournerHoraire()
+	public void tournerHorraire()
 	{
 		if(this.orientation == OUEST)
 			this.orientation = NORD;
@@ -26,7 +26,7 @@ public class Assam
 			this.orientation++;
 	}
 
-	public void tournerAntiHoraire()
+	public void tournerAntiHorraire()
 	{
 		if(this.orientation == NORD)
 			this.orientation = OUEST;
