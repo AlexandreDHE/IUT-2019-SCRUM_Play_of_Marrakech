@@ -61,19 +61,8 @@ public class Partie
         }
 	}
 
-	public void orienterAssam(boolean horaire)
+	private void passerJoueurSuivant()
 	{
-		this.assam.tournerHoraire();
-
-		if(this.assam.getOrientation() == Assam.NORD)
-			this.updateIHM("Le joueur " + this.joueur + " oriente Assam vers le nord");
-		else if(this.assam.getOrientation() == Assam.EST)
-			this.updateIHM("Le joueur " + this.joueur + " oriente Assam vers l'est'");
-		else if(this.assam.getOrientation() == Assam.SUD)
-			this.updateIHM("Le joueur " + this.joueur + " oriente Assam vers le sud");
-		else if(this.assam.getOrientation() == Assam.OUEST)
-			this.updateIHM("Le joueur " + this.joueur + " oriente Assam vers l'ouest");
-
 		this.joueur++;
 		if(this.joueur == this.joueurs.length)
 			this.joueur = 0;
@@ -81,13 +70,58 @@ public class Partie
 
 	public void choisirOrientation()
 	{
-		this.updateIHM("Le joueur " + this.joueur + " choisit une orientation d'Assam");
+		this.updateIHM("Au tour du joueur " + this.joueur + " de choisir l'orientation d'Assam");
+	}
+
+	public void tournerAssamHoraire()
+	{
+		this.assam.tournerHoraire();
+
+		if(this.assam.getOrientation() == Assam.NORD)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers le nord");
+		else if(this.assam.getOrientation() == Assam.EST)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers l'est'");
+		else if(this.assam.getOrientation() == Assam.SUD)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers le sud");
+		else if(this.assam.getOrientation() == Assam.OUEST)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers l'ouest");
+	}
+
+	public void tournerAssamAntiHoraire()
+	{
+		this.assam.tournerAntiHoraire();
+
+		if(this.assam.getOrientation() == Assam.NORD)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers le nord");
+		else if(this.assam.getOrientation() == Assam.EST)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers l'est'");
+		else if(this.assam.getOrientation() == Assam.SUD)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers le sud");
+		else if(this.assam.getOrientation() == Assam.OUEST)
+			this.updateIHM("Le joueur " + this.joueur + " a orienté Assam vers l'ouest");
+	}
+
+	public void pasTournerAssam()
+	{
+		if(this.assam.getOrientation() == Assam.NORD)
+			this.updateIHM("Assam est encore orienté vers le nord");
+		else if(this.assam.getOrientation() == Assam.EST)
+			this.updateIHM("Assam est encore orienté vers l'est'");
+		else if(this.assam.getOrientation() == Assam.SUD)
+			this.updateIHM("Assam est encore orienté vers le sud");
+		else if(this.assam.getOrientation() == Assam.OUEST)
+			this.updateIHM("Assam est encore orienté vers l'ouest");
+	}
+
+	public void saisirDe()
+	{
+		this.updateIHM("Au tour du joueur " + this.joueur + " de lancer le dé");
 	}
 
 	public void lancerDe()
 	{
-		this.updateIHM("Le joueur " + this.joueur + " lance le dé");
-		this.de.getValeur();
+		int valeur = this.de.getValeur();
+		this.updateIHM("Le joueur " + this.joueur + " lance le dé et obtient " + valeur);
 	}
 
 	public Joueur getCurrentJoueur()
