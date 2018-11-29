@@ -22,7 +22,7 @@ public class De
 	public int getValeur()
 	{
 		int[] valeurs = {1,2,2,3,3,4};
-		int nombre = this.aleatoire.nextInt(6) + 1;
+		int nombre = this.aleatoire.nextInt(5) + 1;
 		return valeurs[nombre];
 	}
 }
