@@ -40,7 +40,6 @@ public class Partie
 	{
 		for(int i = 0; i < this.joueurs.length; i++)
 		{
-			Interface terminal = new InterfaceTerminal();
 			ihm.setMessage("Le joueur " + (i+1) + " choisit une orientation d'Assam");
 			ihm.setMessage("1 - Sens horraire\n2 - Sens trigo\nAutre - Ne pas changer l'orientation\n");
 
