@@ -15,6 +15,11 @@ Jeu Marrakech.
 **Erwan MATIGNON** _alias_ [@matignon](https://dwarves.iut-fbleau.fr/git/matignon)  
 **Flavien PERINEAU** _alias_ [@perineau](https://dwarves.iut-fbleau.fr/git/perineau)  
 
+## Lancer le jeu
+```
+make run
+```
+
 ## Avancement
 ### **Mercredi 21 Novembre 2018**     
 - Lancement du projet  
