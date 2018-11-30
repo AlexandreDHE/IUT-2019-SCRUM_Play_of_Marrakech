@@ -20,6 +20,11 @@ Jeu Marrakech.
 make run
 ```
 
+## Supprimer les .class
+```
+make clean
+```
+
 ## Avancement
 ### **Mercredi 21 Novembre 2018**     
 - Lancement du projet  
