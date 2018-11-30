@@ -2,9 +2,8 @@ package view;
 
 import javax.swing.*;
 
-import listener.JMenuItemListener;
-import listener.JMenuListener;
-import listener.PlayScreenControler;
+import listener.*;
+
 import model.Joueur;
 import model.Game;
 
@@ -65,7 +64,7 @@ public class PlayScreen extends JFrame{
 		bottompanel.add(bottompanelleft);
 		bottompanel.setBackground(Color.GRAY);
 
-		game.addGameListener(mp);
+		game.addGameListener(new MessagePanelControler(this.mp));
 
 		JPanel b1 = new JPanel();
 		b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
@@ -142,5 +141,6 @@ public class PlayScreen extends JFrame{
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setUndecorated(true);
+		game.start();
 	}
 }

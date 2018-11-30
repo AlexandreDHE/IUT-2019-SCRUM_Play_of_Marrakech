@@ -23,6 +23,8 @@ public class Menu extends JFrame{
 		JPanel img_pane = new JPanel();
 		JPanel titlepan = new JPanel();
 
+	//	JPanelCustom jpc = new JPanelCustom(new Image("../drawable/background.jpg"));
+
 		JLabel title = new JLabel("Marrakech Game");
 		title.setFont(new Font("Serif", Font.PLAIN, 35));
 
