@@ -28,7 +28,7 @@ public class Menu extends JFrame{
 
 		titlepan.add(title);
 
-		OpenImage openimage = new OpenImage(1080, 650, "img/background.jpg");
+		OpenImage openimage = new OpenImage(1080, 650, "../drawable/background.jpg");
 
 		img_pane.add(openimage);
 
