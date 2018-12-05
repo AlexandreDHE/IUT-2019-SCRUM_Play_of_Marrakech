@@ -12,7 +12,7 @@
 
 <target name="compile">
 	<mkdir dir="${bin.dir}"/>
-	<javac srcdir="${src.dir}" destdir="${bin.dir}"/>
+	<javac srcdir="${src.dir}" includeantruntime="last" destdir="${bin.dir}"/>
 	<echo message="compilation terminee"/>
 </target>
 
