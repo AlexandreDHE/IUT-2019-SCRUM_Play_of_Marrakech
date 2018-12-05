@@ -11,12 +11,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.Color.*;
 
-
 public class PlayScreen extends JFrame{
 
 	public JMenu back = new JMenu();
 	public MessagePanel mp = new MessagePanel();
 	public JButton lancerde = new JButton("Lancer le dé");
+	public JLabel devalue = new JLabel();
 
 	public PlayScreen(Game game){
 
@@ -25,8 +25,39 @@ public class PlayScreen extends JFrame{
 		JButton left = new JButton("◀");
 		JButton right = new JButton("▶");
 
-		JPanel centerpanel = new JPanel();
 		JPanel bottompanel = new JPanel();
+
+		JPanel centerpanel = new JPanel();
+		JPanel centernorth = new JPanel();
+		JPanel centersouth = new JPanel();
+		JPanel centereast = new JPanel();
+		JPanel centerwest = new JPanel();
+		JPanel centercenter = new JPanel();
+
+		OpenImage northimg = new OpenImage(750,70,"../drawable/borderimage.jpg");
+
+		centernorth.add(northimg);
+
+		centerpanel.setBackground(Color.RED);
+
+		centerpanel.setLayout(new BorderLayout());
+
+		centerpanel.add(centernorth, BorderLayout.NORTH);
+		centerpanel.add(centersouth, BorderLayout.SOUTH);
+		centerpanel.add(centereast, BorderLayout.EAST);
+		centerpanel.add(centerwest, BorderLayout.WEST);
+		centerpanel.add(centercenter, BorderLayout.CENTER);
+
+		centernorth.setBackground(Color.BLUE);
+		centersouth.add(new JButton("Sud"));
+		centereast.add(new JButton("Est"));
+		centerwest.add(new JButton("Ouest"));
+
+		GridLayout gridl = new GridLayout(7,7);
+		gridl.setHgap(0);
+
+		centercenter.setLayout(gridl);
+
 		JPanel bottompanelright = new JPanel();
 		JPanel bottompanelleft = new JPanel();
 		JPanel leftpanel = new JPanel();
@@ -37,7 +68,6 @@ public class PlayScreen extends JFrame{
 		JMenuItem quitnsave = new JMenuItem(); 
 		JMenuItem quitwsave = new JMenuItem(); 
 
-		centerpanel.setLayout(new GridLayout(9,9));
 		bottompanel.setLayout(new GridLayout(1,2));
 		leftpanel.setLayout(new GridLayout(2,1));
 		rightpanel.setLayout(new GridLayout(2,1));
@@ -60,6 +90,8 @@ public class PlayScreen extends JFrame{
 		bottompanelright.setBackground(Color.GRAY);
 		bottompanelleft.setBackground(Color.GRAY);
 		bottompanelleft.add(lancerde);
+		devalue.setForeground(Color.WHITE);
+		bottompanelleft.add(devalue);
 
 		bottompanel.add(bottompanelleft);
 		bottompanel.setBackground(Color.GRAY);
@@ -85,15 +117,17 @@ public class PlayScreen extends JFrame{
 		bottompanelright.add(b3);
 		bottompanel.add(bottompanelright);
 
-		int cpt = 0;
+		for(int i =0; i<7; i++){
 
-		for(int i =0; i<9; i++){
+			for(int  y=0; y<7; y++){
 
-			for(int  y=0; y<9; y++){
-
+			//	OpenImage oi = new OpenImage(60, 60, "../drawable/case.jpg");
 				JPanel pantoadd = new JPanel();
-				pantoadd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-				centerpanel.add(pantoadd);
+			//	oi.setVerticalAlignment(JLabel.CENTER);
+			//	pantoadd.add(oi);
+				pantoadd.setBackground(new Color(255,255,255));
+				pantoadd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(68, 106, 48)));
+				centercenter.add(pantoadd);
 
 			}
 
@@ -140,7 +174,10 @@ public class PlayScreen extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setUndecorated(true);
 		game.start();
+	}
+
+	public JLabel getLabelDe(){
+		return this.devalue;
 	}
 }

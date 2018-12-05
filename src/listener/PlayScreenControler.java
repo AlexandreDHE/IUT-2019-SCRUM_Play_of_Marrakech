@@ -49,8 +49,8 @@ public class PlayScreenControler implements ActionListener{
 		if(e.getActionCommand() == "Lancer le dé"){
 
 			int value = game.getDe().getValeur();
+			ps.getLabelDe().setText("Le dé vaut "+value+"."); //affiche la valeur du dé après le lancer
 			ps.mp.repaint();
-			System.out.println(value);
 			ps.lancerde.setEnabled(false);
 
 		}
