@@ -15,8 +15,8 @@ public class Tapis {
 
     public Tapis(int c) {
         couleur = c;
-        this.coord1 = -1;
-        this.coord2 = -1;
+        this.coord1 = new Coord(-1, -1);
+        this.coord2 = new Coord(-1, -1);
 
     }
 
