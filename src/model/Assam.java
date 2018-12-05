@@ -60,4 +60,11 @@ public class Assam
 
 		return assam;
 	}
+
+	/**
+	 * @return les coord
+	 */
+	public Coord getCoord() {
+		return coord;
+	}
 }

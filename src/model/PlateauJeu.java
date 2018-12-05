@@ -1,21 +1,42 @@
+package model;
 
+import model.Assam;
+import model.Coord;
 
+/**
+ * class contenant le plateau du jeu
+ */
 public class PlateauJeu {
 
     /* x,y */
+    /**
+     * contient toutes les cases du jeu
+     */
     private Case[][] cases;
+    /**
+     * contient si la case a été comptée
+     */
+    private boolean[][] casecompter;
 
-    public PlateauJeu(){
+    /**
+     * initialise le plateau du jeu
+     */
+    public PlateauJeu() {
         cases = new Case[7][7];
-        for (int i=0; i<7; i++) {
-            for (int j=0; j<7; j++) {
-                cases[i][j]= new Case();
+        casecompter = new boolean[7][7];
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                cases[i][j] = new Case();
             }
         }
     }
 
-
-    public void placerTapis(Tapis tapi){
+    /**
+     * permet de placer un tapis
+     * 
+     * @param tapi le tapis avec ses coordonnées
+     */
+    public void placerTapis(Tapis tapi) {
 
         Coord[] pos = tapi.position();
         cases[pos[0].getX()][pos[0].getY()].placerTapis(tapi);
@@ -23,10 +44,16 @@ public class PlateauJeu {
 
     }
 
-    public boolean peutPlacerTapis(Tapis tapi){
+    /**
+     * permet de savoir si on peut placer le tapis
+     * 
+     * @param tapi le tapis avec ses coordonnées
+     * @return si c'est possible
+     */
+    public boolean peutPlacerTapis(Tapis tapi) {
 
         Coord[] pos = tapi.position();
-        Tapis tapi1,tapi2;
+        Tapis tapi1, tapi2;
         tapi1 = cases[pos[0].getX()][pos[0].getY()].recupererTapis();
         tapi2 = cases[pos[1].getX()][pos[1].getY()].recupererTapis();
         if (tapi1 == tapi2) {
@@ -36,43 +63,89 @@ public class PlateauJeu {
 
     }
 
-    public void payerDime(Assam ass, Joueur j){
+    /**
+     * permet de payer les dimes au joueur correspondant
+     * 
+     * @param ass la position d'assam
+     * @param j   le joueur qui est arrivé sur la case
+     */
+    public int payerDime(Assam ass, Joueur j) {
 
-        /* position assam */
+        Coord coord = ass.getCoord();
 
-        Tapis tapi = cases[][].recupererTapis();
+        Tapis tapi = cases[coord.getX()][coord.getY()].recupererTapis();
         int cjoueur = j.couleur;
         int cadversaire = tapi.getCouleur();
 
-
         if (cjoueur == cadversaire) {
-            return null;
+            return 0;
         }
 
-        int due = compter(cadversaire, new Coord(), 1);
+        for (int i = 0; i < 7; i++) {
+            for (int jc = 0; jc < 7; jc++) {
+                casecompter[i][jc] = false;
+            }
+        }
+
+        int du = compter(cadversaire, coord, 1);
+
+        return du;
 
     }
 
-    private int compter(int cadversaire,Coord coord, int i){
+    /**
+     * fonction recursive qui permet de compter le total dû
+     * 
+     * @param cadversaire la couleur de l'adversaire
+     * @param coord       les coordonnées de la case
+     * @param i           le total dû
+     * @return le total dû
+     */
+    private int compter(int cadversaire, Coord coord, int i) {
 
         int x = coord.getX();
         int y = coord.getY();
 
-        if (cases[x+1][y].getCouleur() == cadversaire) {
-            i++;
-            i = compter(cadversaire, new Coord(x+1,y),i);
+        System.out.println(coord);
+
+        System.out.println(i);
+
+        casecompter[x][y] = true;
+
+        if (x + 1 < 7) {
+            if (cases[x + 1][y].recupererTapis() != null) {
+                if ((cases[x + 1][y].recupererTapis().getCouleur() == cadversaire) && (casecompter[x + 1][y] != true)) {
+                    i++;
+                    i = compter(cadversaire, new Coord(x + 1, y), i);
+                }
+            }
         }
-        if (cases[x-1][y].getCouleur() == cadversaire) {
-            i++;
-            i = compter(cadversaire, new Coord(x-1,y),i);
+
+        if (x - 1 < 0) {
+            if (cases[x - 1][y].recupererTapis() != null) {
+                if ((cases[x - 1][y].recupererTapis().getCouleur() == cadversaire) && (casecompter[x - 1][y] != true)) {
+                    i++;
+                    i = compter(cadversaire, new Coord(x - 1, y), i);
+                }
+            }
         }
-        if (cases[x][y+1].getCouleur() == cadversaire) {
-            i++;
-            i = compter(cadversaire, new Coord(x,y+1),i);
+
+        if (y + 1 < 7) {
+            if (cases[x][y + 1].recupererTapis() != null) {
+                if ((cases[x][y + 1].recupererTapis().getCouleur() == cadversaire) && (casecompter[x - 1][y] != true)) {
+                    i++;
+                    i = compter(cadversaire, new Coord(x, y + 1), i);
+                }
+            }
         }
-        if (cases[x][y-1].getCouleur() == cadversaire) {
-            i++;
-            i = compter(cadversaire, new Coord(x,y-1),i);
+
+        if (y - 1 < 0) {
+            if (cases[x][y - 1].recupererTapis() != null) {
+                if ((cases[x][y - 1].recupererTapis().getCouleur() == cadversaire) && (casecompter[x][y - 1] != true)) {
+                    i++;
+                    i = compter(cadversaire, new Coord(x, y - 1), i);
+                }
+            }
         }
 
         return i;

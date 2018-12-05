@@ -42,4 +42,12 @@ public class Coord {
     	return x;
     }
 
+    /**
+     * redéfinie la sortie
+     */
+    @Override
+    public String toString() {
+        return "x= " + x + " y= " + y;
+    }
+
 }
