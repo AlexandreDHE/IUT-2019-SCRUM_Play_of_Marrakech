@@ -4,7 +4,6 @@ import javax.swing.event.EventListenerList;
 
 import event.GameEvent;
 import listener.*;
-import model.Joueur;
 
 public class Game
 {
