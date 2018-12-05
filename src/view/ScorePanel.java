@@ -20,6 +20,8 @@ public class ScorePanel extends JPanel{
 		JPanel dirhams1 = new JPanel();
 		JPanel dirhams5 = new JPanel();
 
+		Font myFont = new Font("Serif", Font.ITALIC | Font.BOLD, 12);
+
 		this.setLayout(new GridLayout(4,1));
 
 		this.setBorder(BorderFactory.createMatteBorder(top, left, bottom, right, Color.BLACK));
@@ -50,6 +52,16 @@ public class ScorePanel extends JPanel{
 		tapis.add(nbtapis);
 		dirhams1.add(nbdirham1);
 		dirhams5.add(nbdirham5);
+
+		numplayer.setFont(myFont);
+		nbtapis.setFont(myFont);
+		nbdirham1.setFont(myFont);
+		nbdirham5.setFont(myFont);
+
+		player.setBackground(new Color(255, 203, 153));
+		tapis.setBackground(new Color(255, 203, 153));
+		dirhams1.setBackground(new Color(255, 203, 153));
+		dirhams5.setBackground(new Color(255, 203, 153));
 
 		this.add(player);
 		this.add(tapis);

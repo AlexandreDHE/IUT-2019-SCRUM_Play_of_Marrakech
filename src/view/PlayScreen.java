@@ -34,9 +34,15 @@ public class PlayScreen extends JFrame{
 		JPanel centerwest = new JPanel();
 		JPanel centercenter = new JPanel();
 
-		OpenImage northimg = new OpenImage(750,70,"../drawable/borderimage.jpg");
+		OpenImage northimg = new OpenImage(750,70,"../drawable/haut.png");
+		OpenImage southimg = new OpenImage(750,70,"../drawable/bas.png");
+		OpenImage eastimg = new OpenImage(75,400,"../drawable/droite.png");
+		OpenImage westimg = new OpenImage(75,400,"../drawable/gauche.png");
 
 		centernorth.add(northimg);
+		centersouth.add(southimg);
+		centereast.add(eastimg);
+		centerwest.add(westimg);
 
 		centerpanel.setBackground(Color.RED);
 
@@ -48,10 +54,11 @@ public class PlayScreen extends JFrame{
 		centerpanel.add(centerwest, BorderLayout.WEST);
 		centerpanel.add(centercenter, BorderLayout.CENTER);
 
-		centernorth.setBackground(Color.BLUE);
-		centersouth.add(new JButton("Sud"));
-		centereast.add(new JButton("Est"));
-		centerwest.add(new JButton("Ouest"));
+		centernorth.setBackground(new Color(254, 153, 1));
+		centersouth.setBackground(new Color(254, 153, 1));
+		centereast.setBackground(new Color(254, 153, 1));
+		centerwest.setBackground(new Color(254, 153, 1));
+		centercenter.setBackground(new Color(254, 153, 1));
 
 		GridLayout gridl = new GridLayout(7,7);
 		gridl.setHgap(0);
@@ -87,8 +94,8 @@ public class PlayScreen extends JFrame{
 		quitnsave.addActionListener(new JMenuItemListener());     
 		back.addMenuListener(new JMenuListener(this));
 
-		bottompanelright.setBackground(Color.GRAY);
-		bottompanelleft.setBackground(Color.GRAY);
+		bottompanelright.setBackground(new Color(255, 203, 153));
+		bottompanelleft.setBackground(new Color(255, 203, 153));
 		bottompanelleft.add(lancerde);
 		devalue.setForeground(Color.WHITE);
 		bottompanelleft.add(devalue);
@@ -117,17 +124,17 @@ public class PlayScreen extends JFrame{
 		bottompanelright.add(b3);
 		bottompanel.add(bottompanelright);
 
-		for(int i =0; i<7; i++){
+		JPanel allcases[][] = new JPanel[7][7];
 
-			for(int  y=0; y<7; y++){
+		for(int i = 0; i < 7; i++){
 
-			//	OpenImage oi = new OpenImage(60, 60, "../drawable/case.jpg");
-				JPanel pantoadd = new JPanel();
-			//	oi.setVerticalAlignment(JLabel.CENTER);
-			//	pantoadd.add(oi);
-				pantoadd.setBackground(new Color(255,255,255));
-				pantoadd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(68, 106, 48)));
-				centercenter.add(pantoadd);
+			for(int j = 0; j < 7; j++){
+				allcases[i][j] = new JPanel();
+				allcases[i][j].addMouseListener(new CaseListener());
+
+				allcases[i][j].setBackground(new Color(255, 203, 153));
+				allcases[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
+				centercenter.add(allcases[i][j]);
 
 			}
 
