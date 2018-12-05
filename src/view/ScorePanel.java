@@ -24,7 +24,7 @@ public class ScorePanel extends JPanel{
 
 		this.setBorder(BorderFactory.createMatteBorder(top, left, bottom, right, Color.BLACK));
 
-		nbtapis.setText(j.getTapis().length+" tapis.");
+		nbtapis.setText(j.getNombreTapis()+" tapis.");
 		nbdirham5.setText(j.getArgent(Joueur.PIECECINQ)+" pièces de 5 dirhams.");
 		nbdirham1.setText(j.getArgent(Joueur.PIECEUN)+" pièces de 1 dirham.");
 
