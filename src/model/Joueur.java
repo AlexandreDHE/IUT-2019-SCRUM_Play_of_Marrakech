@@ -7,21 +7,16 @@ public class Joueur
 
 	protected int couleur;
 	protected int[] argent;
-	protected Tapis[] tapis;
+	protected PaquetTapis paquet;
 
-	public Joueur(int couleur, int nombreTapis)
+	public Joueur(int couleur, PaquetTapis paquet)
 	{
 		this.couleur = couleur;
+		this.paquet = paquet;
 
 		argent = new int[2];
 		argent[PIECEUN] = 5;
 		argent[PIECECINQ] = 5;
-
-		this.tapis = new Tapis[nombreTapis];
-		for(int i = 0; i < nombreTapis; i++)
-		{
-			this.tapis[i] = new Tapis(this.couleur, new Coord(-1,-1), new Coord(-1,-1));
-		}
 	}
 
 	public int getCouleur()
@@ -85,13 +80,18 @@ public class Joueur
 		}
 	}
 
-	public void setTapisCoord(int tapisIndex, Coord x, Coord y)
+	/*public void setTapisCoord(int tapisIndex, Coord x, Coord y)
 	{
 		this.tapis[tapisIndex].nouvelPosition(x,y);
+	}*/
+
+	public Tapis getTapis()
+	{
+		return this.paquet.getTapis();
 	}
 
-	public Tapis[] getTapis()
+	public int getNombreTapis()
 	{
-		return this.tapis;
+		return this.paquet.getSize();
 	}
 }
