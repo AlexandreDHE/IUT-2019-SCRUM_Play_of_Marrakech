@@ -23,20 +23,32 @@ public class Game
 	{
 		this.listeners = new EventListenerList();
 		this.joueurs = new Joueur[nombreJoueurs];
+		
 
 		if (nombreJoueurs == 2)
 		{
+			PaquetTapis paquet = new PaquetTapis();
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, 24);
+				joueurs[i] = new Joueur(i, paquet);
+				for(int j = 0; j < 24; j++)
+				{
+					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+				}
 			}
+			paquet.melanger();
 		}
 
 		else if (nombreJoueurs == 3)
 		{
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, 15);
+				PaquetTapis paquet = new PaquetTapis();
+				joueurs[i] = new Joueur(i, paquet);
+				for(int j = 0; j < 15; j++)
+				{
+					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+				}
 			}
 		}
 
@@ -44,7 +56,12 @@ public class Game
 		{
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, 12);
+				PaquetTapis paquet = new PaquetTapis();
+				joueurs[i] = new Joueur(i, paquet);
+				for(int j = 0; j < 12; j++)
+				{
+					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+				}
 			}
 		}
 

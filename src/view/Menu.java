@@ -11,15 +11,6 @@ public class Menu extends JFrame{
 
 	public Menu(){
 
-		JMenu menuquit = new JMenu();
-JMenuBar menuBar = new JMenuBar();  
-
-menuquit.setText("Quitter");
-
-menuBar.add(menuquit);
-
-	this.setJMenuBar(menuBar);  
-
 		JButton start = new JButton("Start new game");
 		JButton resume = new JButton("Continue");
 		JButton quit = new JButton("Quit");
@@ -57,7 +48,6 @@ menuBar.add(menuquit);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setUndecorated(true);
 	}
 
 }
