@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="compile">
+
+<property name="src.dir"     value="src"/>
+<property name="bin.dir"   value="bin"/>
+
+<target name="clean">
+	<delete dir="${bin.dir}"/>
+	<echo message="nettoyage termine"/>
+</target>
+
+<target name="compile">
+	<mkdir dir="${bin.dir}"/>
+	<javac srcdir="${src.dir}" destdir="${bin.dir}"/>
+	<echo message="compilation terminee"/>
+</target>
+
+<target name="run" depends="compile">
+	<java classpath="${bin.dir}" classname="Main" fork="true"/>
+</target>
+
+</project>
+
