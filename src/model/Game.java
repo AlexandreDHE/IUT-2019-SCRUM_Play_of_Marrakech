@@ -3,7 +3,7 @@ package model;
 import javax.swing.event.EventListenerList;
 
 import event.GameEvent;
-import listener.GameListener;
+import listener.*;
 import model.Joueur;
 
 public class Game
@@ -16,6 +16,7 @@ public class Game
 	protected Assam assam;
 	protected De de;
 	protected Joueur[] joueurs;
+	protected int valeurDe;
 
 	protected final EventListenerList listeners;
 
@@ -77,6 +78,11 @@ public class Game
 		this.fireGameStateChanged(new GameEvent(oldState, this.state));
 	}
 
+	public void addAssamListener(AssamListener listener)
+	{
+		this.listeners.add(AssamListener.class, listener);
+	}
+
 	public void addGameListener(GameListener listener)
 	{
 		this.listeners.add(GameListener.class, listener);
@@ -85,6 +91,16 @@ public class Game
 	 public GameListener[] getGameListeners() 
 	 {
         return listeners.getListeners(GameListener.class);
+    }
+
+    public AssamListener[] getAssamListeners() 
+	 {
+        return listeners.getListeners(AssamListener.class);
+    }
+
+    public DeListener[] getDeListeners() 
+	 {
+        return listeners.getListeners(DeListener.class);
     }
 
 	public void fireGameStateChanged(GameEvent event)
@@ -103,5 +119,44 @@ public class Game
 	public De getDe()
 	{
 		return this.de;
+	}
+
+	public void moveAssam()
+	{
+		this.assam.avancer(this.valeurDe);
+
+		for(AssamListener listener : this.getAssamListeners())
+		{
+			listener.assamMoved();
+		}
+	}
+
+	public void rotateAssamCounterClockwise()
+	{
+		this.assam.tournerAntiHorraire();
+		for(AssamListener listener : this.getAssamListeners())
+		{
+			listener.assamOriented();
+		}
+	}
+
+	public void rotateAssamClockwise()
+	{
+		this.assam.tournerHorraire();
+		for(AssamListener listener : this.getAssamListeners())
+		{
+			listener.assamOriented();
+		}
+	}
+
+	public void throwDe()
+	{
+		this.valeurDe = this.de.getValeur();
+		for(DeListener listener : this.getDeListeners())
+		{
+			listener.deThrown();
+		}
+
+		
 	}
 }
