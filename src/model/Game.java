@@ -35,7 +35,7 @@ public class Game
 			PaquetTapis paquet = new PaquetTapis();
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, paquet);
+				joueurs[i] = new Joueur(i, paquet, new DirhamManager());
 				for(int j = 0; j < 24; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
@@ -49,7 +49,7 @@ public class Game
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
 				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet);
+				joueurs[i] = new Joueur(i, paquet, new DirhamManager());
 				for(int j = 0; j < 15; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
@@ -62,8 +62,61 @@ public class Game
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
 				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet);
+				joueurs[i] = new Joueur(i, paquet, new DirhamManager());
 				for(int j = 0; j < 12; j++)
+				{
+					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+				}
+			}
+		}
+
+		assam = Assam.getAssam();
+		de = De.getDe();
+		this.state = NOTSTARTED;
+	}
+
+ 	// surcharge paramétrer taille du jeu
+	public Game(int nombreJoueurs, int taille)
+	{
+		this.listeners = new EventListenerList();
+		this.joueurs = new Joueur[nombreJoueurs];
+		this.currentPlayer = 0;
+		this.plateau = new PlateauJeu(taille);
+
+		if (nombreJoueurs == 2)
+		{
+			PaquetTapis paquet = new PaquetTapis();
+			for(int i = 0; i < nombreJoueurs; i++)
+			{
+				joueurs[i] = new Joueur(i, paquet, new DirhamManagerVar());
+				for(int j = 0; j < ((taille * taille)/nombreJoueurs); j++)
+				{
+					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+				}
+			}
+			paquet.melanger();
+		}
+
+		else if (nombreJoueurs == 3)
+		{
+			for(int i = 0; i < nombreJoueurs; i++)
+			{
+				PaquetTapis paquet = new PaquetTapis();
+				joueurs[i] = new Joueur(i, paquet, new DirhamManagerVar());
+				for(int j = 0; j < ((taille * taille)/nombreJoueurs); j++)
+				{
+					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+				}
+			}
+		}
+
+		else if (nombreJoueurs == 4)
+		{
+			for(int i = 0; i < nombreJoueurs; i++)
+			{
+				PaquetTapis paquet = new PaquetTapis();
+				joueurs[i] = new Joueur(i, paquet, new DirhamManagerVar());
+				for(int j = 0; j < ((taille * taille)/nombreJoueurs); j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
 				}
@@ -171,22 +224,14 @@ public class Game
 	public void moveAssam()
 	{
 		this.assam.avancer(this.valeurDe);
+		
 		for(AssamListener listener : this.getAssamListeners())
 		{
 			listener.assamMoved(new AssamEvent(this.valeurDe, this.currentPlayer));
 		}
+		this.fireAssamMoved(new AssamEvent(this.valeurDe));
 	}
   
-  	public void moveAssam(int babouches)
-	{
-		this.assam.avancer(babouches);
-
-		for(AssamListener listener : this.getAssamListeners())
-		{
-			listener.assamMoved(new AssamEvent(babouches, this.currentPlayer));
-		}
-	}
-
 	public void rotateAssamCounterClockwise()
 	{
 		this.assam.tournerAntiHorraire();
