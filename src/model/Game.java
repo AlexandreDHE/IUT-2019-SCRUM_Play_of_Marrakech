@@ -176,6 +176,16 @@ public class Game
 			listener.assamMoved(new AssamEvent(this.valeurDe));
 		}
 	}
+  
+  	public void moveAssam(int babouches)
+	{
+		this.assam.avancer(babouches);
+
+		for(AssamListener listener : this.getAssamListeners())
+		{
+			listener.assamMoved();
+		}
+	}
 
 	public void rotateAssamCounterClockwise()
 	{
