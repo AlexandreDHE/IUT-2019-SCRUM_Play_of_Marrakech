@@ -1,8 +1,10 @@
 package listener;
 import java.util.EventListener;
 
+import event.AssamEvent;
+
 public interface AssamListener extends EventListener
 {
-	public void assamMoved();
-	public void assamOriented();
+	public void assamMoved(AssamEvent event);
+	public void assamOriented(AssamEvent event);
 }

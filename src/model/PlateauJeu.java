@@ -60,7 +60,6 @@ public class PlateauJeu {
             return false;
         }
         return true;
-
     }
 
     /**
