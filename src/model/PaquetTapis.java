@@ -3,6 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/** 
+	*Cette class permet de gerer la distribution,
+    *et le stockage des tapis. 
+    *Cette class permet à la fois la gestion des tapis 
+    *pour les 2, 3 ou 4 joueurs 
+    */
 
 public class PaquetTapis
 {
