@@ -74,7 +74,7 @@ public class PlateauJeu {
         Coord coord = ass.getCoord();
 
         Tapis tapi = cases[coord.getX()][coord.getY()].recupererTapis();
-        int cjoueur = j.couleur;
+        int cjoueur = j.getCouleur();
         int cadversaire = tapi.getCouleur();
 
         if (cjoueur == cadversaire) {
