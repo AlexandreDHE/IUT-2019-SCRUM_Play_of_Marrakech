@@ -32,7 +32,7 @@ public class SelectPlayer extends JFrame{
 		centerpan.add(players2);
 		centerpan.add(players3);
 		centerpan.add(players4);
-		centerpan.add(new OpenImage(600, 500, "../drawable/background2.jpg"));
+		centerpan.add(new OpenImage(600, 500, "./drawable/background2.jpg"));
 
 		SelectPlayerControler spc = new SelectPlayerControler(this, players2, players3, players4);
 

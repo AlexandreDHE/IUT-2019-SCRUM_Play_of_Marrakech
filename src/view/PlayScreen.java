@@ -34,10 +34,10 @@ public class PlayScreen extends JFrame{
 		JPanel centerwest = new JPanel();
 		JPanel centercenter = new JPanel();
 
-		OpenImage northimg = new OpenImage(750,70,"../drawable/haut.png");
-		OpenImage southimg = new OpenImage(750,70,"../drawable/bas.png");
-		OpenImage eastimg = new OpenImage(75,400,"../drawable/droite.png");
-		OpenImage westimg = new OpenImage(75,400,"../drawable/gauche.png");
+		OpenImage northimg = new OpenImage(750,70,"./drawable/haut.png");
+		OpenImage southimg = new OpenImage(750,70,"./drawable/bas.png");
+		OpenImage eastimg = new OpenImage(75,400,"./drawable/droite.png");
+		OpenImage westimg = new OpenImage(75,400,"./drawable/gauche.png");
 
 		centernorth.add(northimg);
 		centersouth.add(southimg);
