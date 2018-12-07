@@ -15,6 +15,7 @@ public class PaquetTapis
 	private ArrayList<Tapis> listeTapis;
 	private int curseur;
 
+  
 	public PaquetTapis()
 	{
 		this.listeTapis = new ArrayList<Tapis>();
