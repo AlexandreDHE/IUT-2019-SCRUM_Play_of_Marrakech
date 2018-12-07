@@ -171,20 +171,13 @@ public class Game
 	public void moveAssam()
 	{
 		this.assam.avancer(this.valeurDe);
-		for(AssamListener listener : this.getAssamListeners())
-		{
-			listener.assamMoved(new AssamEvent(this.valeurDe));
-		}
+		this.fireAssamMoved(new AssamEvent(this.valeurDe));
 	}
   
   	public void moveAssam(int babouches)
 	{
 		this.assam.avancer(babouches);
-
-		for(AssamListener listener : this.getAssamListeners())
-		{
-			listener.assamMoved(new AssamEvent(babouches));
-		}
+		this.fireAssamMoved(new AssamEvent(babouches));
 	}
 
 	public void rotateAssamCounterClockwise()
