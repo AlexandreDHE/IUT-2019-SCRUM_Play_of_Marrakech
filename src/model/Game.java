@@ -183,7 +183,7 @@ public class Game
 
 		for(AssamListener listener : this.getAssamListeners())
 		{
-			listener.assamMoved();
+			listener.assamMoved(new AssamEvent(babouches));
 		}
 	}
 
