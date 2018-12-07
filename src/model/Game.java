@@ -173,7 +173,7 @@ public class Game
 		this.assam.avancer(this.valeurDe);
 		for(AssamListener listener : this.getAssamListeners())
 		{
-			listener.assamMoved(new AssamEvent(this.valeurDe));
+			listener.assamMoved(new AssamEvent(this.valeurDe, this.currentPlayer));
 		}
 	}
   
@@ -183,20 +183,20 @@ public class Game
 
 		for(AssamListener listener : this.getAssamListeners())
 		{
-			listener.assamMoved(new AssamEvent(babouches));
+			listener.assamMoved(new AssamEvent(babouches, this.currentPlayer));
 		}
 	}
 
 	public void rotateAssamCounterClockwise()
 	{
 		this.assam.tournerAntiHorraire();
-		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation()));
+		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation(), this.currentPlayer));
 	}
 
 	public void rotateAssamClockwise()
 	{
 		this.assam.tournerHorraire();
-		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation()));
+		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation(), this.currentPlayer));
 	}
 
 
@@ -204,6 +204,7 @@ public class Game
 	{
 		this.valeurDe = this.de.getValeur();
 		this.fireDiceThrown(new DiceEvent(this.valeurDe));
+		this.moveAssam();
 	}
 
 	public void putCarpet(Coord coord1, Coord coord2)
@@ -226,4 +227,11 @@ public class Game
 	{
 		return this.assam.getCoord();
 	}
+
+	public Assam getAssam()
+	{
+		return this.assam;
+	}
+
+
 }

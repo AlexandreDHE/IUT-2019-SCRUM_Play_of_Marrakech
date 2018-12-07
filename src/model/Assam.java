@@ -4,10 +4,10 @@ public class Assam
 {
 	private static Assam assam = null;
 
-	private static final int NORD = 0;
-	private static final int EST = 1;
-	private static final int SUD = 2;
-	private static final int OUEST = 3;
+	public static final int NORD = 0;
+	public static final int EST = 1;
+	public static final int SUD = 2;
+	public static final int OUEST = 3;
 
 	private int orientation;
 
@@ -32,7 +32,6 @@ public class Assam
 	{
 		if(this.orientation == NORD)
 			this.orientation = OUEST;
-
 		else
 			this.orientation--;
 	}

@@ -4,8 +4,7 @@ import javax.swing.*;
 
 import listener.*;
 
-import model.Joueur;
-import model.Game;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,13 +16,22 @@ public class PlayScreen extends JFrame{
 	public MessagePanel mp = new MessagePanel();
 	public JButton lancerde = new JButton("Lancer le dé");
 	public JLabel devalue = new JLabel();
+	private AssamPanel assamPanel = new AssamPanel();
+
+	private	JButton[] orientationButtons;
+	private Game game;
 
 	public PlayScreen(Game game){
+		this.game = game;
+		lancerde.setEnabled(false);
 
-		JButton up = new JButton("▲");
-		JButton down = new JButton("▼");
-		JButton left = new JButton("◀");
-		JButton right = new JButton("▶");
+		this.orientationButtons = new JButton[4];
+		this.orientationButtons[0] = new JButton("▼");
+		this.orientationButtons[1] = new JButton("◀");
+		this.orientationButtons[2] = new JButton("▲");
+		this.orientationButtons[3] = new JButton("▶");
+
+		this.setEnabledOrientationButtons(true);
 
 		JPanel bottompanel = new JPanel();
 
@@ -70,6 +78,9 @@ public class PlayScreen extends JFrame{
 		JPanel leftpanel = new JPanel();
 		JPanel rightpanel = new JPanel();
 
+		leftpanel.setBackground(new Color(255, 203, 153));
+		rightpanel.setBackground(new Color(255, 203, 153));
+
 		JMenuBar menuBar = new JMenuBar();  
 		JMenu quit = new JMenu();
 		JMenuItem quitnsave = new JMenuItem(); 
@@ -105,19 +116,21 @@ public class PlayScreen extends JFrame{
 		bottompanel.setBackground(Color.GRAY);
 
 		game.addGameListener(new MessagePanelControler(this.mp));
+		game.addAssamListener(new MessagePanelControler(this.mp));
+		game.addDiceListener(new MessagePanelControler(this.mp));
 
 		JPanel b1 = new JPanel();
 		b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
-		b1.add(up);
+		b1.add(getUpButton());
 
 		JPanel b2 = new JPanel();
 		b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
-		b2.add(left);
-		b2.add(right);
+		b2.add(getLeftButton());
+		b2.add(getRightButton());
 
 		JPanel b3 = new JPanel();
 		b3.setLayout(new BoxLayout(b3, BoxLayout.LINE_AXIS));
-		b3.add(down);
+		b3.add(getDownButton());
 
 		bottompanelright.setLayout(new BoxLayout(bottompanelright, BoxLayout.PAGE_AXIS));
 		bottompanelright.add(b1);
@@ -132,7 +145,7 @@ public class PlayScreen extends JFrame{
 			for(int j = 0; j < 7; j++){
 
 				if((i==3) && (j==3)){
-					allcases[i][j] = new AssamPanel();
+					allcases[i][j] = assamPanel;
 				}else{
 
 
@@ -154,10 +167,10 @@ public class PlayScreen extends JFrame{
 		this.add(bottompanel, BorderLayout.SOUTH);
 		this.add(centerpanel, BorderLayout.CENTER);
 
-		up.addActionListener(new PlayScreenControler(this,game));
-		down.addActionListener(new PlayScreenControler(this,game));
-		left.addActionListener(new PlayScreenControler(this,game));
-		right.addActionListener(new PlayScreenControler(this,game));
+		getUpButton().addActionListener(new PlayScreenControler(this,game));
+		getDownButton().addActionListener(new PlayScreenControler(this,game));
+		getLeftButton().addActionListener(new PlayScreenControler(this,game));
+		getRightButton().addActionListener(new PlayScreenControler(this,game));
 		lancerde.addActionListener(new PlayScreenControler(this,game));
 
 		Joueur[] players = game.getJoueurs();
@@ -193,6 +206,60 @@ public class PlayScreen extends JFrame{
 	}
 
 	public JLabel getLabelDe(){
+
 		return this.devalue;
+
+	}
+
+	public JButton getDiceButton(){
+
+		return this.lancerde;
+
+	}
+
+	public AssamPanel getAssamPanel(){ 
+
+		return this.assamPanel;
+
+	}
+
+	public JButton getUpButton()
+	{ 
+
+		return this.orientationButtons[2];
+
+	}
+
+
+	public JButton getDownButton(){
+
+		return this.orientationButtons[0];
+		
+	}
+
+
+	public JButton getRightButton(){
+
+		return this.orientationButtons[3];
+		
+	}
+
+
+	public JButton getLeftButton(){
+
+		return this.orientationButtons[1];
+		
+	}
+
+	public void setEnabledOrientationButtons(boolean enable)
+	{
+		for(int i = 0; i < this.orientationButtons.length; i++)
+		{
+			this.orientationButtons[i].setEnabled(enable);
+		}
+		if(enable)
+		{
+			this.orientationButtons[game.getAssam().getOrientation()].setEnabled(false);
+		}
 	}
 }

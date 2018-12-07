@@ -12,6 +12,7 @@ public class MessagePanel extends JPanel{
 
 	public MessagePanel(){
 		this.jlmess = new JLabel();
+		this.setBackground(new Color(255, 203, 153));
 		jlmess.setForeground(Color.RED);
 		jlmess.setFont(new Font("Serif", Font.PLAIN, 20));
 		this.add(jlmess);
