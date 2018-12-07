@@ -75,6 +75,7 @@ public class PlayScreen extends JFrame{
 		JMenuItem quitnsave = new JMenuItem(); 
 		JMenuItem quitwsave = new JMenuItem(); 
 
+
 		bottompanel.setLayout(new GridLayout(1,2));
 		leftpanel.setLayout(new GridLayout(2,1));
 		rightpanel.setLayout(new GridLayout(2,1));
@@ -129,12 +130,19 @@ public class PlayScreen extends JFrame{
 		for(int i = 0; i < 7; i++){
 
 			for(int j = 0; j < 7; j++){
+
+				if((i==3) && (j==3)){
+					allcases[i][j] = new AssamPanel();
+				}else{
+
+
 				allcases[i][j] = new JPanel();
 				allcases[i][j].addMouseListener(new CaseListener());
-
 				allcases[i][j].setBackground(new Color(255, 203, 153));
 				allcases[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
-				centercenter.add(allcases[i][j]);
+				
+			}
+			centercenter.add(allcases[i][j]);
 
 			}
 

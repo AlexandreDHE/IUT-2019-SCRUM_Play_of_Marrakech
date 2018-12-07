@@ -2,20 +2,24 @@ package model;
 
 import javax.swing.event.EventListenerList;
 
-import event.GameEvent;
+import event.*;
 import listener.*;
 
 public class Game
 {
 	public static final int NOTSTARTED = 0;
 	public static final int START = 1;
+	public static final int ONGOING = 2;
+	public static final int OVER = 3;
 	
 	protected int state;
 	
 	protected Assam assam;
 	protected De de;
 	protected Joueur[] joueurs;
+	protected int currentPlayer;
 	protected int valeurDe;
+	protected PlateauJeu plateau;
 
 	protected final EventListenerList listeners;
 
@@ -23,7 +27,8 @@ public class Game
 	{
 		this.listeners = new EventListenerList();
 		this.joueurs = new Joueur[nombreJoueurs];
-		
+		this.currentPlayer = 0;
+		this.plateau = new PlateauJeu();
 
 		if (nombreJoueurs == 2)
 		{
@@ -74,7 +79,10 @@ public class Game
 	{
 		int oldState = this.state;
 		this.state = START;
-		this.fireGameStateChanged(new GameEvent(oldState, this.state));
+		for(GameListener listener : this.getGameListeners()) 
+		{
+            listener.gameStateChanged(new GameEvent(oldState, this.state));
+        }
 	}
 
 	public void addAssamListener(AssamListener listener)
@@ -87,28 +95,68 @@ public class Game
 		this.listeners.add(GameListener.class, listener);
 	}
 
-	 public GameListener[] getGameListeners() 
-	 {
+	public void addDiceListener(DiceListener listener)
+	{
+		this.listeners.add(DiceListener.class, listener);
+	}
+
+	public void addCarpetListener(CarpetListener listener)
+	{
+		this.listeners.add(CarpetListener.class, listener);
+	}
+
+	public GameListener[] getGameListeners() 
+	{
         return listeners.getListeners(GameListener.class);
     }
 
     public AssamListener[] getAssamListeners() 
-	 {
+	{
         return listeners.getListeners(AssamListener.class);
     }
 
-    public DeListener[] getDeListeners() 
-	 {
-        return listeners.getListeners(DeListener.class);
+    public DiceListener[] getDiceListeners() 
+	{
+        return listeners.getListeners(DiceListener.class);
     }
 
-	public void fireGameStateChanged(GameEvent event)
+    public CarpetListener[] getCarpetListeners() 
+	 {
+        return listeners.getListeners(CarpetListener.class);
+    }
+
+    public void fireAssamOriented(AssamEvent event)
 	{
-		for(GameListener listener : this.getGameListeners()) 
+		for(AssamListener listener : this.getAssamListeners()) 
 		{
-            listener.gameStarted(event);
+            listener.assamOriented(event);
         }
 	}
+
+	public void fireAssamMoved(AssamEvent event)
+	{
+		for(AssamListener listener : this.getAssamListeners()) 
+		{
+            listener.assamMoved(event);
+        }
+	}
+
+	public void fireDiceThrown(DiceEvent event)
+	{
+		for(DiceListener listener : this.getDiceListeners()) 
+		{
+            listener.diceThrown(event);
+        }
+	}
+
+	public void fireCarpetPut(CarpetEvent event)
+	{
+		for(CarpetListener listener : this.getCarpetListeners()) 
+		{
+            listener.carpetPut(event);
+        }
+	}
+
 
 	public Joueur[] getJoueurs()
 	{
@@ -123,39 +171,49 @@ public class Game
 	public void moveAssam()
 	{
 		this.assam.avancer(this.valeurDe);
-
 		for(AssamListener listener : this.getAssamListeners())
 		{
-			listener.assamMoved();
+			listener.assamMoved(new AssamEvent(this.valeurDe));
 		}
 	}
 
 	public void rotateAssamCounterClockwise()
 	{
 		this.assam.tournerAntiHorraire();
-		for(AssamListener listener : this.getAssamListeners())
-		{
-			listener.assamOriented();
-		}
+		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation()));
 	}
 
 	public void rotateAssamClockwise()
 	{
 		this.assam.tournerHorraire();
-		for(AssamListener listener : this.getAssamListeners())
+		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation()));
+	}
+
+
+	public void throwDice()
+	{
+		this.valeurDe = this.de.getValeur();
+		this.fireDiceThrown(new DiceEvent(this.valeurDe));
+	}
+
+	public void putCarpet(Coord coord1, Coord coord2)
+	{
+		Tapis carpet = new Tapis(this.currentPlayer, coord1, coord2);
+		if(this.plateau.peutPlacerTapis(carpet))
 		{
-			listener.assamOriented();
+			carpet = this.joueurs[this.currentPlayer].getTapis();
+			carpet.setPosition(coord1, coord2);
+			this.plateau.placerTapis(carpet);
+			this.fireCarpetPut(new CarpetEvent(true));
+		}
+		else
+		{
+			this.fireCarpetPut(new CarpetEvent(false));
 		}
 	}
 
-	public void throwDe()
+	public Coord getAssamCoord()
 	{
-		this.valeurDe = this.de.getValeur();
-		for(DeListener listener : this.getDeListeners())
-		{
-			listener.deThrown();
-		}
-
-		
+		return this.assam.getCoord();
 	}
 }
