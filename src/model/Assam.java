@@ -89,8 +89,9 @@ public class Assam
 		}
 	}
   
-
-
+/**
+	*Méthode qui permet de récuperer le singleton Assam 
+    */
 	public static Assam getAssam()
 	{
 		if(assam == null)
@@ -99,8 +100,6 @@ public class Assam
 		return assam;
 	}
   
-  
-
 	/**
 	 * @return les coord d'Assam
 	 */
