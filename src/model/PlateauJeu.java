@@ -31,6 +31,17 @@ public class PlateauJeu {
         }
     }
 
+    public PlateauJeu(int lignes) {
+        cases = new Case[lignes][lignes];
+        casecompter = new boolean[lignes][lignes];
+        for (int i = 0; i < lignes; i++) {
+            for (int j = 0; j < lignes; j++) {
+                cases[i][j] = new Case();
+            }
+        }
+    }
+
+
     /**
      * permet de placer un tapis
      * 

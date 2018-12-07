@@ -9,14 +9,13 @@ public class Joueur
 	protected int[] argent;
 	protected PaquetTapis paquet;
 
-	public Joueur(int couleur, PaquetTapis paquet)
+	public Joueur(int couleur, PaquetTapis paquet, DirhamManager dir)
 	{
 		this.couleur = couleur;
 		this.paquet = paquet;
 
 		argent = new int[2];
-		argent[PIECEUN] = 5;
-		argent[PIECECINQ] = 5;
+		dir.deal(this);
 	}
 
 	public int getCouleur()
