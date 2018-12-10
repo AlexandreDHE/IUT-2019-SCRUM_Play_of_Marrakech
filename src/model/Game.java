@@ -35,7 +35,7 @@ public class Game
 			PaquetTapis paquet = new PaquetTapis();
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, paquet, new DirhamManager());
+				joueurs[i] = new Joueur(i, paquet, new DirhamManagerClassic());
 				for(int j = 0; j < 24; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
@@ -49,7 +49,7 @@ public class Game
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
 				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, new DirhamManager());
+				joueurs[i] = new Joueur(i, paquet, new DirhamManagerClassic());
 				for(int j = 0; j < 15; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
@@ -62,7 +62,7 @@ public class Game
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
 				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, new DirhamManager());
+				joueurs[i] = new Joueur(i, paquet, new DirhamManagerClassic());
 				for(int j = 0; j < 12; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
@@ -224,12 +224,7 @@ public class Game
 	public void moveAssam()
 	{
 		this.assam.avancer(this.valeurDe);
-		
-		for(AssamListener listener : this.getAssamListeners())
-		{
-			listener.assamMoved(new AssamEvent(this.valeurDe, this.currentPlayer));
-		}
-		this.fireAssamMoved(new AssamEvent(this.valeurDe));
+		this.fireAssamMoved(new AssamEvent(this.valeurDe, this.currentPlayer));
 	}
   
 	public void rotateAssamCounterClockwise()
