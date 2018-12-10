@@ -1,5 +1,7 @@
 package model;
 
+import model.dirham.*;
+
 public class Joueur
 {
 	public final static int PIECEUN = 0;

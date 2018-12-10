@@ -1,4 +1,6 @@
-package model;
+package model.dirham;
+
+import model.*;
 
 public interface DirhamManager 
 {

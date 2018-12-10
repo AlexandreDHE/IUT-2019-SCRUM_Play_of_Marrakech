@@ -4,16 +4,12 @@ import javax.swing.event.EventListenerList;
 
 import event.*;
 import model.*;
+import model.dirham.*;
 import listener.modeltoview.*;
 
 public class Game
 {
-	public static final int NOTSTARTED = 0;
-	public static final int START = 1;
-	public static final int ONGOING = 2;
-	public static final int OVER = 3;
-	
-	protected int state;
+	protected GameState state;
 	
 	protected Assam assam;
 	protected De de;
@@ -73,7 +69,7 @@ public class Game
 
 		assam = Assam.getAssam();
 		de = De.getDe();
-		this.state = NOTSTARTED;
+		this.state = GameState.NOTSTARTED;
 	}
 
  	// surcharge paramétrer taille du jeu
@@ -126,13 +122,13 @@ public class Game
 
 		assam = Assam.getAssam();
 		de = De.getDe();
-		this.state = NOTSTARTED;
+		this.state = GameState.NOTSTARTED;
 	}
 	
 	public void start()
 	{
-		int oldState = this.state;
-		this.state = START;
+		GameState oldState = this.state;
+		this.state = GameState.STARTED;
 		for(GameListener listener : this.getGameListeners()) 
 		{
             listener.gameStateChanged(new GameEvent(oldState, this.state));

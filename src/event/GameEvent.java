@@ -1,21 +1,23 @@
 package event;
 
+import model.game.GameState;
+
 public class GameEvent implements Event
 {
-	protected int oldState;
-	protected int newState;
+	protected GameState oldState;
+	protected GameState newState;
 
-	public GameEvent(int oldState, int newState)
+	public GameEvent(GameState oldState, GameState newState)
 	{
 		this.oldState = oldState;
 		this.newState = newState;
 	}
 
-	public int getOldState()
+	public GameState getOldState()
 	{
 		return this.oldState;
 	}
-	public int getNewState()
+	public GameState getNewState()
 	{
 		return this.newState;
 	}

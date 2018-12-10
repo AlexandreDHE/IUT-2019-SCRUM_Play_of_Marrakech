@@ -5,6 +5,7 @@ import javax.swing.*;
 
 import model.*;
 import model.game.*;
+import model.dirham.*;
 import view.Menu;
 import view.PlayScreen;
 import view.SelectPlayer;
