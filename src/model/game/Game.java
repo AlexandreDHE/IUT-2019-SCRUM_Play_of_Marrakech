@@ -1,8 +1,9 @@
-package model;
+package model.game;
 
 import javax.swing.event.EventListenerList;
 
 import event.*;
+import model.*;
 import listener.*;
 
 public class Game

@@ -1,4 +1,5 @@
-package listener;
+package listener.modeltoview;
+
 import java.util.EventListener;
 import event.DiceEvent;
 

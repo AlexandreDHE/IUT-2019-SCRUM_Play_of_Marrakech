@@ -1,4 +1,4 @@
-package listener;
+package listener.viewtomodel;
 
 import java.awt.*;  
 import javax.swing.*;
