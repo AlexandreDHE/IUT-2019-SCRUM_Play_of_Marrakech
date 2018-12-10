@@ -1,7 +1,7 @@
 package view;
 import javax.swing.*;
 
-import listener.SelectPlayerControler;
+import listener.viewtomodel.*;
 
 import java.awt.*;
 import java.awt.Color.*;

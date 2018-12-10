@@ -1,11 +1,11 @@
-package view;
+package view.parameter;
 
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import listener.GameParameterListener;
+import listener.viewtomodel.GameParameterListener;
 
 public class GameParameterView extends JPanel
 {

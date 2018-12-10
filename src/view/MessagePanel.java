@@ -2,10 +2,6 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
-import event.GameEvent;
-import listener.GameListener;
-
-
 public class MessagePanel extends JPanel{
 
 	private JLabel jlmess;

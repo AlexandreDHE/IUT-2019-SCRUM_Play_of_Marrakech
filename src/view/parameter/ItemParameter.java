@@ -1,4 +1,4 @@
-package view;
+package view.parameter;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
+import view.OpenImage;
 
 public class ItemParameter extends JPanel
 {

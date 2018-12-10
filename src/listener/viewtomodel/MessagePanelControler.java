@@ -4,7 +4,7 @@ import java.util.EventListener;
 
 import model.Assam;
 import view.*;
-import listener.*;
+import listener.modeltoview.*;
 
 import event.*;
 

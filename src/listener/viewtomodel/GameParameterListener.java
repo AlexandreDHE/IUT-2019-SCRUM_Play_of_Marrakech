@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import view.ItemParameter;
+import view.parameter.ItemParameter;
 
 public class GameParameterListener implements MouseListener
 {

@@ -4,7 +4,7 @@ import java.awt.Container.*;
 import java.awt.*;  
 import javax.swing.*;
 
-import model.Game;
+import model.game.Game;
 import view.PlayScreen;
 
 import java.awt.event.*;

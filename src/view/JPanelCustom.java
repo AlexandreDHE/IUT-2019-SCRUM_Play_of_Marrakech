@@ -1,7 +1,7 @@
 package view;
 import javax.swing.*;
 
-import listener.MenuControler;
+import listener.viewtomodel.MenuControler;
 
 import java.awt.*;
 import java.awt.Color.*;

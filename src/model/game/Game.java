@@ -4,7 +4,7 @@ import javax.swing.event.EventListenerList;
 
 import event.*;
 import model.*;
-import listener.*;
+import listener.modeltoview.*;
 
 public class Game
 {
@@ -24,7 +24,7 @@ public class Game
 
 	protected final EventListenerList listeners;
 
-	public Game(int nombreJoueurs)
+	public Game(int nombreJoueurs, DirhamManager dirhamManager)
 	{
 		this.listeners = new EventListenerList();
 		this.joueurs = new Joueur[nombreJoueurs];
@@ -36,7 +36,7 @@ public class Game
 			PaquetTapis paquet = new PaquetTapis();
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, paquet, new DirhamManagerClassic());
+				joueurs[i] = new Joueur(i, paquet, dirhamManager);
 				for(int j = 0; j < 24; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
@@ -50,7 +50,7 @@ public class Game
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
 				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, new DirhamManagerClassic());
+				joueurs[i] = new Joueur(i, paquet, dirhamManager);
 				for(int j = 0; j < 15; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
@@ -63,7 +63,7 @@ public class Game
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
 				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, new DirhamManagerClassic());
+				joueurs[i] = new Joueur(i, paquet, dirhamManager);
 				for(int j = 0; j < 12; j++)
 				{
 					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));

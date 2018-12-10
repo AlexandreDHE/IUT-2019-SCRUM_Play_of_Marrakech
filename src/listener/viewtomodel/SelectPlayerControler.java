@@ -3,7 +3,8 @@ package listener.viewtomodel;
 import java.awt.*;  
 import javax.swing.*;
 
-import model.Game;
+import model.*;
+import model.game.*;
 import view.Menu;
 import view.PlayScreen;
 import view.SelectPlayer;
@@ -65,8 +66,7 @@ public class SelectPlayerControler implements ActionListener{
 		if(e.getActionCommand() == "Play"){
 
 			selectplayer.dispose();
-			PlayScreen playscreen = new PlayScreen(new Game(this.nbplayers));
-			Game game = new Game(this.nbplayers);
+			PlayScreen playscreen = new PlayScreen(new Game(this.nbplayers, new DirhamManagerClassic()));
 			playscreen.setVisible(true);
 
 		}

@@ -2,9 +2,10 @@ package view;
 
 import javax.swing.*;
 
-import listener.*;
+import listener.viewtomodel.*;
 
 import model.*;
+import model.game.*;
 
 import javax.swing.*;
 import java.awt.*;
