@@ -28,24 +28,27 @@ public class PlayScreenControler implements ActionListener{
 
 		if(e.getActionCommand() == "Ne pas orienter"){
 
+			ps.enableButtons(false, ps.getAssamOrientationButtons());
 			this.ps.getDiceButton().setEnabled(true);
 
 		}
 
 		else if(e.getActionCommand() == "Tourner dans le sens anti-horaire"){
 			
-				game.rotateAssamCounterClockwise();
-				orientation = game.getAssam().getOrientation();
+			game.rotateAssamCounterClockwise();
+			orientation = game.getAssam().getOrientation();
 			ps.getAssamPanel().setAssam(orientation);
+			ps.enableButtons(false, ps.getAssamOrientationButtons());
 			this.ps.getDiceButton().setEnabled(true);
 
 		}
 
 		else if(e.getActionCommand() == "Tourner dans le sens horaire"){
 
-				game.rotateAssamClockwise();
-				orientation = game.getAssam().getOrientation();
-				ps.getAssamPanel().setAssam(orientation);
+			game.rotateAssamClockwise();
+			orientation = game.getAssam().getOrientation();
+			ps.getAssamPanel().setAssam(orientation);
+			ps.enableButtons(false, ps.getAssamOrientationButtons());
 			this.ps.getDiceButton().setEnabled(true);
 
 		}
@@ -54,6 +57,7 @@ public class PlayScreenControler implements ActionListener{
 			game.throwDice();
 			ps.mp.repaint();
 			ps.lancerde.setEnabled(false);
+			ps.enableButtons(true, ps.getCarpetOrientationButtons());
 
 		}
 	}

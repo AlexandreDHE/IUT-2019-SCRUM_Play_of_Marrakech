@@ -20,34 +20,44 @@ public class PlayScreen extends JFrame{
 	public JLabel devalue = new JLabel();
 	private AssamPanel assamPanel = new AssamPanel();
 
-	private	JButton[] orientationButtons;
+	private	JButton[] assamOrientationButtons;
+	private	JButton[] carpetOrientationButtons;
+
 	private JPanel allcases[][];
 	private JPanel centercenter = new JPanel();
 	private Game game;
 
 	public PlayScreen(Game game){
+
 		this.game = game;
 		this.allcases = new JPanel[7][7];
+
 		lancerde.setEnabled(false);
 
-		this.orientationButtons = new JButton[3];
-		this.orientationButtons[0] = new JButton("Tourner dans le sens horaire");
-		this.orientationButtons[1] = new JButton("Ne pas orienter");
-		this.orientationButtons[2] = new JButton("Tourner dans le sens anti-horaire");
+		Font myFont = new Font("Serif", Font.ITALIC | Font.BOLD, 12);
+
+		this.carpetOrientationButtons = new JButton[2];
+		this.carpetOrientationButtons[0] = new JButton("Tourner dans le sens anti-horaire");
+		this.carpetOrientationButtons[1] = new JButton("Tourner dans le sens horaire");
+
+		this.assamOrientationButtons = new JButton[3];
+		this.assamOrientationButtons[0] = new JButton("Tourner dans le sens horaire");
+		this.assamOrientationButtons[1] = new JButton("Tourner dans le sens anti-horaire");
+		this.assamOrientationButtons[2] = new JButton("Ne pas orienter");
+
+		enableButtons(false, getCarpetOrientationButtons());
 
 		JPanel bottompanel = new JPanel();
-
 		JPanel centerpanel = new JPanel();
 		JPanel centernorth = new JPanel();
 		JPanel centersouth = new JPanel();
 		JPanel centereast = new JPanel();
 		JPanel centerwest = new JPanel();
-		
 
 		OpenImage northimg = new OpenImage(750,70,"./drawable/haut.png");
 		OpenImage southimg = new OpenImage(750,70,"./drawable/bas.png");
-		OpenImage eastimg = new OpenImage(75,400,"./drawable/droite.png");
-		OpenImage westimg = new OpenImage(75,400,"./drawable/gauche.png");
+		OpenImage eastimg = new OpenImage(75,350,"./drawable/droite.png");
+		OpenImage westimg = new OpenImage(75,350,"./drawable/gauche.png");
 
 		centernorth.add(northimg);
 		centersouth.add(southimg);
@@ -76,6 +86,7 @@ public class PlayScreen extends JFrame{
 		centercenter.setLayout(gridl);
 
 		JPanel bottompanelright = new JPanel();
+		JPanel bottompanelcenter = new JPanel();
 		JPanel bottompanelleft = new JPanel();
 		JPanel leftpanel = new JPanel();
 		JPanel rightpanel = new JPanel();
@@ -88,8 +99,6 @@ public class PlayScreen extends JFrame{
 		JMenuItem quitnsave = new JMenuItem(); 
 		JMenuItem quitwsave = new JMenuItem(); 
 
-
-		bottompanel.setLayout(new GridLayout(1,2));
 		leftpanel.setLayout(new GridLayout(2,1));
 		rightpanel.setLayout(new GridLayout(2,1));
 
@@ -114,31 +123,56 @@ public class PlayScreen extends JFrame{
 		devalue.setForeground(Color.WHITE);
 		bottompanelleft.add(devalue);
 
-		bottompanel.add(bottompanelleft);
+		bottompanel.add(bottompanelleft, BorderLayout.WEST);
 		bottompanel.setBackground(Color.GRAY);
 
 		game.addGameListener(new MessagePanelControler(this.mp, this));
 		game.addAssamListener(new MessagePanelControler(this.mp, this));
 		game.addDiceListener(new MessagePanelControler(this.mp, this));
 		game.addCarpetListener(new MessagePanelControler(this.mp, this));
-		
+
+		//Disposition des boutons d'orientation des tapis
+
 		JPanel b1 = new JPanel();
-		b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
-		b1.add(getUpButton());
+		b1.add(carpetOrientationButtons[0]);
+		b1.setBackground(new Color(255, 203, 153));
 
 		JPanel b2 = new JPanel();
-		b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
-		b2.add(getLeftButton());
+		b2.add(carpetOrientationButtons[1]);
+		b2.setBackground(new Color(255, 203, 153));
 
-		JPanel b3 = new JPanel();
-		b3.setLayout(new BoxLayout(b3, BoxLayout.LINE_AXIS));
-		b3.add(getDownButton());
+		bottompanelcenter.setLayout(new GridLayout(3,1));
+
+		JLabel bpc = new JLabel("Orienter un tapis.");
+		bpc.setFont(myFont);
+		bpc.setHorizontalAlignment(JLabel.CENTER);
+
+		bottompanelcenter.add(bpc);
+		bottompanelcenter.add(b1);
+		bottompanelcenter.add(b2);
+
+		bottompanel.add(bottompanelcenter, BorderLayout.CENTER);
+		bottompanelcenter.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.BLACK));
+
+		//Disposition des boutons d'orientation d'Assam
+
+		JLabel bpr = new JLabel("Orienter Assam.");
+		bpr.setFont(myFont);
+		
+		JPanel b4 = new JPanel();
+		b4.setLayout(new BoxLayout(b4, BoxLayout.LINE_AXIS));
+		b4.add(assamOrientationButtons[1]);
+		b4.add(assamOrientationButtons[0]);
+
+		JPanel b5 = new JPanel();
+		b5.setLayout(new BoxLayout(b5, BoxLayout.LINE_AXIS));
+		b5.add(assamOrientationButtons[2]);
 
 		bottompanelright.setLayout(new BoxLayout(bottompanelright, BoxLayout.PAGE_AXIS));
-		bottompanelright.add(b1);
-		bottompanelright.add(b2);
-		bottompanelright.add(b3);
-		bottompanel.add(bottompanelright);
+		bottompanelright.add(bpr);
+		bottompanelright.add(b4);
+		bottompanelright.add(b5);
+		bottompanel.add(bottompanelright, BorderLayout.EAST);
 		
 		this.drawCenter();
 
@@ -206,22 +240,39 @@ public class PlayScreen extends JFrame{
 	public JButton getUpButton()
 	{ 
 
-		return this.orientationButtons[2];
+		return this.assamOrientationButtons[2];
 
 	}
 
 
 	public JButton getDownButton(){
 
-		return this.orientationButtons[0];
+		return this.assamOrientationButtons[0];
 		
 	}
 
 
 	public JButton getLeftButton(){
 
-		return this.orientationButtons[1];
+		return this.assamOrientationButtons[1];
 		
+	}
+
+	public void enableButtons(boolean state, JButton[] tab){
+
+		for(int i = 0; i < tab.length; i++){
+
+			tab[i].setEnabled(state);
+
+		}
+	}
+
+	public JButton[] getAssamOrientationButtons(){
+		return this.assamOrientationButtons;
+	}
+
+	public JButton[] getCarpetOrientationButtons(){
+		return this.carpetOrientationButtons;
 	}
 
 
