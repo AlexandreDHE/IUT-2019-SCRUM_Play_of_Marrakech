@@ -68,7 +68,7 @@ public class Game
 		}
 
 		assam = Assam.getAssam();
-		de = De.getDe();
+		de = De.getDe(6);
 		this.state = GameState.NOTSTARTED;
 	}
 
@@ -121,7 +121,7 @@ public class Game
 		}
 
 		assam = Assam.getAssam();
-		de = De.getDe();
+		de = De.getDe(6);
 		this.state = GameState.NOTSTARTED;
 	}
 	
