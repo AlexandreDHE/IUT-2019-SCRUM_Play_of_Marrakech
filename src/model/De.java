@@ -3,11 +3,15 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import model.de.*;
+
 public class De
 {
 	protected static De de = null;
 	private ArrayList<Integer> values;
 	protected  static Random aleatoire;
+
+	protected int[] valeurs;
 	
 	private De(int size)
 	{
@@ -62,9 +66,10 @@ public class De
 		return de;
 	}
 
+
+
 	public int getValeur()
 	{
-		int[] valeurs = {1,2,2,3,3,4};
 		int nombre = De.aleatoire.nextInt(5) + 1;
 		return valeurs[nombre];
 	}
