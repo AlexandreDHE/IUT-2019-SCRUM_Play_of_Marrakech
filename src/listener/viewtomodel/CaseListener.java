@@ -11,23 +11,57 @@ import java.awt.event.*;
 
 public class CaseListener implements MouseListener{
 
-	public CaseListener(){
+	int i, j;
+	boolean carpetBase = false, state = false;
+	JPanel panel;
+
+	public CaseListener(int i, int j){
+
+		this.i = i;
+		this.j = j;
+
+	}
+
+	public void setState(boolean state){
+
+		this.state = state;
 
 	}
 
 	public void mouseClicked(MouseEvent e){
 
-		JPanel panel = (JPanel)e.getComponent();	
+		if(state){
 
-		panel.setBackground(Color.GREEN);
+			this.carpetBase = true;
+			this.panel = (JPanel)e.getComponent();	
+			this.panel.setBackground(Color.GREEN);
+			System.out.println(i+" "+j);
 
-		System.out.println("case");
+		}
+		
+	}
+
+	public void mouseEntered(MouseEvent e){
+
+		if(state){
+
+			this.panel = (JPanel)e.getComponent();	
+			this.panel.setBackground(new Color(255, 229, 206));
+
+		}
+
 
 	}
 
-	public void mouseEntered(MouseEvent e){}
-	public void mouseExited(MouseEvent e){}
+	public void mouseExited(MouseEvent e){
+
+		if(!carpetBase && state){
+			this.panel = (JPanel)e.getComponent();	
+			this.panel.setBackground(new Color(255, 203, 153));
+		}
+
+	}
+
 	public void mousePressed(MouseEvent e){}
 	public void mouseReleased(MouseEvent e){}
-	public void actionPerformed(ActionEvent e){}
 }

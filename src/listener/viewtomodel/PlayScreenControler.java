@@ -31,9 +31,7 @@ public class PlayScreenControler implements ActionListener{
 			ps.enableButtons(false, ps.getAssamOrientationButtons());
 			this.ps.getDiceButton().setEnabled(true);
 
-		}
-
-		else if(e.getActionCommand() == "Tourner dans le sens anti-horaire"){
+		}else if(e.getActionCommand() == "Tourner dans le sens anti-horaire"){
 			
 			game.rotateAssamCounterClockwise();
 			orientation = game.getAssam().getOrientation();
@@ -41,9 +39,7 @@ public class PlayScreenControler implements ActionListener{
 			ps.enableButtons(false, ps.getAssamOrientationButtons());
 			this.ps.getDiceButton().setEnabled(true);
 
-		}
-
-		else if(e.getActionCommand() == "Tourner dans le sens horaire"){
+		}else if(e.getActionCommand() == "Tourner dans le sens horaire"){
 
 			game.rotateAssamClockwise();
 			orientation = game.getAssam().getOrientation();
@@ -53,11 +49,10 @@ public class PlayScreenControler implements ActionListener{
 
 		}
 
-		if(e.getActionCommand() == "Lancer le de"){
+		if(e.getActionCommand() == "Ok"){
 			game.throwDice();
 			ps.mp.repaint();
 			ps.lancerde.setEnabled(false);
-			ps.enableButtons(true, ps.getCarpetOrientationButtons());
 
 		}
 	}

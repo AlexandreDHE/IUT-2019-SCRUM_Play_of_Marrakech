@@ -16,8 +16,7 @@ public class PlayScreen extends JFrame{
 
 	public JMenu back = new JMenu();
 	public MessagePanel mp = new MessagePanel();
-	public JButton lancerde = new JButton("Lancer le de");
-	public JLabel devalue = new JLabel();
+	public JButton lancerde = new JButton("Ok");
 	private AssamPanel assamPanel = new AssamPanel();
 
 	private	JButton[] assamOrientationButtons;
@@ -36,9 +35,10 @@ public class PlayScreen extends JFrame{
 
 		Font myFont = new Font("Serif", Font.ITALIC | Font.BOLD, 12);
 
-		this.carpetOrientationButtons = new JButton[2];
+		this.carpetOrientationButtons = new JButton[3];
 		this.carpetOrientationButtons[0] = new JButton("Tourner dans le sens anti-horaire");
 		this.carpetOrientationButtons[1] = new JButton("Tourner dans le sens horaire");
+		this.carpetOrientationButtons[2] = new JButton("Valider la position");
 
 		this.assamOrientationButtons = new JButton[3];
 		this.assamOrientationButtons[0] = new JButton("Tourner dans le sens horaire");
@@ -48,6 +48,11 @@ public class PlayScreen extends JFrame{
 		enableButtons(false, getCarpetOrientationButtons());
 
 		JPanel bottompanel = new JPanel();
+		JPanel bottompanelright = new JPanel();
+		JPanel bottompanelcenter = new JPanel();
+		JPanel bottompanelleft = new JPanel();
+		JPanel leftpanel = new JPanel();
+		JPanel rightpanel = new JPanel();
 		JPanel centerpanel = new JPanel();
 		JPanel centernorth = new JPanel();
 		JPanel centersouth = new JPanel();
@@ -66,7 +71,11 @@ public class PlayScreen extends JFrame{
 
 		centerpanel.setBackground(Color.RED);
 
+		bottompanel.setLayout(new GridLayout(1,3));
 		centerpanel.setLayout(new BorderLayout());
+		centercenter.setLayout(new GridLayout(7,7));
+		leftpanel.setLayout(new GridLayout(2,1));
+		rightpanel.setLayout(new GridLayout(2,1));
 
 		centerpanel.add(centernorth, BorderLayout.NORTH);
 		centerpanel.add(centersouth, BorderLayout.SOUTH);
@@ -80,17 +89,6 @@ public class PlayScreen extends JFrame{
 		centerwest.setBackground(new Color(254, 153, 1));
 		centercenter.setBackground(new Color(254, 153, 1));
 
-		GridLayout gridl = new GridLayout(7,7);
-		gridl.setHgap(0);
-
-		centercenter.setLayout(gridl);
-
-		JPanel bottompanelright = new JPanel();
-		JPanel bottompanelcenter = new JPanel();
-		JPanel bottompanelleft = new JPanel();
-		JPanel leftpanel = new JPanel();
-		JPanel rightpanel = new JPanel();
-
 		leftpanel.setBackground(new Color(255, 203, 153));
 		rightpanel.setBackground(new Color(255, 203, 153));
 
@@ -99,13 +97,10 @@ public class PlayScreen extends JFrame{
 		JMenuItem quitnsave = new JMenuItem(); 
 		JMenuItem quitwsave = new JMenuItem(); 
 
-		leftpanel.setLayout(new GridLayout(2,1));
-		rightpanel.setLayout(new GridLayout(2,1));
-
 		quitnsave.setText("Sauver et quitter");
 		quitwsave.setText("Quitter sans sauver");
 
-		back.setText("â†� Retour");  
+		back.setText("Retour");  
 		quit.setText("[] Quitter");  
 		quit.add(quitnsave);
 		quit.add(quitwsave);
@@ -119,9 +114,18 @@ public class PlayScreen extends JFrame{
 
 		bottompanelright.setBackground(new Color(255, 203, 153));
 		bottompanelleft.setBackground(new Color(255, 203, 153));
+		bottompanelcenter.setBackground(new Color(255, 203, 153));
+
+		//Panneau du lancer de dé
+
+		JLabel btl = new JLabel("Lancer le dé.");
+		btl.setFont(myFont);
+		btl.setHorizontalAlignment(JLabel.CENTER);
+
+		bottompanelleft.setLayout(new GridLayout(3,1));
+
+		bottompanelleft.add(btl);
 		bottompanelleft.add(lancerde);
-		devalue.setForeground(Color.WHITE);
-		bottompanelleft.add(devalue);
 
 		bottompanel.add(bottompanelleft, BorderLayout.WEST);
 		bottompanel.setBackground(Color.GRAY);
@@ -141,7 +145,11 @@ public class PlayScreen extends JFrame{
 		b2.add(carpetOrientationButtons[1]);
 		b2.setBackground(new Color(255, 203, 153));
 
-		bottompanelcenter.setLayout(new GridLayout(3,1));
+		JPanel b3 = new JPanel();
+		b3.add(carpetOrientationButtons[2]);
+		b3.setBackground(new Color(255, 203, 153));
+
+		bottompanelcenter.setLayout(new GridLayout(4,1));
 
 		JLabel bpc = new JLabel("Orienter un tapis.");
 		bpc.setFont(myFont);
@@ -150,6 +158,7 @@ public class PlayScreen extends JFrame{
 		bottompanelcenter.add(bpc);
 		bottompanelcenter.add(b1);
 		bottompanelcenter.add(b2);
+		bottompanelcenter.add(b3);
 
 		bottompanel.add(bottompanelcenter, BorderLayout.CENTER);
 		bottompanelcenter.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.BLACK));
@@ -158,20 +167,26 @@ public class PlayScreen extends JFrame{
 
 		JLabel bpr = new JLabel("Orienter Assam.");
 		bpr.setFont(myFont);
+		bpr.setHorizontalAlignment(JLabel.CENTER);
+		bpr.setBackground(new Color(255, 203, 153));
 		
 		JPanel b4 = new JPanel();
-		b4.setLayout(new BoxLayout(b4, BoxLayout.LINE_AXIS));
 		b4.add(assamOrientationButtons[1]);
-		b4.add(assamOrientationButtons[0]);
+		b4.setBackground(new Color(255, 203, 153));
 
 		JPanel b5 = new JPanel();
-		b5.setLayout(new BoxLayout(b5, BoxLayout.LINE_AXIS));
-		b5.add(assamOrientationButtons[2]);
+		b5.add(assamOrientationButtons[0]);
+		b5.setBackground(new Color(255, 203, 153));
 
-		bottompanelright.setLayout(new BoxLayout(bottompanelright, BoxLayout.PAGE_AXIS));
+		JPanel b6 = new JPanel();
+		b6.add(assamOrientationButtons[2]);
+		b6.setBackground(new Color(255, 203, 153));
+
+		bottompanelright.setLayout(new GridLayout(4,1));
 		bottompanelright.add(bpr);
 		bottompanelright.add(b4);
 		bottompanelright.add(b5);
+		bottompanelright.add(b6);
 		bottompanel.add(bottompanelright, BorderLayout.EAST);
 		
 		this.drawCenter();
@@ -202,7 +217,7 @@ public class PlayScreen extends JFrame{
 
 			case 4:  
 
-			rightpanel.add(new ScorePanel(players[2],1,1,0,1));
+			rightpanel.add(new ScorePanel(players[2],1,1,1,1));
 			leftpanel.add(new ScorePanel(players[3],1,1,1,1));
 
 			break;
@@ -217,12 +232,6 @@ public class PlayScreen extends JFrame{
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		game.start();
-	}
-
-	public JLabel getLabelDe(){
-
-		return this.devalue;
-
 	}
 
 	public JButton getDiceButton(){
@@ -277,7 +286,7 @@ public class PlayScreen extends JFrame{
 
 
 	
-	public JPanel getCase(int colorPlayer)
+	public JPanel getCase(int colorPlayer, int i, int j)
 	{
 		Color color;
 		switch(colorPlayer)
@@ -290,7 +299,7 @@ public class PlayScreen extends JFrame{
 			default: color = new Color(255, 203, 153); break;
 		}
 		JPanel casePanel = new JPanel();
-		casePanel.addMouseListener(new CaseListener());
+		casePanel.addMouseListener(new CaseListener(i,j));
 		casePanel.setBackground(color);
 		casePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
 		
@@ -313,11 +322,11 @@ public class PlayScreen extends JFrame{
 				{
 					if(grid[i][j].recupererTapis() == null)
 					{
-						allcases[i][j] = this.getCase(Couleur.NONE);
+						allcases[i][j] = this.getCase(Couleur.NONE,i,j);
 					}
 					else
 					{
-						allcases[i][j] = this.getCase(grid[i][j].recupererTapis().getCouleur());
+						allcases[i][j] = this.getCase(grid[i][j].recupererTapis().getCouleur(),i,j);
 					}
 				}
 				centercenter.add(allcases[i][j]);
