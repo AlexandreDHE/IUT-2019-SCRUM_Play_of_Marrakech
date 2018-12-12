@@ -10,12 +10,12 @@ public class Tapis {
     /**
      * les coord 1
      */
-    private Coord coord1;
+    private Position coord1;
 
     /**
      * les coord 2
      */
-    private Coord coord2;
+    private Position coord2;
 
     /**
      * permet de créer un tapis aux coordonnées 1 et 2
@@ -24,7 +24,7 @@ public class Tapis {
      * @param coord1 les coord 1
      * @param coord2 les coord 2
      */
-    public Tapis(int c, Coord coord1, Coord coord2) {
+    public Tapis(int c, Position coord1, Position coord2) {
         couleur = c;
         this.coord1 = coord1;
         this.coord2 = coord2;
@@ -38,8 +38,8 @@ public class Tapis {
      */
     public Tapis(int c) {
         couleur = c;
-        this.coord1 = new Coord(-1, -1);
-        this.coord2 = new Coord(-1, -1);
+        this.coord1 = new Position(-1, -1);
+        this.coord2 = new Position(-1, -1);
 
     }
 
@@ -49,7 +49,7 @@ public class Tapis {
      * @param coord1 les coordonnées 1
      * @param coord2 les coordonnées 2
      */
-    public void setPosition(Coord coord1, Coord coord2) {
+    public void setPosition(Position coord1, Position coord2) {
         this.coord1 = coord1;
         this.coord2 = coord2;
     }
@@ -59,8 +59,8 @@ public class Tapis {
      * 
      * @return deux coordonnées
      */
-    public Coord[] position() {
-        return new Coord[] { coord1, coord2 };
+    public Position[] position() {
+        return new Position[] { coord1, coord2 };
     }
 
     /**

@@ -1,12 +1,12 @@
 package model;
 
 
-public class Coord {
+public class Position {
 
     private int x;
     private int y;
 
-    public Coord(int x, int y){
+    public Position(int x, int y){
 
         this.x = x;
         this.y = y;
@@ -43,7 +43,7 @@ public class Coord {
     }
 
     /**
-     * redéfinie la sortie
+     * redefinit la sortie
      */
     @Override
     public String toString() {

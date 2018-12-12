@@ -1,7 +1,7 @@
 package model;
 
 import model.Assam;
-import model.Coord;
+import model.Position;
 
 /**
  * class contenant le plateau du jeu
@@ -49,7 +49,7 @@ public class PlateauJeu {
      */
     public void placerTapis(Tapis tapi) {
 
-        Coord[] pos = tapi.position();
+        Position[] pos = tapi.position();
         cases[pos[0].getX()][pos[0].getY()].placerTapis(tapi);
         cases[pos[1].getX()][pos[1].getY()].placerTapis(tapi);
 
@@ -63,11 +63,11 @@ public class PlateauJeu {
      */
     public boolean peutPlacerTapis(Tapis tapi) {
 
-        Coord[] pos = tapi.position();
+        Position[] pos = tapi.position();
         Tapis tapi1, tapi2;
         tapi1 = cases[pos[0].getX()][pos[0].getY()].recupererTapis();
         tapi2 = cases[pos[1].getX()][pos[1].getY()].recupererTapis();
-        if (tapi1 == tapi2) {
+        if ((tapi1 == tapi2) && (tapi1 != null)) {
             return false;
         }
         return true;
@@ -81,7 +81,7 @@ public class PlateauJeu {
      */
     public int payerDime(Assam ass, Joueur j) {
 
-        Coord coord = ass.getCoord();
+        Position coord = ass.getCoord();
 
         Tapis tapi = cases[coord.getX()][coord.getY()].recupererTapis();
         int cjoueur = j.getCouleur();
@@ -111,7 +111,7 @@ public class PlateauJeu {
      * @param i           le total dû
      * @return le total dû
      */
-    private int compter(int cadversaire, Coord coord, int i) {
+    private int compter(int cadversaire, Position coord, int i) {
 
         int x = coord.getX();
         int y = coord.getY();
@@ -126,7 +126,7 @@ public class PlateauJeu {
             if (cases[x + 1][y].recupererTapis() != null) {
                 if ((cases[x + 1][y].recupererTapis().getCouleur() == cadversaire) && (casecompter[x + 1][y] != true)) {
                     i++;
-                    i = compter(cadversaire, new Coord(x + 1, y), i);
+                    i = compter(cadversaire, new Position(x + 1, y), i);
                 }
             }
         }
@@ -135,7 +135,7 @@ public class PlateauJeu {
             if (cases[x - 1][y].recupererTapis() != null) {
                 if ((cases[x - 1][y].recupererTapis().getCouleur() == cadversaire) && (casecompter[x - 1][y] != true)) {
                     i++;
-                    i = compter(cadversaire, new Coord(x - 1, y), i);
+                    i = compter(cadversaire, new Position(x - 1, y), i);
                 }
             }
         }
@@ -144,7 +144,7 @@ public class PlateauJeu {
             if (cases[x][y + 1].recupererTapis() != null) {
                 if ((cases[x][y + 1].recupererTapis().getCouleur() == cadversaire) && (casecompter[x - 1][y] != true)) {
                     i++;
-                    i = compter(cadversaire, new Coord(x, y + 1), i);
+                    i = compter(cadversaire, new Position(x, y + 1), i);
                 }
             }
         }
@@ -153,12 +153,17 @@ public class PlateauJeu {
             if (cases[x][y - 1].recupererTapis() != null) {
                 if ((cases[x][y - 1].recupererTapis().getCouleur() == cadversaire) && (casecompter[x][y - 1] != true)) {
                     i++;
-                    i = compter(cadversaire, new Coord(x, y - 1), i);
+                    i = compter(cadversaire, new Position(x, y - 1), i);
                 }
             }
         }
 
         return i;
+    }
+    
+    public Case[][] getGameGrid()
+    {
+    	return this.cases;
     }
 
 }

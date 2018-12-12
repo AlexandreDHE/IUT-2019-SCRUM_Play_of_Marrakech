@@ -29,8 +29,15 @@ public class PaquetTapis
 
 	public Tapis getTapis()
 	{
-		this.curseur++;
-		return this.listeTapis.get(curseur-1);
+		return this.listeTapis.get(this.curseur);
+	}
+	
+	public void next()
+	{
+		if(this.curseur < this.listeTapis.size() - 1)
+		{
+			this.curseur++;
+		}
 	}
 
 	public void melanger()

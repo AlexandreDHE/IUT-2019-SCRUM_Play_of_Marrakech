@@ -25,7 +25,7 @@ public class Assam
 
 	private int orientation;
 
-	private Coord coord;
+	private Position coord;
 
 /** 
 	*En debut de partie, Assam est orienté au NORD
@@ -34,7 +34,7 @@ public class Assam
 	private Assam()
 	{
 		this.orientation = NORD;
-		this.coord = new Coord(3,3);
+		this.coord = new Position(3,3);
 	}
 
 /** 
@@ -81,9 +81,9 @@ public class Assam
 	{
 		switch(orientation)
 		{
-			case NORD : this.coord.setY(this.coord.getY() + babouche); break;
+			case NORD : this.coord.setY(this.coord.getY() - babouche); break;
 			case EST : this.coord.setX(this.coord.getX() + babouche); break;
-			case SUD : this.coord.setY(this.coord.getY() - babouche); break;
+			case SUD : this.coord.setY(this.coord.getY() + babouche); break;
 			case OUEST : this.coord.setX(this.coord.getX() - babouche); break;
 		}
 	}
@@ -102,7 +102,7 @@ public class Assam
 	/**
 	 * @return les coord d'Assam
 	 */
-	public Coord getCoord() {
+	public Position getCoord() {
 		return coord;
 	}
 }

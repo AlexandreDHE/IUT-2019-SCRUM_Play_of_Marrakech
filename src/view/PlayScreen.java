@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 
+import listener.modeltoview.MessagePanelControler;
 import listener.viewtomodel.*;
 
 import model.*;
@@ -20,19 +21,19 @@ public class PlayScreen extends JFrame{
 	private AssamPanel assamPanel = new AssamPanel();
 
 	private	JButton[] orientationButtons;
+	private JPanel allcases[][];
+	private JPanel centercenter = new JPanel();
 	private Game game;
 
 	public PlayScreen(Game game){
 		this.game = game;
+		this.allcases = new JPanel[7][7];
 		lancerde.setEnabled(false);
 
-		this.orientationButtons = new JButton[4];
-		this.orientationButtons[0] = new JButton("▼");
-		this.orientationButtons[1] = new JButton("◀");
-		this.orientationButtons[2] = new JButton("▲");
-		this.orientationButtons[3] = new JButton("▶");
-
-		this.setEnabledOrientationButtons(true);
+		this.orientationButtons = new JButton[3];
+		this.orientationButtons[0] = new JButton("Tourner dans le sens horaire");
+		this.orientationButtons[1] = new JButton("Ne pas orienter");
+		this.orientationButtons[2] = new JButton("Tourner dans le sens anti-horaire");
 
 		JPanel bottompanel = new JPanel();
 
@@ -41,7 +42,7 @@ public class PlayScreen extends JFrame{
 		JPanel centersouth = new JPanel();
 		JPanel centereast = new JPanel();
 		JPanel centerwest = new JPanel();
-		JPanel centercenter = new JPanel();
+		
 
 		OpenImage northimg = new OpenImage(750,70,"./drawable/haut.png");
 		OpenImage southimg = new OpenImage(750,70,"./drawable/bas.png");
@@ -95,7 +96,7 @@ public class PlayScreen extends JFrame{
 		quitnsave.setText("Sauver et quitter");
 		quitwsave.setText("Quitter sans sauver");
 
-		back.setText("← Retour");  
+		back.setText("â†� Retour");  
 		quit.setText("[] Quitter");  
 		quit.add(quitnsave);
 		quit.add(quitwsave);
@@ -116,10 +117,11 @@ public class PlayScreen extends JFrame{
 		bottompanel.add(bottompanelleft);
 		bottompanel.setBackground(Color.GRAY);
 
-		game.addGameListener(new MessagePanelControler(this.mp));
-		game.addAssamListener(new MessagePanelControler(this.mp));
-		game.addDiceListener(new MessagePanelControler(this.mp));
-
+		game.addGameListener(new MessagePanelControler(this.mp, this));
+		game.addAssamListener(new MessagePanelControler(this.mp, this));
+		game.addDiceListener(new MessagePanelControler(this.mp, this));
+		game.addCarpetListener(new MessagePanelControler(this.mp, this));
+		
 		JPanel b1 = new JPanel();
 		b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
 		b1.add(getUpButton());
@@ -127,7 +129,6 @@ public class PlayScreen extends JFrame{
 		JPanel b2 = new JPanel();
 		b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
 		b2.add(getLeftButton());
-		b2.add(getRightButton());
 
 		JPanel b3 = new JPanel();
 		b3.setLayout(new BoxLayout(b3, BoxLayout.LINE_AXIS));
@@ -138,29 +139,8 @@ public class PlayScreen extends JFrame{
 		bottompanelright.add(b2);
 		bottompanelright.add(b3);
 		bottompanel.add(bottompanelright);
-
-		JPanel allcases[][] = new JPanel[7][7];
-
-		for(int i = 0; i < 7; i++){
-
-			for(int j = 0; j < 7; j++){
-
-				if((i==3) && (j==3)){
-					allcases[i][j] = assamPanel;
-				}else{
-
-
-				allcases[i][j] = new JPanel();
-				allcases[i][j].addMouseListener(new CaseListener());
-				allcases[i][j].setBackground(new Color(255, 203, 153));
-				allcases[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
-				
-			}
-			centercenter.add(allcases[i][j]);
-
-			}
-
-		}
+		
+		this.drawCenter();
 
 		this.add(mp, BorderLayout.NORTH);
 		this.add(leftpanel, BorderLayout.WEST);
@@ -171,7 +151,6 @@ public class PlayScreen extends JFrame{
 		getUpButton().addActionListener(new PlayScreenControler(this,game));
 		getDownButton().addActionListener(new PlayScreenControler(this,game));
 		getLeftButton().addActionListener(new PlayScreenControler(this,game));
-		getRightButton().addActionListener(new PlayScreenControler(this,game));
 		lancerde.addActionListener(new PlayScreenControler(this,game));
 
 		Joueur[] players = game.getJoueurs();
@@ -239,28 +218,61 @@ public class PlayScreen extends JFrame{
 	}
 
 
-	public JButton getRightButton(){
-
-		return this.orientationButtons[3];
-		
-	}
-
-
 	public JButton getLeftButton(){
 
 		return this.orientationButtons[1];
 		
 	}
 
-	public void setEnabledOrientationButtons(boolean enable)
+
+	
+	public JPanel getCase(int colorPlayer)
 	{
-		for(int i = 0; i < this.orientationButtons.length; i++)
+		Color color;
+		switch(colorPlayer)
 		{
-			this.orientationButtons[i].setEnabled(enable);
+			case Couleur.NONE : color = new Color(255, 203, 153); break;
+			case Couleur.JOUEUR1 : color = new Color(255,0,0); break;
+			case Couleur.JOUEUR2 : color = new Color(0,255,0); break;
+			case Couleur.JOUEUR3 : color = new Color(0,0,255); break;
+			case Couleur.JOUEUR4 : color = new Color(255,255,255); break;
+			default: color = new Color(255, 203, 153); break;
 		}
-		if(enable)
+		JPanel casePanel = new JPanel();
+		casePanel.addMouseListener(new CaseListener());
+		casePanel.setBackground(color);
+		casePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
+		
+		return casePanel;
+	}
+	
+	public void drawCenter(){
+		this.centercenter.removeAll();
+		Case[][] grid = this.game.getGameGrid();
+		Position assamCoord = this.game.getAssamCoord();
+		for(int i = 0; i < grid.length; i++)
 		{
-			this.orientationButtons[game.getAssam().getOrientation()].setEnabled(false);
+			for(int j = 0; j < grid.length; j++)
+			{
+				if((i==assamCoord.getY()) && (j==assamCoord.getX()))
+				{
+					allcases[i][j] = assamPanel;
+				}
+				else
+				{
+					if(grid[i][j].recupererTapis() == null)
+					{
+						allcases[i][j] = this.getCase(Couleur.NONE);
+					}
+					else
+					{
+						allcases[i][j] = this.getCase(grid[i][j].recupererTapis().getCouleur());
+					}
+				}
+				centercenter.add(allcases[i][j]);
+			}
 		}
+		this.revalidate();
+		this.repaint();
 	}
 }

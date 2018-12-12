@@ -26,74 +26,31 @@ public class PlayScreenControler implements ActionListener{
 
 		orientation = game.getAssam().getOrientation();
 
-		if(e.getActionCommand() == "▲")
-		{
-			if(orientation == Assam.OUEST)
-			{
-				game.rotateAssamClockwise();
-			}
-			else if(orientation == Assam.EST)
-			{
-				game.rotateAssamCounterClockwise();
-			}
-			System.out.println(game.getAssam().getOrientation());
-			ps.getAssamPanel().setAssamTop();
-			this.ps.setEnabledOrientationButtons(false);
-			this.ps.getDiceButton().setEnabled(true);
-		}
+		if(e.getActionCommand() == "Ne pas orienter"){
 
-		if(e.getActionCommand() == "◀"){
-
-			if(orientation == Assam.SUD)
-			{
-				game.rotateAssamClockwise();
-			}
-			else if(orientation == Assam.NORD)
-			{
-				game.rotateAssamCounterClockwise();
-			}
-			System.out.println(game.getAssam().getOrientation());
-
-			ps.getAssamPanel().setAssamLeft();
-			this.ps.setEnabledOrientationButtons(false);
 			this.ps.getDiceButton().setEnabled(true);
 
 		}
 
-		if(e.getActionCommand() == "▶"){
-			if(orientation == Assam.NORD)
-			{
-				game.rotateAssamClockwise();
-			}
-			else if(orientation == Assam.SUD)
-			{
+		else if(e.getActionCommand() == "Tourner dans le sens anti-horaire"){
+			
 				game.rotateAssamCounterClockwise();
-			}
-			System.out.println(game.getAssam().getOrientation());
-
-			ps.getAssamPanel().setAssamRight();
-			this.ps.setEnabledOrientationButtons(false);
+				orientation = game.getAssam().getOrientation();
+			ps.getAssamPanel().setAssam(orientation);
 			this.ps.getDiceButton().setEnabled(true);
 
 		}
 
-		if(e.getActionCommand() == "▼"){
-			if(orientation == Assam.EST)
-			{
+		else if(e.getActionCommand() == "Tourner dans le sens horaire"){
+
 				game.rotateAssamClockwise();
-			}
-			else if(orientation == Assam.OUEST)
-			{
-				game.rotateAssamCounterClockwise();
-			}
-			System.out.println(game.getAssam().getOrientation());
-			ps.getAssamPanel().setAssamBottom();
-			this.ps.setEnabledOrientationButtons(false);
+				orientation = game.getAssam().getOrientation();
+				ps.getAssamPanel().setAssam(orientation);
 			this.ps.getDiceButton().setEnabled(true);
 
 		}
 
-		if(e.getActionCommand() == "Lancer le dé"){
+		if(e.getActionCommand() == "Lancer le d�"){
 			game.throwDice();
 			ps.mp.repaint();
 			ps.lancerde.setEnabled(false);

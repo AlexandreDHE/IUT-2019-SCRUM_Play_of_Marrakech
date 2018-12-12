@@ -3,6 +3,8 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
+import model.Assam;
+
 public class AssamPanel extends JPanel{
 
 	OpenImage front = new OpenImage(50,50,"./drawable/front.png");
@@ -17,6 +19,19 @@ public class AssamPanel extends JPanel{
 		this.add(this.currentImage);
 		this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
+	}
+	
+	public void setAssam(int assamOrientation)
+	{
+		switch(assamOrientation)
+		{
+			case Assam.NORD : this.setAssamTop(); break;
+			case Assam.EST : this.setAssamRight(); break;
+			case Assam.SUD : this.setAssamBottom(); break;
+			case Assam.OUEST : this.setAssamLeft(); break;
+			default : break;
+		}
+		
 	}
 
 	public void setAssamLeft(){

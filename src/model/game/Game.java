@@ -70,6 +70,7 @@ public class Game
 		assam = Assam.getAssam();
 		de = De.getDe();
 		this.state = GameState.NOTSTARTED;
+		this.putCarpet(new Position(0,0), new Position(0,1));
 	}
 
  	// surcharge paramétrer taille du jeu
@@ -244,7 +245,7 @@ public class Game
 		this.moveAssam();
 	}
 
-	public void putCarpet(Coord coord1, Coord coord2)
+	public void putCarpet(Position coord1, Position coord2)
 	{
 		Tapis carpet = new Tapis(this.currentPlayer, coord1, coord2);
 		if(this.plateau.peutPlacerTapis(carpet))
@@ -260,7 +261,7 @@ public class Game
 		}
 	}
 
-	public Coord getAssamCoord()
+	public Position getAssamCoord()
 	{
 		return this.assam.getCoord();
 	}
@@ -269,6 +270,9 @@ public class Game
 	{
 		return this.assam;
 	}
-
-
+	
+	public Case[][] getGameGrid()
+	{
+		return this.plateau.getGameGrid();
+	}
 }

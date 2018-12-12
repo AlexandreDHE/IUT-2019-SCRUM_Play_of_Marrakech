@@ -81,18 +81,19 @@ public class Joueur
 		}
 	}
 
-	/*public void setTapisCoord(int tapisIndex, Coord x, Coord y)
-	{
-		this.tapis[tapisIndex].nouvelPosition(x,y);
-	}*/
-
 	public Tapis getTapis()
 	{
+		System.out.println("lol");
 		return this.paquet.getTapis();
 	}
 
 	public int getNombreTapis()
 	{
 		return this.paquet.getSize();
+	}
+	
+	public PaquetTapis getCarpets()
+	{
+		return this.paquet;
 	}
 }
