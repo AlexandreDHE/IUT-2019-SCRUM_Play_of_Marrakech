@@ -20,7 +20,7 @@ public class Game
 
 	protected final EventListenerList listeners;
 
-	public Game(int nombreJoueurs, DirhamManager dirhamManager)
+	public Game(int nombreJoueurs, int size, DirhamManager dirhamManager)
 	{
 		this.listeners = new EventListenerList();
 		this.joueurs = new Joueur[nombreJoueurs];
@@ -242,6 +242,12 @@ public class Game
 		this.valeurDe = this.de.getValeur();
 		this.fireDiceThrown(new DiceEvent(this.valeurDe));
 		this.moveAssam();
+	}
+
+	public boolean checkCarpet(Position coord1, Position coord2)
+	{	
+		Tapis carpet = new Tapis(this.currentPlayer, coord1, coord2);
+		return this.plateau.peutPlacerTapis(carpet);
 	}
 
 	public void putCarpet(Position coord1, Position coord2)

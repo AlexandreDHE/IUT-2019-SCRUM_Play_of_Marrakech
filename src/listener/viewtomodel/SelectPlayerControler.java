@@ -67,7 +67,7 @@ public class SelectPlayerControler implements ActionListener{
 		if(e.getActionCommand() == "Play"){
 
 			selectplayer.dispose();
-			PlayScreen playscreen = new PlayScreen(new Game(this.nbplayers, new DirhamManagerClassic()));
+			PlayScreen playscreen = new PlayScreen(new Game(this.nbplayers, 7, new DirhamManagerClassic()));
 			playscreen.setVisible(true);
 
 		}
