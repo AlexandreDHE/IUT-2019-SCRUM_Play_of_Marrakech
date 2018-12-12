@@ -22,17 +22,17 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 
 	public void gameStateChanged(GameEvent event)
 	{
-		this.messagepanel.setMessage("La partie a commencée !");
+		this.messagepanel.setMessage("La partie a commencee !");
 	}
 
 	public void diceThrown(DiceEvent event)
 	{
-		this.messagepanel.setMessage("Le dé vaut "+event.getState()+".");
+		this.messagepanel.setMessage("Le de vaut "+event.getState()+".");
 	}
 
 	public void assamMoved(AssamEvent event)
 	{
-		this.messagepanel.setMessage("Assam a avancé de " + event.getValue() + " cases.");
+		this.messagepanel.setMessage("Assam a avance de " + event.getValue() + " cases.");
 		this.playScreen.drawCenter();
 	}
 
@@ -50,7 +50,7 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 			default: str = "?"; break;
 		}
 
-		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a orienté Assam vers " +str+".");
+		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a oriente Assam vers " +str+".");
 	}
 	
 	public void carpetPut(CarpetEvent event)

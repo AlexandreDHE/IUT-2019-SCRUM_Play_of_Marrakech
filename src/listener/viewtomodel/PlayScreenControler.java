@@ -50,7 +50,7 @@ public class PlayScreenControler implements ActionListener{
 
 		}
 
-		if(e.getActionCommand() == "Lancer le dé"){
+		if(e.getActionCommand() == "Lancer le de"){
 			game.throwDice();
 			ps.mp.repaint();
 			ps.lancerde.setEnabled(false);

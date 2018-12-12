@@ -16,7 +16,7 @@ public class PlayScreen extends JFrame{
 
 	public JMenu back = new JMenu();
 	public MessagePanel mp = new MessagePanel();
-	public JButton lancerde = new JButton("Lancer le dé");
+	public JButton lancerde = new JButton("Lancer le de");
 	public JLabel devalue = new JLabel();
 	private AssamPanel assamPanel = new AssamPanel();
 

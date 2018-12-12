@@ -70,7 +70,6 @@ public class Game
 		assam = Assam.getAssam();
 		de = De.getDe();
 		this.state = GameState.NOTSTARTED;
-		this.putCarpet(new Position(0,0), new Position(0,1));
 	}
 
  	// surcharge paramétrer taille du jeu
