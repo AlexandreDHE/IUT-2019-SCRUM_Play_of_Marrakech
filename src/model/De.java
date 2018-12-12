@@ -25,14 +25,9 @@ public class De
 		int value = 1;
 
 		int med = 0;
-		if((size%2) == 0)
-		{
-			med = size / 2;
-		}
-		else
-		{
-			med = size / 2 + 1;
-		}
+
+		med = size / 2 + 1;
+
 		int cpt = 1;
 		while(cpt < med)
 		{
@@ -70,7 +65,7 @@ public class De
 
 	public int getValeur()
 	{
-		int nombre = De.aleatoire.nextInt(5) + 1;
-		return valeurs[nombre];
+		int nombre = De.aleatoire.nextInt(this.values.size()) + 1;
+		return this.values.get(nombre);
 	}
 }
