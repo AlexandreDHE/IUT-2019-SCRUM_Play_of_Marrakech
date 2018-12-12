@@ -224,6 +224,12 @@ public class Game
 		this.fireAssamMoved(new AssamEvent(this.valeurDe, this.currentPlayer));
 	}
   
+  	public void moveAssam(int babouche)
+	{
+		this.assam.avancer(babouche);
+		this.fireAssamMoved(new AssamEvent(babouche, this.currentPlayer));
+	}
+  
 	public void rotateAssamCounterClockwise()
 	{
 		this.assam.tournerAntiHorraire();
