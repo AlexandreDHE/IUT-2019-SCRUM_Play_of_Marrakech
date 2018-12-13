@@ -83,7 +83,6 @@ public class Joueur
 
 	public Tapis getTapis()
 	{
-		System.out.println("lol");
 		return this.paquet.getTapis();
 	}
 

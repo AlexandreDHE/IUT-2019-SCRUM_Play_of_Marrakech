@@ -27,9 +27,7 @@ public class CaseListener implements MouseListener{
 
 		if(this.game.getState() == GameState.CARPETPUT)
   		{
-  			Position case1 = new Position(this.i, this.j);
-			Position case2 = new Position(this.i+1, this.j);
-			game.putCarpet(case1, case2);
+			game.putCarpet(new Position(this.i, this.j));
   		}
 	}
 

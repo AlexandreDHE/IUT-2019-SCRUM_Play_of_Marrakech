@@ -116,10 +116,6 @@ public class PlateauJeu {
         int x = coord.getX();
         int y = coord.getY();
 
-        System.out.println(coord);
-
-        System.out.println(i);
-
         casecompter[x][y] = true;
 
         if (x + 1 < 7) {
