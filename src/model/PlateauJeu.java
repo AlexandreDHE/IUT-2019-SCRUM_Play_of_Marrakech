@@ -22,7 +22,7 @@ public class PlateauJeu {
      * initialise le plateau du jeu
      */
     public PlateauJeu() {
-        cases = new Case[9][9];
+        cases = new Case[7][7];
         casecompter = new boolean[7][7];
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
