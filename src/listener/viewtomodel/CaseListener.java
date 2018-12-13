@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import model.*;
-import model.game.Game;
+import model.game.*;
 import view.PlayScreen;
 
 import java.awt.event.*;
@@ -21,17 +21,16 @@ public class CaseListener implements MouseListener{
 		this.game = game;
 		this.i = i;
 		this.j = j;
-
 	}
 
 	public void mouseClicked(MouseEvent e){
 
-		Position case1 = new Position(this.i, this.j);
-		Position case2 = new Position(this.i+1, this.j);
-
-		game.putCarpet(case1, case2);
-
-
+		if(this.game.getState() == GameState.CARPETPUT)
+  		{
+  			Position case1 = new Position(this.i, this.j);
+			Position case2 = new Position(this.i+1, this.j);
+			game.putCarpet(case1, case2);
+  		}
 	}
 
 	public void mouseEntered(MouseEvent e){

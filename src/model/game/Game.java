@@ -129,10 +129,7 @@ public class Game
 	{
 		GameState oldState = this.state;
 		this.state = GameState.STARTED;
-		for(GameListener listener : this.getGameListeners()) 
-		{
-            listener.gameStateChanged(new GameEvent(oldState, this.state));
-        }
+		this.fireGameStateChanged(oldState,this.state);
 	}
 
 	public void addAssamListener(AssamListener listener)
@@ -174,6 +171,14 @@ public class Game
 	 {
         return listeners.getListeners(CarpetListener.class);
     }
+
+    public void fireGameStateChanged(GameState oldState, GameState newState)
+	{
+		for(GameListener listener : this.getGameListeners()) 
+		{
+            listener.gameStateChanged(new GameEvent(oldState, newState, this.currentPlayer));
+        }
+	}
 
     public void fireAssamOriented(AssamEvent event)
 	{
@@ -248,6 +253,9 @@ public class Game
 		this.valeurDe = this.de.getValeur();
 		this.fireDiceThrown(new DiceEvent(this.valeurDe));
 		this.moveAssam();
+		GameState oldState = this.state;
+		this.state = GameState.CARPETPUT;
+		this.fireGameStateChanged(oldState, this.state);
 	}
 
 	public boolean checkCarpet(Position coord1, Position coord2)
@@ -279,6 +287,7 @@ public class Game
 		Tapis carpet = new Tapis(this.currentPlayer, coord1, coord2);
 		if(this.plateau.peutPlacerTapis(carpet))
 		{
+
 			carpet = this.joueurs[this.currentPlayer].getTapis();
 			carpet.setPosition(coord1, coord2);
 			this.plateau.placerTapis(carpet);
@@ -308,5 +317,10 @@ public class Game
 	public Case[][] getGameGrid()
 	{
 		return this.plateau.getGameGrid();
+	}
+
+	public GameState getState()
+	{
+		return this.state;
 	}
 }
