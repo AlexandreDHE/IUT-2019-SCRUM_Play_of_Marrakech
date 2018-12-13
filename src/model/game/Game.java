@@ -272,6 +272,11 @@ public class Game
 		}
 	}
 
+	public void nextCarpet()
+	{
+		this.joueurs[this.currentPlayer].getCarpets().next();
+	}
+
 	public Position getAssamCoord()
 	{
 		return this.assam.getCoord();
