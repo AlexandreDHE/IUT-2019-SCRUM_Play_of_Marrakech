@@ -56,11 +56,13 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 	public void carpetPut(CarpetEvent event)
 	{
 		this.playScreen.drawCenter();
+		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a posé un tapis.");
 	}
 
 	@Override
 	public void carpetOriented(CarpetEvent event) {
-		// TODO Auto-generated method stub
+
+		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a oriente son tapis.");
 		
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.Container.*;
 import java.awt.*;  
 import javax.swing.*;
 
+import model.*;
 import model.game.Game;
 import view.PlayScreen;
 
@@ -11,13 +12,13 @@ import java.awt.event.*;
 
 public class CaseListener implements MouseListener{
 
-	int i, j;
-	boolean carpetBase = false, state = false;
+	private int i, j;
+	private JPanel panel;
+	private Game game;
 
-	JPanel panel;
+	public CaseListener(Game game, int i, int j){
 
-	public CaseListener(int i, int j){
-
+		this.game = game;
 		this.i = i;
 		this.j = j;
 
@@ -25,29 +26,24 @@ public class CaseListener implements MouseListener{
 
 	public void mouseClicked(MouseEvent e){
 
-		this.carpetBase = true;
-		this.panel = (JPanel)e.getComponent();	
-		this.panel.setBackground(Color.GREEN);
-		System.out.println(i+" "+j);
+		Position case1 = new Position(this.i, this.j);
+		Position case2 = new Position(this.i+1, this.j);
+
+		game.putCarpet(case1, case2);
+
 
 	}
 
 	public void mouseEntered(MouseEvent e){
 
+		/*
 		this.panel = (JPanel)e.getComponent();	
 		this.panel.setBackground(new Color(255, 229, 206));
+		*/
 
 	}
 
-	public void mouseExited(MouseEvent e){
-
-		if(!carpetBase){
-			this.panel = (JPanel)e.getComponent();	
-			this.panel.setBackground(new Color(255, 203, 153));
-		}
-
-	}
-
+	public void mouseExited(MouseEvent e){}
 	public void mousePressed(MouseEvent e){}
 	public void mouseReleased(MouseEvent e){}
 }

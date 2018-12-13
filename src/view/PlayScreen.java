@@ -299,7 +299,7 @@ public class PlayScreen extends JFrame{
 			default: color = new Color(255, 203, 153); break;
 		}
 		JPanel casePanel = new JPanel();
-		casePanel.addMouseListener(new CaseListener(i,j));
+		casePanel.addMouseListener(new CaseListener(this.game, i, j));
 		casePanel.setBackground(color);
 		casePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
 		
