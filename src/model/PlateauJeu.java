@@ -47,8 +47,8 @@ public class PlateauJeu implements Cloneable{
     }
 
     public PlateauJeu(int lignes) {
-        cases = new Case[lignes][lignes];
-        casecompter = new boolean[lignes][lignes];
+        cases = new Case[lignes+2][lignes+2];
+        casecompter = new boolean[lignes+2][lignes+2];
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < lignes; j++) {
                 cases[i][j] = new Case();

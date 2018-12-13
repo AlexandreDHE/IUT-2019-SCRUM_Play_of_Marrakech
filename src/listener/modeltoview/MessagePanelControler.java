@@ -4,6 +4,8 @@ import java.util.EventListener;
 
 import model.Assam;
 import model.Position;
+import model.game.*;
+import event.*;
 import view.*;
 import listener.modeltoview.*;
 
@@ -22,7 +24,25 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 
 	public void gameStateChanged(GameEvent event)
 	{
-		this.messagepanel.setMessage("La partie a commencee !");
+		/*NOTSTARTED(0),
+  STARTED(1),
+  ASSAMORIENTED(2),
+  DICETHROWN(3),
+  ASSAMMOVED(4),
+  DIHMPAID(5),
+  CARPETPUT(6),
+  CARPETORIENTED(7),
+  CARPETVALIDATE(8),
+  OVER(9);*/
+  		GameState gameState = event.getNewState();
+  		if (gameState == GameState.STARTED)
+  		{
+  			this.messagepanel.setMessage("La partie a commence !");
+  		}
+  		else if(gameState == GameState.CARPETPUT)
+  		{
+  			this.messagepanel.setMessage("Au tour du joueur " + (event.getPlayer() + 1) + " de poser son tapis en cliquant sur une case.");
+  		}
 	}
 
 	public void diceThrown(DiceEvent event)
@@ -56,11 +76,13 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 	public void carpetPut(CarpetEvent event)
 	{
 		this.playScreen.drawCenter();
+		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a posé un tapis.");
 	}
 
 	@Override
 	public void carpetOriented(CarpetEvent event) {
-		// TODO Auto-generated method stub
+
+		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a oriente son tapis.");
 		
 	}
 }
