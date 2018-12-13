@@ -306,11 +306,14 @@ public class Game
 
 	private boolean isGoodOrientation(Position position1, Position position2)
 	{	
+		if ((position2.getX() == -1) || (position2.getY() == -1))
+		{
+			return false;
+		}
 		if ((position2.getY() == this.assam.getCoord().getX()) || (position2.getX() == this.assam.getCoord().getY()))
 		{
 			return false;
 		}
-
 
 		Tapis carpet = new Tapis(this.currentPlayer, position1, position2);
 		return this.plateau.peutPlacerTapis(carpet);
@@ -325,8 +328,8 @@ public class Game
 
 			Position[] positions = new Position[4];
 			positions[0] = new Position(positionX + 1, positionY);
-			positions[1] = new Position(positionX - 1, positionY);
-			positions[2] = new Position(positionX , positionY + 1);
+			positions[2] = new Position(positionX - 1, positionY);
+			positions[1] = new Position(positionX , positionY + 1);
 			positions[3] = new Position(positionX, positionY - 1);
 
 			Position coord2 = null;
@@ -401,6 +404,7 @@ public class Game
 			this.plateau.placerTapis(carpet);
 			this.carpetOrientation = positions[index+1];
 			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
+			System.out.println("lol");
 		}
 	}
 

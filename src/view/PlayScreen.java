@@ -36,8 +36,8 @@ public class PlayScreen extends JFrame{
 		Font myFont = new Font("Serif", Font.ITALIC | Font.BOLD, 12);
 
 		this.carpetOrientationButtons = new JButton[3];
-		this.carpetOrientationButtons[0] = new JButton("Tourner dans le sens anti-horaire");
-		this.carpetOrientationButtons[1] = new JButton("Tourner dans le sens horaire");
+		this.carpetOrientationButtons[0] = new JButton("Tourner le tapis dans le sens anti-horaire");
+		this.carpetOrientationButtons[1] = new JButton("Tourner le tapis dans le sens horaire");
 		this.carpetOrientationButtons[2] = new JButton("Valider la position");
 
 		this.assamOrientationButtons = new JButton[3];
@@ -198,6 +198,11 @@ public class PlayScreen extends JFrame{
 		getUpButton().addActionListener(new PlayScreenControler(this,game));
 		getDownButton().addActionListener(new PlayScreenControler(this,game));
 		getLeftButton().addActionListener(new PlayScreenControler(this,game));
+
+		for(int i = 0; i < this.carpetOrientationButtons.length; i++)
+		{
+			this.carpetOrientationButtons[i].addActionListener(new PlayScreenControler(this,game));
+		}
 		lancerde.addActionListener(new PlayScreenControler(this,game));
 
 		Joueur[] players = game.getJoueurs();

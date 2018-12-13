@@ -46,10 +46,13 @@ public class PlayScreenControler implements ActionListener{
 			ps.getAssamPanel().setAssam(orientation);
 			ps.enableButtons(false, ps.getAssamOrientationButtons());
 			this.ps.getDiceButton().setEnabled(true);
-
 		}
 
-		if(e.getActionCommand() == "Ok"){
+		else if(e.getActionCommand() == "Tourner le tapis dans le sens horaire"){
+			this.game.rotateCarpetClockwise();
+		}
+
+		else if(e.getActionCommand() == "Ok"){
 			game.throwDice();
 			ps.mp.repaint();
 			ps.lancerde.setEnabled(false);

@@ -80,8 +80,16 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 	
 	public void carpetPut(CarpetEvent event)
 	{
-		this.playScreen.drawCenter();
-		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a posé son tapis.");
+		if(event.getState())
+		{
+			this.playScreen.drawCenter();
+			this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a posé son tapis.");
+		}
+		else
+		{
+			this.messagepanel.setMessage("Cliquez sur une case près d'Assam !");
+		}
+
 	}
 
 	@Override
