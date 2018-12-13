@@ -1,7 +1,7 @@
 package model;
 
 
-public class Position {
+public class Position implements Cloneable{
 
     private int x;
     private int y;
@@ -48,6 +48,11 @@ public class Position {
     @Override
     public String toString() {
         return "x= " + x + " y= " + y;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
 }

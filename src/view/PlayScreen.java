@@ -112,60 +112,9 @@ public class PlayScreen extends JFrame{
 		quitnsave.addActionListener(new JMenuItemListener());     
 		back.addMenuListener(new JMenuListener(this));
 
-		bottompanelright.setBackground(new Color(255, 203, 153));
-		bottompanelleft.setBackground(new Color(255, 203, 153));
-		bottompanelcenter.setBackground(new Color(255, 203, 153));
-
-		//Panneau du lancer de dé
-
-		JLabel btl = new JLabel("Lancer le dé.");
-		btl.setFont(myFont);
-		btl.setHorizontalAlignment(JLabel.CENTER);
-
-		bottompanelleft.setLayout(new GridLayout(3,1));
-
-		bottompanelleft.add(btl);
-		bottompanelleft.add(lancerde);
-
-		bottompanel.add(bottompanelleft, BorderLayout.WEST);
-		bottompanel.setBackground(Color.GRAY);
-
-		game.addGameListener(new MessagePanelControler(this.mp, this));
-		game.addAssamListener(new MessagePanelControler(this.mp, this));
-		game.addDiceListener(new MessagePanelControler(this.mp, this));
-		game.addCarpetListener(new MessagePanelControler(this.mp, this));
-
-		//Disposition des boutons d'orientation des tapis
-
-		JPanel b1 = new JPanel();
-		b1.add(carpetOrientationButtons[0]);
-		b1.setBackground(new Color(255, 203, 153));
-
-		JPanel b2 = new JPanel();
-		b2.add(carpetOrientationButtons[1]);
-		b2.setBackground(new Color(255, 203, 153));
-
-		JPanel b3 = new JPanel();
-		b3.add(carpetOrientationButtons[2]);
-		b3.setBackground(new Color(255, 203, 153));
-
-		bottompanelcenter.setLayout(new GridLayout(4,1));
-
-		JLabel bpc = new JLabel("Orienter un tapis.");
-		bpc.setFont(myFont);
-		bpc.setHorizontalAlignment(JLabel.CENTER);
-
-		bottompanelcenter.add(bpc);
-		bottompanelcenter.add(b1);
-		bottompanelcenter.add(b2);
-		bottompanelcenter.add(b3);
-
-		bottompanel.add(bottompanelcenter, BorderLayout.CENTER);
-		bottompanelcenter.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.BLACK));
-
 		//Disposition des boutons d'orientation d'Assam
 
-		JLabel bpr = new JLabel("Orienter Assam.");
+		JLabel bpr = new JLabel("1 - Orienter Assam.");
 		bpr.setFont(myFont);
 		bpr.setHorizontalAlignment(JLabel.CENTER);
 		bpr.setBackground(new Color(255, 203, 153));
@@ -182,12 +131,61 @@ public class PlayScreen extends JFrame{
 		b6.add(assamOrientationButtons[2]);
 		b6.setBackground(new Color(255, 203, 153));
 
+		bottompanelleft.setLayout(new GridLayout(4,1));
+		bottompanelleft.add(bpr);
+		bottompanelleft.add(b4);
+		bottompanelleft.add(b5);
+		bottompanelleft.add(b6);
+
+		//Panneau du lancer de dé
+
+		JLabel btl = new JLabel("2 - Lancer le dé.");
+		btl.setFont(myFont);
+		btl.setHorizontalAlignment(JLabel.CENTER);
+
+		bottompanelcenter.setLayout(new GridLayout(3,1));
+
+		bottompanelcenter.add(btl);
+		bottompanelcenter.add(lancerde);
+		bottompanelcenter.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.BLACK));
+
+		//Disposition des boutons d'orientation des tapis
+
+		JPanel b1 = new JPanel();
+		b1.add(carpetOrientationButtons[0]);
+		b1.setBackground(new Color(255, 203, 153));
+
+		JPanel b2 = new JPanel();
+		b2.add(carpetOrientationButtons[1]);
+		b2.setBackground(new Color(255, 203, 153));
+
+		JPanel b3 = new JPanel();
+		b3.add(carpetOrientationButtons[2]);
+		b3.setBackground(new Color(255, 203, 153));
+
 		bottompanelright.setLayout(new GridLayout(4,1));
-		bottompanelright.add(bpr);
-		bottompanelright.add(b4);
-		bottompanelright.add(b5);
-		bottompanelright.add(b6);
-		bottompanel.add(bottompanelright, BorderLayout.EAST);
+
+		JLabel bpc = new JLabel("3 - Orienter un tapis.");
+		bpc.setFont(myFont);
+		bpc.setHorizontalAlignment(JLabel.CENTER);
+
+		bottompanelright.add(bpc);
+		bottompanelright.add(b1);
+		bottompanelright.add(b2);
+		bottompanelright.add(b3);
+
+		bottompanelleft.setBackground(new Color(255, 203, 153));
+		bottompanelcenter.setBackground(new Color(255, 203, 153));
+		bottompanelright.setBackground(new Color(255, 203, 153));
+
+		bottompanel.add(bottompanelleft);
+		bottompanel.add(bottompanelcenter);
+		bottompanel.add(bottompanelright);
+
+		game.addGameListener(new MessagePanelControler(this.mp, this));
+		game.addAssamListener(new MessagePanelControler(this.mp, this));
+		game.addDiceListener(new MessagePanelControler(this.mp, this));
+		game.addCarpetListener(new MessagePanelControler(this.mp, this));
 		
 		this.drawCenter();
 

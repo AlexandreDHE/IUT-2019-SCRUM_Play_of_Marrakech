@@ -2,7 +2,7 @@ package model;
 
 import model.dirham.*;
 
-public class Joueur
+public class Joueur implements Cloneable
 {
 	public final static int PIECEUN = 0;
 	public final static int PIECECINQ = 1;
@@ -23,6 +23,22 @@ public class Joueur
 	public int getCouleur()
 	{
 		return this.couleur;
+	}
+
+	public int[] getArgent() {
+		return argent;
+	}
+
+	public PaquetTapis getPaquet() {
+		return paquet;
+	}
+
+	public void setArgent(int[] argent) {
+		this.argent = argent;
+	}
+
+	public void setPaquet(PaquetTapis paquet) {
+		this.paquet = paquet;
 	}
 
 	public int getArgent(int typePiece)
@@ -95,4 +111,16 @@ public class Joueur
 	{
 		return this.paquet;
 	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+
+		Joueur j = (Joueur)super.clone();
+		j.argent = this.argent.clone();
+		j.paquet = (PaquetTapis)this.paquet.clone();
+
+		return (Object)j;
+		
+	}
+
 }

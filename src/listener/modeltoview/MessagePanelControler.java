@@ -42,6 +42,11 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
   		else if(gameState == GameState.CARPETPUT)
   		{
   			this.messagepanel.setMessage("Au tour du joueur " + (event.getPlayer() + 1) + " de poser son tapis en cliquant sur une case.");
+  			  			this.playScreen.enableButtons(true, this.playScreen.getCarpetOrientationButtons());
+  		}
+  		else if(gameState == GameState.CARPETORIENTED)
+  		{
+
   		}
 	}
 
@@ -76,7 +81,7 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 	public void carpetPut(CarpetEvent event)
 	{
 		this.playScreen.drawCenter();
-		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a posé un tapis.");
+		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a posé son tapis.");
 	}
 
 	@Override
