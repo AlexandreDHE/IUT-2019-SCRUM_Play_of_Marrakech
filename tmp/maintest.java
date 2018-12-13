@@ -75,21 +75,21 @@ public class maintest {
 
 		// clasique separé joueur actuel
 		// 2
-		PlateauJeu p = new PlateauJeu();
-		Joueur j1 = new Joueur(0, 10);
-		Joueur j2 = new Joueur(1, 10);
+		// PlateauJeu p = new PlateauJeu();
+		// Joueur j1 = new Joueur(0, 10);
+		// Joueur j2 = new Joueur(1, 10);
 
-		j2.setTapisCoord(0, new Coord(3, 3), new Coord(3, 4));
-		j1.setTapisCoord(0, new Coord(4, 3), new Coord(4, 4));
-		j2.setTapisCoord(1, new Coord(5, 4), new Coord(6, 4));
+		// j2.setTapisCoord(0, new Coord(3, 3), new Coord(3, 4));
+		// j1.setTapisCoord(0, new Coord(4, 3), new Coord(4, 4));
+		// j2.setTapisCoord(1, new Coord(5, 4), new Coord(6, 4));
 
-		p.placerTapis(j2.getTapis()[0]);
-		p.placerTapis(j1.getTapis()[0]);
-		p.placerTapis(j2.getTapis()[1]);
+		// p.placerTapis(j2.getTapis()[0]);
+		// p.placerTapis(j1.getTapis()[0]);
+		// p.placerTapis(j2.getTapis()[1]);
 
-		Assam ass = Assam.getAssam();
+		// Assam ass = Assam.getAssam();
 
-		p.payerDime(ass, j2);
+		// p.payerDime(ass, j2);
 
 	}
 }

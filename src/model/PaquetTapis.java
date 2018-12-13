@@ -10,7 +10,7 @@ import java.util.Collections;
     *pour les 2, 3 ou 4 joueurs 
     */
 
-public class PaquetTapis
+public class PaquetTapis implements Cloneable
 {
 	private ArrayList<Tapis> listeTapis;
 	private int curseur;
@@ -52,11 +52,19 @@ public class PaquetTapis
 
 	public String toString()
 	{
+		
 		String str = new String();
 		for(int i = 0; i < this.listeTapis.size(); i++)
 		{
 			str = str + this.listeTapis.get(i).getCouleur();
 		}
 		return str;
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		PaquetTapis p = (PaquetTapis)super.clone();
+		p.listeTapis = (ArrayList<Tapis>)this.listeTapis.clone();
+		return (Object)p;
 	}
 }

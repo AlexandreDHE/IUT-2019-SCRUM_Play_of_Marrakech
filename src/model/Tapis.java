@@ -1,6 +1,6 @@
 package model;
 
-public class Tapis {
+public class Tapis implements Cloneable{
 
     /**
      * la couleur du tapis
@@ -68,6 +68,14 @@ public class Tapis {
      */
     public int getCouleur() {
         return couleur;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Tapis t = (Tapis)super.clone();
+        t.coord1 = (Position)this.coord1.clone();
+        t.coord2 = (Position)this.coord2.clone();
+        return t;
     }
 
 }

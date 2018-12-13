@@ -8,7 +8,7 @@ package model;
         */
 
 
-public class Assam
+public class Assam implements Cloneable
 {
   
  /**
@@ -104,5 +104,26 @@ public class Assam
 	 */
 	public Position getCoord() {
 		return coord;
+	}
+
+	/**
+	 * @param coord les coord
+	 */
+	public void setCoord(Position coord) {
+		this.coord = coord;
+	}
+
+	/**
+	 * @param orientation l'orientation
+	 */
+	public void setOrientation(int orientation) {
+		this.orientation = orientation;
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		Assam a = (Assam) super.clone();
+		a.coord = (Position) this.coord.clone();
+		return a;
 	}
 }
