@@ -1,5 +1,5 @@
 package model;
-public class Case {
+public class Case implements Cloneable{
 
     /* peut etre une pille */
 
@@ -31,5 +31,11 @@ public class Case {
         return tapi;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Case c = (Case) super.clone();
+        c.tapi = (Tapis)this.tapi.clone();
+        return c;
+    }
 
 }

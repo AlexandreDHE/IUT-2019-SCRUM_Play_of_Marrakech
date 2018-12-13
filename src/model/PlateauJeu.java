@@ -6,13 +6,28 @@ import model.Position;
 /**
  * class contenant le plateau du jeu
  */
-public class PlateauJeu {
+public class PlateauJeu implements Cloneable{
 
     /* x,y */
     /**
      * contient toutes les cases du jeu
      */
     private Case[][] cases;
+
+    /**
+     * @return les cases
+     */
+    public Case[][] getCases() {
+        return cases;
+    }
+
+    /**
+     * @param cases les cases
+     */
+    public void setCases(Case[][] cases) {
+        this.cases = cases;
+    }
+
     /**
      * contient si la case a été comptée
      */
@@ -164,6 +179,17 @@ public class PlateauJeu {
     public Case[][] getGameGrid()
     {
     	return this.cases;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        PlateauJeu p = (PlateauJeu)super.clone();
+        for (int i = 0; i < p.cases.length; i++) {
+            for (int j = 0; j < p.cases[0].length; j++) {
+                p.cases[i][j] = this.cases[i][j];
+            }
+        }
+        return p;
     }
 
 }
