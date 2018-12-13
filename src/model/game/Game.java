@@ -256,8 +256,26 @@ public class Game
 		return this.plateau.peutPlacerTapis(carpet);
 	}
 
+	public void removeCarpet()
+	{
+		Tapis carpet = this.joueurs[this.currentPlayer].getTapis();
+		Case[][] gameGrid = this.PlateauJeu.getGameGrid();
+		for(int i = 0; i < gameGrid.length; i++)
+		{
+			for(int j = 0; j < gameGrid.length; j++)
+			{
+				if(carpet == gameGrid[i][j].recupererTapis())
+				{
+					gameGrid[i][j].removeCarpet();
+				}
+			}
+		}
+	}
+
+
 	public void putCarpet(Position coord1, Position coord2)
 	{
+		this.removeCarpet();
 		Tapis carpet = new Tapis(this.currentPlayer, coord1, coord2);
 		if(this.plateau.peutPlacerTapis(carpet))
 		{

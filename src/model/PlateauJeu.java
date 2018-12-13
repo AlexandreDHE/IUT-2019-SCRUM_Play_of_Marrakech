@@ -22,7 +22,7 @@ public class PlateauJeu {
      * initialise le plateau du jeu
      */
     public PlateauJeu() {
-        cases = new Case[7][7];
+        cases = new Case[9][9];
         casecompter = new boolean[7][7];
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
@@ -32,8 +32,8 @@ public class PlateauJeu {
     }
 
     public PlateauJeu(int lignes) {
-        cases = new Case[lignes][lignes];
-        casecompter = new boolean[lignes][lignes];
+        cases = new Case[lignes+2][lignes+2];
+        casecompter = new boolean[lignes+2][lignes+2];
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < lignes; j++) {
                 cases[i][j] = new Case();

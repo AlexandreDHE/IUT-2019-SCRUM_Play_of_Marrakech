@@ -23,6 +23,11 @@ public class Case {
         tapi = t;
     }
 
+    public void removeCarpet()
+    {
+        this.tapi = null;
+    }
+
     /**
      * permet de récupérer le tapis
      * @return un tapis
