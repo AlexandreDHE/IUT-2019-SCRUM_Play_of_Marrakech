@@ -259,7 +259,7 @@ public class Game
 	public void removeCarpet()
 	{
 		Tapis carpet = this.joueurs[this.currentPlayer].getTapis();
-		Case[][] gameGrid = this.PlateauJeu.getGameGrid();
+		Case[][] gameGrid = this.plateau.getGameGrid();
 		for(int i = 0; i < gameGrid.length; i++)
 		{
 			for(int j = 0; j < gameGrid.length; j++)
