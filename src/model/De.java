@@ -3,8 +3,6 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import model.de.*;
-
 public class De
 {
 	protected static De de = null;
