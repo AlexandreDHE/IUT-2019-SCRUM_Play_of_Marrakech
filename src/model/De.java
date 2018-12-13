@@ -31,7 +31,6 @@ public class De
 		{
 			for(int i = 0; i < cpt; i++)
 			{
-				System.out.println(value);
 				this.values.add(Integer.valueOf(value));
 			} 
 			value++;
@@ -42,7 +41,6 @@ public class De
 		{
 			for(int i = 0; i < cpt; i++)
 			{
-				System.out.println(value);
 				this.values.add(Integer.valueOf(value));
 			} 
 			value++;
