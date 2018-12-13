@@ -282,11 +282,11 @@ public class Game
 			carpet = this.joueurs[this.currentPlayer].getTapis();
 			carpet.setPosition(coord1, coord2);
 			this.plateau.placerTapis(carpet);
-			this.fireCarpetPut(new CarpetEvent(true));
+			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
 		}
 		else
 		{
-			this.fireCarpetPut(new CarpetEvent(false));
+			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, false));
 		}
 	}
 
