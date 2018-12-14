@@ -98,6 +98,11 @@ public class Joueur implements Cloneable
 		this.argent[PIECECINQ] = this.argent[PIECECINQ] - nombrePieceCinq;
 	}
 
+
+/** 
+	*Méthode qui permet de payer et d'effectuer des transactions entre les joeurs
+    */
+   
 	public void payerDime(int cout, Joueur adversaire)
 	{
 		if(this.getArgentTotal() <= cout)
