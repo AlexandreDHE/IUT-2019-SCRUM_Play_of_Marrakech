@@ -1,5 +1,5 @@
 import model.*;
-import model.dirham.DirhamManagerClassic;
+import model.dirham.*;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
