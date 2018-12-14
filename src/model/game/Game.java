@@ -7,6 +7,11 @@ import model.*;
 import model.dirham.*;
 import listener.modeltoview.*;
 
+/**
+	* Cette classe est responsable du bon fonctionnement de la partie 
+    */
+    
+
 public class Game
 {
 	protected GameState state;
@@ -18,6 +23,7 @@ public class Game
 	protected int valeurDe;
 	protected PlateauJeu plateau;
 	protected Position carpetPosition;
+	protected Position[] carpetOrientations;
 	protected Position carpetOrientation;
 
 	protected final EventListenerList listeners;
@@ -74,6 +80,12 @@ public class Game
 		this.state = GameState.NOTSTARTED;
 	}
 
+  	
+ /**
+ 	* On utilise la surcharge pour adapter le plateau en fonction du nombre de joueur, 
+    * ou des differentes options choisies
+ */
+  
  	// surcharge paramétrer taille du jeu
 	public Game(int nombreJoueurs, int taille)
 	{
@@ -127,6 +139,9 @@ public class Game
 		this.state = GameState.NOTSTARTED;
 	}
 	
+ /** 
+ 	méthode appellée lors du lancement de la partie 
+	*/
 	public void start()
 	{
 		GameState oldState = this.state;
@@ -310,7 +325,7 @@ public class Game
 		{
 			return false;
 		}
-		if ((position2.getY() == this.assam.getCoord().getX()) || (position2.getX() == this.assam.getCoord().getY()))
+		if ((position2.getY() == this.assam.getCoord().getX()) && (position2.getX() == this.assam.getCoord().getY()))
 		{
 			return false;
 		}
@@ -331,6 +346,8 @@ public class Game
 			positions[2] = new Position(positionX - 1, positionY);
 			positions[1] = new Position(positionX , positionY + 1);
 			positions[3] = new Position(positionX, positionY - 1);
+
+			this.carpetOrientations = positions;
 
 			Position coord2 = null;
 
@@ -356,7 +373,7 @@ public class Game
 					this.carpetOrientation = coord2;
 					this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
 					GameState oldState = this.state;
-					this.state = GameState.CARPETORIENTED;
+					this.state = GameState.CARPETPUT;
 					this.fireGameStateChanged(oldState, this.state);
 				}
 				else
@@ -377,40 +394,95 @@ public class Game
 
 	public void rotateCarpetClockwise()
 	{
-		int positionX = this.carpetPosition.getX();
-		int positionY = this.carpetPosition.getY();
-
-		Position[] positions = new Position[4];
-		positions[1] = new Position(positionX + 1, positionY);
-		positions[3] = new Position(positionX - 1, positionY);
-		positions[2] = new Position(positionX , positionY + 1);
-		positions[0] = new Position(positionX, positionY - 1);
-
 		int index = 0;
-
-		for(int i = 0; i < positions.length; i++)
+		for(int i = 0; i < this.carpetOrientations.length; i++)
 		{
-			if(this.carpetOrientation == positions[i])
+			if(this.carpetOrientations[i] == this.carpetOrientation)
 			{
 				index = i;
+				break;
 			}
 		}
 
-		if(this.isGoodOrientation(this.carpetPosition,positions[index+1]))
+		int cpt = 0;
+		do
+		{
+			if(cpt == 4)
+			{
+				return;
+			}
+			index--;
+			if(index < 0)
+			{
+				index = 3;
+			}
+			cpt++;
+		} while(!this.isGoodOrientation(this.carpetPosition, this.carpetOrientations[index]));
+
+		if(this.carpetOrientations[index] != this.carpetOrientation)
 		{
 			this.removeCarpet();
 			Tapis carpet = this.joueurs[this.currentPlayer].getTapis();
-			carpet.setPosition(this.carpetPosition, this.carpetOrientation);
+			carpet.setPosition(this.carpetPosition, this.carpetOrientations[index]);
 			this.plateau.placerTapis(carpet);
-			this.carpetOrientation = positions[index+1];
+			this.carpetOrientation = this.carpetOrientations[index];
 			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
-			System.out.println("lol");
 		}
+		
+		
+	}
+
+	public void rotateCarpetCounterClockwise()
+	{
+		int index = 0;
+		for(int i = 0; i < this.carpetOrientations.length; i++)
+		{
+			if(this.carpetOrientations[i] == this.carpetOrientation)
+			{
+				index = i;
+				break;
+			}
+		}
+
+		int cpt = 0;
+		do
+		{
+			if(cpt == 4)
+			{
+				return;
+			}
+			index++;
+			if(index > 3)
+			{
+				index = 0;
+			}
+			cpt++;
+		} while(!this.isGoodOrientation(this.carpetPosition, this.carpetOrientations[index]));
+
+		if(this.carpetOrientations[index] != this.carpetOrientation)
+		{
+			this.removeCarpet();
+			Tapis carpet = this.joueurs[this.currentPlayer].getTapis();
+			carpet.setPosition(this.carpetPosition, this.carpetOrientations[index]);
+			this.plateau.placerTapis(carpet);
+			this.carpetOrientation = this.carpetOrientations[index];
+			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
+		}
+		
 	}
 
 	public void nextCarpet()
 	{
 		this.joueurs[this.currentPlayer].getCarpets().next();
+		this.currentPlayer++;
+		if(this.currentPlayer == this.joueurs.length)
+		{
+			this.currentPlayer = 0;
+		}
+		
+		GameState oldState = this.state;
+		this.state = GameState.ASSAMORIENTED;
+		this.fireGameStateChanged(oldState, this.state);
 	}
 
 	public Position getAssamCoord()

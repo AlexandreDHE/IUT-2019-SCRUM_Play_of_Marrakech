@@ -52,6 +52,14 @@ public class PlayScreenControler implements ActionListener{
 			this.game.rotateCarpetClockwise();
 		}
 
+		else if(e.getActionCommand() == "Tourner le tapis dans le sens anti-horaire"){
+			this.game.rotateCarpetCounterClockwise();
+		}
+
+		else if(e.getActionCommand() == "Valider la position du tapis"){
+			this.game.nextCarpet();
+		}
+
 		else if(e.getActionCommand() == "Ok"){
 			game.throwDice();
 			ps.mp.repaint();

@@ -86,6 +86,26 @@ public class Assam implements Cloneable
 			case SUD : this.coord.setY(this.coord.getY() + babouche); break;
 			case OUEST : this.coord.setX(this.coord.getX() - babouche); break;
 		}
+
+		if(this.coord.getX() < 0)
+		{
+			this.coord.setX(0);
+		}
+
+		if(this.coord.getX() > 6)
+		{
+			this.coord.setX(6);
+		}
+
+		if(this.coord.getY() < 0)
+		{
+			this.coord.setY(0);
+		}
+
+		if(this.coord.getY() > 6)
+		{
+			this.coord.setY(6);
+		}
 	}
   
 /**
