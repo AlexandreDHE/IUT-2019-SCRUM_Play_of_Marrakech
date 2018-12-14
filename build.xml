@@ -20,7 +20,7 @@
 	</target>
 
 	<target name="run" depends="compile">
-		<java classpath="${bin.dir}" classname="Main" fork="true"/>
+		<java classpath="${bin.src}" classname="Main" fork="true"/>
 	</target>
 
 	<target name="compile_test" depends="compile">
@@ -35,7 +35,7 @@
 	</target>
 
 	<target name="test" depends="compile_test">
-		<junit printsummary="yes" haltonfailure="yes" fork="yes" >
+		<junit printsummary="yes" haltonfailure="no" fork="yes" >
 			<classpath>
 				<pathelement path="${bin.src}"/>
 				<pathelement path="${junit}"/>
