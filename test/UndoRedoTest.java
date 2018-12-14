@@ -8,8 +8,10 @@ import org.junit.Test;
  */
 public class UndoRedoTest {
 
+	private static int nb=0;
+
 	@Test
-	public static void undo(String[] args) {
+	public void undo() {
 		DirhamManagerClassic manager = new DirhamManagerClassic();
 		Joueur j1 = new Joueur(0, new PaquetTapis(), manager);
 		Joueur j2 = new Joueur(1, new PaquetTapis(), manager);
@@ -42,7 +44,10 @@ public class UndoRedoTest {
 
 
 	private static void test(Assam a, int x, int y){
+		System.out.println("test x "+nb);
 		assertEquals(x, a.getCoord().getX());
+		System.out.println("test y "+nb);
 		assertEquals(y, a.getCoord().getY());
+		nb++;
 	}
 }
