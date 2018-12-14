@@ -15,23 +15,33 @@ public class PaquetTapis implements Cloneable
 	private ArrayList<Tapis> listeTapis;
 	private int curseur;
 
-  
 	public PaquetTapis()
 	{
 		this.listeTapis = new ArrayList<Tapis>();
 		this.curseur = 0;
 	}
 
+/**
+	Cette méthode permet à l'utilisateur de poser un tapis contenu dans 
+    *sa liste de tapis
+    */
 	public void addTapis(Tapis tapis)
 	{
 		listeTapis.add(tapis);
 	}
-
+    
+/**
+	Permet de recuperer le tapis designé par le curseur 
+    */
+    
 	public Tapis getTapis()
 	{
 		return this.listeTapis.get(this.curseur);
 	}
 	
+/**
+	Pour prendre la tapis d'apres, le curseur change de position dans le tableau de tapis
+    */    
 	public void next()
 	{
 		if(this.curseur < this.listeTapis.size() - 1)
@@ -40,16 +50,27 @@ public class PaquetTapis implements Cloneable
 		}
 	}
 
+/** 
+	Pour le mode deux joueur, cette méthode mélange les tapis du meme paquet
+    */ 
 	public void melanger()
 	{
 		Collections.shuffle(this.listeTapis);
 	}
 
+/**
+	*Cette méthode permet de connaitre la taille du paquet de tapis.
+    *Autrement dit on souhaite connaitre le nombre de tapis dans le paquet
+    */
 	public int getSize()
 	{
 		return this.listeTapis.size();
 	}
 
+/**
+	*Cette méthode permet d'actualiser le patrimoine que possède le joueur
+    * On converti ens tring les information du tableau du joueur 
+    */
 	public String toString()
 	{
 		
