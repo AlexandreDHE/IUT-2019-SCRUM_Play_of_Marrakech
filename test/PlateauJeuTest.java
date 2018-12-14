@@ -14,6 +14,13 @@ public class PlateauJeuTest {
 		DirhamManagerClassic manager = new DirhamManagerClassic();
 		PaquetTapis p1 = new PaquetTapis();
 		PaquetTapis p2 = new PaquetTapis();
+		
+		for (int i = 0; i < 4; i++) {
+			p1.addTapis(new Tapis(Couleur.JOUEUR1));
+		}
+		for (int i = 0; i < 4; i++) {
+			p2.addTapis(new Tapis(Couleur.JOUEUR2));
+		}
 		Joueur j1 = new Joueur(0, p1, manager);
 		Joueur j2 = new Joueur(1, p2, manager);
 
