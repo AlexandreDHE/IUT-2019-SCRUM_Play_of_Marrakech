@@ -5,6 +5,11 @@ import java.util.Collections;
 
 import model.de.*;
 
+/** 
+	* Class qui permer d'utiliser un dé.
+    * Ce dé a certaines caractéristiques imposées par le jeu
+    */
+
 public class De
 {
 	protected static De de = null;
@@ -20,6 +25,12 @@ public class De
 		this.setValues(size);
 	}
 
+  
+/**	
+	*méthode qui permet d'adapter le dé en fonction des options
+	* choisies au début de la partie (Taille du plateau)
+    */
+  
 	private void setValues(int size)
 	{
 		int value = 1;
@@ -57,7 +68,10 @@ public class De
 		return de;
 	}
 
-
+/**
+	* Méthode qui renvoie la valeur random du dé 
+    *@return nombre
+    */
 
 	public int getValeur()
 	{

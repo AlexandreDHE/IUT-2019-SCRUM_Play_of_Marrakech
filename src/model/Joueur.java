@@ -2,6 +2,12 @@ package model;
 
 import model.dirham.*;
 
+/**
+	* Cette class permet de constituer le patrimoine de chaque joueur.
+    * A chaque joeurs seront associé les informations suivantes: 
+    * La couleur du joueur, son paquet de tapis, et le gestionnaire de dirham
+    */
+
 public class Joueur implements Cloneable
 {
 	public final static int PIECEUN = 0;
@@ -20,6 +26,10 @@ public class Joueur implements Cloneable
 		dir.deal(this);
 	}
 
+/** 
+	* Connaitre la couleur du joeur
+    *@return couleur
+    */
 	public int getCouleur()
 	{
 		return this.couleur;
@@ -29,10 +39,17 @@ public class Joueur implements Cloneable
 		return argent;
 	}
 
+/** 
+	*Connaitre le paquet du joueur 
+    *@return paquet 
+    */
 	public PaquetTapis getPaquet() {
 		return paquet;
 	}
 
+/**
+	*
+*/
 	public void setArgent(int[] argent) {
 		this.argent = argent;
 	}
@@ -51,23 +68,41 @@ public class Joueur implements Cloneable
 		return de.getValeur();
 	}
 
+/** 
+	*Connaitre le patrimoine financier du joeur 
+    *@return argent
+    */
+
 	public int getArgentTotal()
 	{
 		return argent[PIECEUN] * 1 + argent[PIECECINQ] * 5;
 	}
 
+/** 
+	*Méthode qui permet d'ajouter des pièces au "portefeuille"
+    *du joueur 
+    */
 	public void ajouterPiece(int nombrePieceUn, int nombrePieceCinq)
 	{
 		this.argent[PIECEUN] = this.argent[PIECEUN] + nombrePieceUn;
 		this.argent[PIECECINQ] = this.argent[PIECECINQ] + nombrePieceCinq;
 	}
 
+/** 
+	*Méthode qui permet de retirer des pièces au "portefeuille"
+    *du joueur 
+    */
 	public void retirerPiece(int nombrePieceUn, int nombrePieceCinq)
 	{
 		this.argent[PIECEUN] = this.argent[PIECEUN] - nombrePieceUn;
 		this.argent[PIECECINQ] = this.argent[PIECECINQ] - nombrePieceCinq;
 	}
 
+
+/** 
+	*Méthode qui permet de payer et d'effectuer des transactions entre les joeurs
+    */
+   
 	public void payerDime(int cout, Joueur adversaire)
 	{
 		if(this.getArgentTotal() <= cout)

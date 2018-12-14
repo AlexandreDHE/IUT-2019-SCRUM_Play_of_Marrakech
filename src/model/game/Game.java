@@ -7,6 +7,11 @@ import model.*;
 import model.dirham.*;
 import listener.modeltoview.*;
 
+/**
+	* Cette classe est responsable du bon fonctionnement de la partie 
+    */
+    
+
 public class Game
 {
 	protected GameState state;
@@ -75,6 +80,12 @@ public class Game
 		this.state = GameState.NOTSTARTED;
 	}
 
+  	
+ /**
+ 	* On utilise la surcharge pour adapter le plateau en fonction du nombre de joueur, 
+    * ou des differentes options choisies
+ */
+  
  	// surcharge paramétrer taille du jeu
 	public Game(int nombreJoueurs, int taille)
 	{
@@ -128,6 +139,9 @@ public class Game
 		this.state = GameState.NOTSTARTED;
 	}
 	
+ /** 
+ 	méthode appellée lors du lancement de la partie 
+	*/
 	public void start()
 	{
 		GameState oldState = this.state;
