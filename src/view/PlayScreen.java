@@ -24,6 +24,7 @@ public class PlayScreen extends JFrame{
 
 	private JPanel allcases[][];
 	private JPanel centercenter = new JPanel();
+	private ScorePanel[] scorePanel;
 	private Game game;
 
 	public PlayScreen(Game game){
@@ -207,25 +208,32 @@ public class PlayScreen extends JFrame{
 
 		Joueur[] players = game.getJoueurs();
 
-		leftpanel.add(new ScorePanel(players[0],1,1,1,1));
-		rightpanel.add(new ScorePanel(players[1],1,1,1,1));
+		this.scorePanel = new ScorePanel[players.length];
 
-		switch (game.getJoueurs().length) {
+		for(int i = 0; i < this.scorePanel.length; i++)
+		{
+			scorePanel[i] = new ScorePanel(players[i],1,1,1,1);
+		}
 
-			case 3: 
+		if (this.scorePanel.length == 2)
+		{
+			leftpanel.add(scorePanel[0]);
+			rightpanel.add(scorePanel[1]);
+		}
 
-			rightpanel.add(new ScorePanel(players[2],1,1,1,1));
+		else if (this.scorePanel.length == 3)
+		{
+			leftpanel.add(scorePanel[0]);
+			leftpanel.add(scorePanel[1]);
+			rightpanel.add(scorePanel[2]);
+		}
 
-			break;
-
-			case 4:  
-
-			rightpanel.add(new ScorePanel(players[2],1,1,1,1));
-			leftpanel.add(new ScorePanel(players[3],1,1,1,1));
-
-			break;
-
-			default: break;
+		else if (this.scorePanel.length == 4)
+		{
+			leftpanel.add(scorePanel[0]);
+			leftpanel.add(scorePanel[1]);
+			rightpanel.add(scorePanel[2]);
+			rightpanel.add(scorePanel[3]);
 		}
 
 		this.setJMenuBar(menuBar);  
@@ -342,5 +350,10 @@ public class PlayScreen extends JFrame{
 		
 		this.revalidate();
 		this.repaint();
+	}
+
+	public ScorePanel getScorePanel(int player)
+	{
+		return this.scorePanel[player];
 	}
 }

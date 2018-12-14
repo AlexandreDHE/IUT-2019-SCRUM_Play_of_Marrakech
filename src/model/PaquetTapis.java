@@ -67,6 +67,13 @@ public class PaquetTapis implements Cloneable
 		return this.listeTapis.size();
 	}
 
+	public int getCarpetsLeft()
+	{
+		return this.listeTapis.size() - this.curseur;
+	}
+
+
+
 /**
 	*Cette méthode permet d'actualiser le patrimoine que possède le joueur
     * On converti ens tring les information du tableau du joueur 

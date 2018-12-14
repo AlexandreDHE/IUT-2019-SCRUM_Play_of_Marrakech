@@ -32,7 +32,8 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
   		}
   		else if(gameState == GameState.ASSAMORIENTED)
   		{
-  			this.messagepanel.setMessage("Au tour du joueur " + (event.getPlayer() + 1) + " d'orienter Assam");
+  			this.playScreen.getScorePanel(event.getOldPlayer()).refreshCarpetDisplay();
+  			this.messagepanel.setMessage("Au tour du joueur " + (event.getNewPlayer() + 1) + " d'orienter Assam");
   			this.playScreen.enableButtons(false, this.playScreen.getCarpetOrientationButtons());
   			this.playScreen.enableButtons(true, this.playScreen.getAssamOrientationButtons());
   		}
@@ -44,7 +45,7 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
   				this.playScreen.enableButtons(true, this.playScreen.getCarpetOrientationButtons());
   			}
 
-  			this.messagepanel.setMessage("Au tour du joueur " + (event.getPlayer() + 1) + " de poser son tapis en cliquant sur une case.");
+  			this.messagepanel.setMessage("Au tour du joueur " + (event.getNewPlayer() + 1) + " de poser son tapis en cliquant sur une case.");
 
   		}
   		else if(gameState == GameState.CARPETORIENTED)

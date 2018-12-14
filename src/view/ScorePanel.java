@@ -74,14 +74,14 @@ public class ScorePanel extends JPanel{
 
 	}
 
-	public void setCarpetDisplay(){
+	public void refreshCarpetDisplay(){
 
-		this.nbtapis.setText(j.getNombreTapis()+" tapis.");
+		this.nbtapis.setText(j.getCarpetsLeft()+" tapis.");
 		this.nbtapis.repaint();
 
 	}
 
-	public void setDirhams1Display(){
+	public void refreshDirhams1Display(){
 
 		this.nbdirham1.setText(j.getArgent(Joueur.PIECEUN)+" pièces de 1 dirham.");
 		this.nbdirham1.repaint();
@@ -89,19 +89,10 @@ public class ScorePanel extends JPanel{
 
 	}
 
-
-	public void setDirhams5Display(){
-
-
+	public void refreshDirhams5Display(){
 
 		this.nbdirham5.setText(j.getArgent(Joueur.PIECECINQ)+" pièces de 5 dirhams.");
 		this.nbdirham5.repaint();
-
-	}
-
-	public void refresh(){
-
-
 
 	}
 }
