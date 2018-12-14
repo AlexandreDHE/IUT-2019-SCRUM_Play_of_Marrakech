@@ -78,12 +78,20 @@ public class Joueur implements Cloneable
 		return argent[PIECEUN] * 1 + argent[PIECECINQ] * 5;
 	}
 
+/** 
+	*Méthode qui permet d'ajouter des pièces au "portefeuille"
+    *du joueur 
+    */
 	public void ajouterPiece(int nombrePieceUn, int nombrePieceCinq)
 	{
 		this.argent[PIECEUN] = this.argent[PIECEUN] + nombrePieceUn;
 		this.argent[PIECECINQ] = this.argent[PIECECINQ] + nombrePieceCinq;
 	}
 
+/** 
+	*Méthode qui permet de retirer des pièces au "portefeuille"
+    *du joueur 
+    */
 	public void retirerPiece(int nombrePieceUn, int nombrePieceCinq)
 	{
 		this.argent[PIECEUN] = this.argent[PIECEUN] - nombrePieceUn;
