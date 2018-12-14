@@ -87,5 +87,5 @@ Jeu Marrakech.
 
 ## Lancer le jeu
 ```
-make run
+./ant run
 ```
