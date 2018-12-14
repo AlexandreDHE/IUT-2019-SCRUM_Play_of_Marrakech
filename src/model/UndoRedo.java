@@ -115,12 +115,13 @@ public class UndoRedo {
 	
 			PlateauJeu p = (PlateauJeu)plateau.clone();
 			donne.cases = p.getCases();
+
 			Assam a = (Assam)assam.clone();
-			System.out.println(a.hashCode() + " " + assam.hashCode());
+
 			donne.orientation = a.getOrientation();
 			donne.coord = (Position)a.getCoord();
 		} catch (CloneNotSupportedException e) {
-			System.err.println(e);
+			System.err.println("erreur clone " + e);
 		}
 		
 
