@@ -146,7 +146,7 @@ public class Game
 	{
 		GameState oldState = this.state;
 		this.state = GameState.STARTED;
-		this.fireGameStateChanged(oldState,this.state, this.currentPlayer);
+		this.fireGameStateChanged(oldState,this.state);
 	}
 
 	public void addAssamListener(AssamListener listener)
@@ -189,11 +189,11 @@ public class Game
         return listeners.getListeners(CarpetListener.class);
     }
 
-    public void fireGameStateChanged(GameState oldState, GameState newState, int oldPlayer)
+    public void fireGameStateChanged(GameState oldState, GameState newState)
 	{
 		for(GameListener listener : this.getGameListeners()) 
 		{
-            listener.gameStateChanged(new GameEvent(oldState, newState, oldPlayer, this.currentPlayer));
+            listener.gameStateChanged(new GameEvent(oldState, newState, this.currentPlayer, this.currentPlayer));
         }
 	}
 
@@ -272,7 +272,7 @@ public class Game
 		this.moveAssam();
 		GameState oldState = this.state;
 		this.state = GameState.CARPETPUT;
-		this.fireGameStateChanged(oldState, this.state, this.currentPlayer);
+		this.fireGameStateChanged(oldState, this.state);
 	}
 
 	public boolean checkCarpet(Position coord1, Position coord2)
@@ -374,7 +374,7 @@ public class Game
 					this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
 					GameState oldState = this.state;
 					this.state = GameState.CARPETPUT;
-					this.fireGameStateChanged(oldState, this.state, this.currentPlayer);
+					this.fireGameStateChanged(oldState, this.state);
 				}
 				else
 				{
@@ -474,7 +474,6 @@ public class Game
 	public void nextCarpet()
 	{
 		this.joueurs[this.currentPlayer].getCarpets().next();
-		int oldPlayer = this.currentPlayer;
 		this.currentPlayer++;
 		if(this.currentPlayer == this.joueurs.length)
 		{
@@ -483,7 +482,7 @@ public class Game
 		
 		GameState oldState = this.state;
 		this.state = GameState.ASSAMORIENTED;
-		this.fireGameStateChanged(oldState, this.state, oldPlayer);
+		this.fireGameStateChanged(oldState, this.state);
 	}
 
 	public Position getAssamCoord()

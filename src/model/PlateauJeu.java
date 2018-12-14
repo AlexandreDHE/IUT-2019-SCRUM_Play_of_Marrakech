@@ -174,7 +174,7 @@ public class PlateauJeu implements Cloneable{
     
     public Case[][] getGameGrid()
     {
-    	return this.cases;
+        return this.cases;
     }
 
     @Override
