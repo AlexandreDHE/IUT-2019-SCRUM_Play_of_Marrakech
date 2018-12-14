@@ -9,9 +9,10 @@ public enum GameState
   ASSAMMOVED(4),
   DIHMPAID(5),
   CARPETPUT(6),
-  CARPETORIENTED(7),
-  CARPETVALIDATE(8),
-  OVER(9);
+  CARPETPUTVALIDATE(7),
+  CARPETORIENTED(8),
+  CARPETORIENTEDVALIDATE(9),
+  OVER(10);
 
   private int state;
   private static final int size = GameState.values().length;

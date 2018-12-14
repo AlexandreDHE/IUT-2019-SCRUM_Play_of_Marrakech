@@ -38,7 +38,7 @@ public class PlayScreen extends JFrame{
 		this.carpetOrientationButtons = new JButton[3];
 		this.carpetOrientationButtons[0] = new JButton("Tourner le tapis dans le sens anti-horaire");
 		this.carpetOrientationButtons[1] = new JButton("Tourner le tapis dans le sens horaire");
-		this.carpetOrientationButtons[2] = new JButton("Valider la position");
+		this.carpetOrientationButtons[2] = new JButton("Valider la position du tapis");
 
 		this.assamOrientationButtons = new JButton[3];
 		this.assamOrientationButtons[0] = new JButton("Tourner dans le sens horaire");

@@ -8,12 +8,16 @@ import model.Joueur;
 
 public class ScorePanel extends JPanel{
 
+	private Joueur j;
+	private	JLabel nbtapis = new JLabel();
+	private JLabel nbdirham1 = new JLabel();
+	private JLabel nbdirham5 = new JLabel();
+
 	public ScorePanel(Joueur j, int top, int left, int bottom, int right){
 
+		this.j = j;
+
 		JLabel numplayer = new JLabel("Joueur "+(j.getCouleur()+1));
-		JLabel nbtapis = new JLabel();
-		JLabel nbdirham1 = new JLabel();
-		JLabel nbdirham5 = new JLabel();
 
 		JPanel player = new JPanel();
 		JPanel tapis = new JPanel();
@@ -67,5 +71,37 @@ public class ScorePanel extends JPanel{
 		this.add(tapis);
 		this.add(dirhams1);
 		this.add(dirhams5);
+
+	}
+
+	public void setCarpetDisplay(){
+
+		this.nbtapis.setText(j.getNombreTapis()+" tapis.");
+		this.nbtapis.repaint();
+
+	}
+
+	public void setDirhams1Display(){
+
+		this.nbdirham1.setText(j.getArgent(Joueur.PIECEUN)+" pièces de 1 dirham.");
+		this.nbdirham1.repaint();
+
+
+	}
+
+
+	public void setDirhams5Display(){
+
+
+
+		this.nbdirham5.setText(j.getArgent(Joueur.PIECECINQ)+" pièces de 5 dirhams.");
+		this.nbdirham5.repaint();
+
+	}
+
+	public void refresh(){
+
+
+
 	}
 }

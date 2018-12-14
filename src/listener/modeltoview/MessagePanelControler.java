@@ -24,25 +24,28 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 
 	public void gameStateChanged(GameEvent event)
 	{
-		/*NOTSTARTED(0),
-  STARTED(1),
-  ASSAMORIENTED(2),
-  DICETHROWN(3),
-  ASSAMMOVED(4),
-  DIHMPAID(5),
-  CARPETPUT(6),
-  CARPETORIENTED(7),
-  CARPETVALIDATE(8),
-  OVER(9);*/
   		GameState gameState = event.getNewState();
+  		GameState oldState = event.getOldState();
   		if (gameState == GameState.STARTED)
   		{
   			this.messagepanel.setMessage("La partie a commence !");
   		}
+  		else if(gameState == GameState.ASSAMORIENTED)
+  		{
+  			this.messagepanel.setMessage("Au tour du joueur " + (event.getPlayer() + 1) + " d'orienter Assam");
+  			this.playScreen.enableButtons(false, this.playScreen.getCarpetOrientationButtons());
+  			this.playScreen.enableButtons(true, this.playScreen.getAssamOrientationButtons());
+  		}
+
   		else if(gameState == GameState.CARPETPUT)
   		{
+  			if(oldState == GameState.CARPETPUT)
+  			{
+  				this.playScreen.enableButtons(true, this.playScreen.getCarpetOrientationButtons());
+  			}
+
   			this.messagepanel.setMessage("Au tour du joueur " + (event.getPlayer() + 1) + " de poser son tapis en cliquant sur une case.");
-  			  			this.playScreen.enableButtons(true, this.playScreen.getCarpetOrientationButtons());
+
   		}
   		else if(gameState == GameState.CARPETORIENTED)
   		{
