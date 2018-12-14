@@ -7,18 +7,17 @@ import model.Assam;
 
 public class AssamPanel extends JPanel{
 
-	OpenImage front = new OpenImage(50,50,"./drawable/front.png");
-	OpenImage back = new OpenImage(50,50,"./drawable/back.png");
-	OpenImage left = new OpenImage(50,50,"./drawable/left.png");
-	OpenImage right = new OpenImage(50,50,"./drawable/right.png");
+	OpenImage front = new OpenImage(30,30,"./drawable/front.png");
+	OpenImage back = new OpenImage(30,30,"./drawable/back.png");
+	OpenImage left = new OpenImage(30,30,"./drawable/left.png");
+	OpenImage right = new OpenImage(30,30,"./drawable/right.png");
 	OpenImage currentImage;
 
 	public AssamPanel()
 	{
 		this.currentImage = back;
 		this.add(this.currentImage);
-		this.setBackground(Color.WHITE);
-		this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(254, 153, 1)));
+		this.setOpaque(false);
 	}
 	
 	public void setAssam(int assamOrientation)
