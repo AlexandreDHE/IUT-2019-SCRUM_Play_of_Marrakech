@@ -1,11 +1,42 @@
 import model.*;
+import model.dirham.*;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
 
 /**
  * maintest
  */
-public class maintest {
+public class PlateauJeuTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void compterAvecDiagonal(){
+		DirhamManagerClassic manager = new DirhamManagerClassic();
+		PaquetTapis p1 = new PaquetTapis();
+		PaquetTapis p2 = new PaquetTapis();
+		Joueur j1 = new Joueur(0, p1, manager);
+		Joueur j2 = new Joueur(1, p2, manager);
+
+		PlateauJeu p = new PlateauJeu();
+
+		j2.getTapis().setPosition(new Position(3, 3), new Position(3, 4));
+		p.placerTapis(j2.getTapis());
+		p2.next();
+		j2.getTapis().setPosition(new Position(3, 5), new Position(3, 6));
+		p.placerTapis(j2.getTapis());
+		p2.next();
+		j2.getTapis().setPosition(new Position(3, 6), new Position(4, 6));
+		p.placerTapis(j2.getTapis());
+		p2.next();
+
+		Assam ass = Assam.getAssam();
+
+		int c = p.payerDime(ass, j1);
+
+		assertEquals(c, 5);
+	}
+
+	//public static void main(String[] args) {
 		// supersosition tapis
 		// 5
 		// PlateauJeu p = new PlateauJeu();
@@ -91,5 +122,5 @@ public class maintest {
 
 		// p.payerDime(ass, j2);
 
-	}
+	//}
 }
