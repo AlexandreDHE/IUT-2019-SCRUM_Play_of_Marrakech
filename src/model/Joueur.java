@@ -2,6 +2,12 @@ package model;
 
 import model.dirham.*;
 
+/**
+	* Cette class permet de constituer le patrimoine de chaque joueur.
+    * A chaque joeurs seront associé les informations suivantes: 
+    * La couleur du joueur, son paquet de tapis, et le gestionnaire de dirham
+    */
+
 public class Joueur implements Cloneable
 {
 	public final static int PIECEUN = 0;
@@ -20,6 +26,10 @@ public class Joueur implements Cloneable
 		dir.deal(this);
 	}
 
+/** 
+	* Connaitre la couleur du joeur
+    *@return couleur
+    */
 	public int getCouleur()
 	{
 		return this.couleur;
@@ -29,10 +39,17 @@ public class Joueur implements Cloneable
 		return argent;
 	}
 
+/** 
+	*Connaitre le paquet du joueur 
+    *@return paquet 
+    */
 	public PaquetTapis getPaquet() {
 		return paquet;
 	}
 
+/**
+	*
+*/
 	public void setArgent(int[] argent) {
 		this.argent = argent;
 	}
@@ -50,6 +67,11 @@ public class Joueur implements Cloneable
 	{
 		return de.getValeur();
 	}
+
+/** 
+	*Connaitre le patrimoine financier du joeur 
+    *@return argent
+    */
 
 	public int getArgentTotal()
 	{
