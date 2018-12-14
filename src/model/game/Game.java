@@ -146,7 +146,7 @@ public class Game
 	{
 		GameState oldState = this.state;
 		this.state = GameState.STARTED;
-		this.fireGameStateChanged(oldState,this.state);
+		this.fireGameStateChanged(oldState,this.state, this.currentPlayer);
 	}
 
 	public void addAssamListener(AssamListener listener)
@@ -189,11 +189,11 @@ public class Game
         return listeners.getListeners(CarpetListener.class);
     }
 
-    public void fireGameStateChanged(GameState oldState, GameState newState)
+    public void fireGameStateChanged(GameState oldState, GameState newState, int oldPlayer)
 	{
 		for(GameListener listener : this.getGameListeners()) 
 		{
-            listener.gameStateChanged(new GameEvent(oldState, newState, this.currentPlayer));
+            listener.gameStateChanged(new GameEvent(oldState, newState, oldPlayer, this.currentPlayer));
         }
 	}
 
@@ -272,7 +272,7 @@ public class Game
 		this.moveAssam();
 		GameState oldState = this.state;
 		this.state = GameState.CARPETPUT;
-		this.fireGameStateChanged(oldState, this.state);
+		this.fireGameStateChanged(oldState, this.state, this.currentPlayer);
 	}
 
 	public boolean checkCarpet(Position coord1, Position coord2)
@@ -374,7 +374,7 @@ public class Game
 					this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
 					GameState oldState = this.state;
 					this.state = GameState.CARPETPUT;
-					this.fireGameStateChanged(oldState, this.state);
+					this.fireGameStateChanged(oldState, this.state, this.currentPlayer);
 				}
 				else
 				{
@@ -474,6 +474,7 @@ public class Game
 	public void nextCarpet()
 	{
 		this.joueurs[this.currentPlayer].getCarpets().next();
+		int oldPlayer = this.currentPlayer;
 		this.currentPlayer++;
 		if(this.currentPlayer == this.joueurs.length)
 		{
@@ -482,7 +483,7 @@ public class Game
 		
 		GameState oldState = this.state;
 		this.state = GameState.ASSAMORIENTED;
-		this.fireGameStateChanged(oldState, this.state);
+		this.fireGameStateChanged(oldState, this.state, oldPlayer);
 	}
 
 	public Position getAssamCoord()

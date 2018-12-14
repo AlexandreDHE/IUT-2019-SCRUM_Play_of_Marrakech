@@ -6,13 +6,15 @@ public class GameEvent implements Event
 {
 	protected GameState oldState;
 	protected GameState newState;
-	private int player;
+	private int oldPlayer;
+	private int newPlayer;
 
-	public GameEvent(GameState oldState, GameState newState, int player)
+	public GameEvent(GameState oldState, GameState newState, int oldPlayer, int newPlayer)
 	{
 		this.oldState = oldState;
 		this.newState = newState;
-		this.player = player;
+		this.oldPlayer = oldPlayer;
+		this.newPlayer = newPlayer;
 	}
 
 	public GameState getOldState()
@@ -24,8 +26,13 @@ public class GameEvent implements Event
 		return this.newState;
 	}
 
-	public int getPlayer()
+	public int getOldPlayer()
 	{
-		return this.player;
+		return this.oldPlayer;
+	}
+
+	public int getNewPlayer()
+	{
+		return this.newPlayer;
 	}
 }

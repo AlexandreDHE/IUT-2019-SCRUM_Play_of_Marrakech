@@ -132,6 +132,11 @@ public class Joueur implements Cloneable
 		}
 	}
 
+	public int getCarpetsLeft()
+	{
+		return this.paquet.getCarpetsLeft();
+	}
+
 	public Tapis getTapis()
 	{
 		return this.paquet.getTapis();
