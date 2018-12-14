@@ -317,24 +317,29 @@ public class PlayScreen extends JFrame{
 		{
 			for(int j = 0; j < grid.length; j++)
 			{
-				if((i==assamCoord.getY()) && (j==assamCoord.getX()))
+				JPanel casePanel;
+
+				if(grid[i][j].recupererTapis() == null)
 				{
-					allcases[i][j] = assamPanel;
+
+					casePanel = this.getCase(Couleur.NONE,i,j);
+
+				}else{
+
+					casePanel = this.getCase(grid[i][j].recupererTapis().getCouleur(),i,j);
 				}
-				else
-				{
-					if(grid[i][j].recupererTapis() == null)
-					{
-						allcases[i][j] = this.getCase(Couleur.NONE,i,j);
-					}
-					else
-					{
-						allcases[i][j] = this.getCase(grid[i][j].recupererTapis().getCouleur(),i,j);
-					}
+
+				if((i==assamCoord.getY()) && (j==assamCoord.getX())){
+					
+					casePanel.add(assamPanel);
 				}
+
+				allcases[i][j] = casePanel;
 				centercenter.add(allcases[i][j]);
 			}
+
 		}
+		
 		this.revalidate();
 		this.repaint();
 	}
