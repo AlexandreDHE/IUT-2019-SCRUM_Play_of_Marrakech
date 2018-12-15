@@ -5,6 +5,20 @@ import javax.swing.*;
 
 import model.Assam;
 
+/**
+ * Cette classe est un JPanel ou est affiché le sprite d'Assam.
+ * La méthode @see AssamPanel#setAssam(int) se sert des setters suivants 
+ * pour changer son orientation :
+ *
+ * @see AssamPanel#setAssamLeft()
+ *
+ * @see AssamPanel#setAssamRight()
+ *
+ * @see AssamPanel#setAssamTop()
+ *
+ * @see AssamPanel#setAssamBottom()
+ */
+
 public class AssamPanel extends JPanel{
 
 	OpenImage front = new OpenImage(30,30,"./drawable/front.png");
