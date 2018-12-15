@@ -8,6 +8,13 @@ import view.parameter.*;
 import java.awt.*;
 import java.awt.Color.*;
 
+/**
+* Cette classe permet d'afficher le menu du jeu Marrakech.
+* Le JButton "start" permet de passer à l'écran de sélection du nombre de joueurs,
+* tandis que le JButton "quit" permet de quitter l'application.
+* Le JButton "resume" permettrait à l'avenir de reprendre une partie sauvegardée.
+ */
+
 
 public class Menu extends JFrame{
 
