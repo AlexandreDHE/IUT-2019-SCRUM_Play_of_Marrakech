@@ -6,12 +6,32 @@ import javax.swing.*;
 import model.Couleur;
 import model.Joueur;  
 
+/**
+ * Cette classe est un JPanel ou sont affichés toutes les informations relatives
+ * à un joueur au cours d'une partie : le numéro du joueur, son nombre de tapis, 
+ * de pièces de 1 Dirham et de pièces de 5 Dirhams.
+ */
+
 public class ScorePanel extends JPanel{
 
 	private Joueur j;
 	private	JLabel nbtapis = new JLabel();
 	private JLabel nbdirham1 = new JLabel();
 	private JLabel nbdirham5 = new JLabel();
+  
+    /**
+ 	* Constructeur de la classe ScorePanel.
+ 	* @param j
+    *			Joueur affilié au panneau.
+    * @param top
+    *			int permettant d'afficher ou non une bordure en haut d'un ScorePanel.
+    * @param left
+    *			int permettant d'afficher ou non une bordure à gauche d'un ScorePanel.
+    * @param bottom
+    *			int permettant d'afficher ou non une bordure en bas d'un ScorePanel.
+    * @param right
+    *			int permettant d'afficher ou non une bordure à droite d'un ScorePanel.
+ 	*/
 
 	public ScorePanel(Joueur j, int top, int left, int bottom, int right){
 
