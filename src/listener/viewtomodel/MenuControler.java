@@ -7,6 +7,13 @@ import view.SelectPlayer;
 
 import java.awt.event.*;
 
+/**
+* La classe MenuControler est le contrôleur de la classe Menu.
+* Ce contrôleur permet de gérer les actions liées aux JButton disposés en bas de la fenêtre du menu.
+* 
+* @see Menu
+*/
+
 public class MenuControler implements ActionListener{
 
 	JFrame jframe;
