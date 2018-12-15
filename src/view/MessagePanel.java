@@ -3,6 +3,12 @@ import java.awt.*;
 import javax.swing.*;
 
 public class MessagePanel extends JPanel{
+  
+  /**
+ * Cette classe est un JPanel qui permet d'afficher des informations relatives
+ * aux actions des joueurs au cours d'une partie.
+ * Son message peut être modifié en appellant @see MessagePanel#setMessage(String)
+ */
 
 	private JLabel jlmess;
 
