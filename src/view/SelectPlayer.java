@@ -6,14 +6,19 @@ import listener.viewtomodel.*;
 import java.awt.*;
 import java.awt.Color.*;
 
+/**
+* Cette classe permet d'afficher une fenêtre de sélection du nombre de joueurs.
+* Le JButton "back" permet de retourner au menu du jeu, tandis que
+* le JButton "start" permet de commencer une partie avec le nombre de joueurs sélectionné.
+* Ce dernier est accessible uniquement lorsque le nombre de joueurs est sélectionné.
+ */
+
 
 public class SelectPlayer extends JFrame{
 
 	JButton play = new JButton("Play");
 
 	public SelectPlayer(){
-
-		//OpenImage openimage = new OpenImage(500, 500, "../drawable/background.jpg");
 
 		JPanel toppan = new JPanel();
 		JPanel centerpan = new JPanel();
@@ -59,7 +64,7 @@ public class SelectPlayer extends JFrame{
 
 	}
 
-	//Accesseurs
+	//Accesseur
 
 	public JButton getPlayButton(){
 		return this.play;
