@@ -12,6 +12,14 @@ import view.SelectPlayer;
 
 import java.awt.event.*;
 
+/**
+* La classe SelectPlayerControler est le contrôleur de la classe SelectPlayer.
+* Ce contrôleur permet d'activer le bouton "Jouer" uniquement si un JButton
+* concernant le nombre de jouers est sélectionné.
+* 
+* @see SelectPlayer
+*/
+
 public class SelectPlayerControler implements ActionListener{
 
 	SelectPlayer selectplayer;
