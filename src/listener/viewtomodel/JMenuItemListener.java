@@ -5,6 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;  
 import javax.swing.event.*;
 
+/**
+* La classe JMenuItemListener est le contrôleur des JMenuItems de la classe PlayScreen.
+* Ce contrôleur permet de gérer les actions liées aux JMenuItems de la JMenuBar.
+* 
+* @see PlayScreen
+*/
+
 public class JMenuItemListener implements ActionListener{  
 
     public void actionPerformed(ActionEvent e){  
