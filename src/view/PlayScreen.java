@@ -12,7 +12,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.Color.*;
 
+/**
+ * La classe PlayScreen est la JFrame comportant la grille de jeu.
+ * En son centre sont disposés les cases et le @see AssamPanel.
+ * Dans le bas sont disposés des JButton permettant aux joueurs de réaliser des actions au cours d'une partie.
+ * Dans le haut, un @see MessagePanel affiche des informations concernant le déroulement de la partie.
+ * De part et d'autre de la grille de jeu sont disposés 2 à 4 @see ScorePanel 
+ * selon le nombre de joueurs, affichant leur quantité de tapis et de Dihrams.
+ */
+
 public class PlayScreen extends JFrame{
+  
+ 	/**
+ 	* Constructeur de classe PlayScreen.
+    *
+    * @param game
+    *            Prend en argument la classe @see Game qui gère le déroulement de l'ensemble d'une partie.
+	*/
 
 	public JMenu back = new JMenu();
 	public MessagePanel mp = new MessagePanel();
