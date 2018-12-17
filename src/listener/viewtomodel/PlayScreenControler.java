@@ -9,6 +9,14 @@ import view.PlayScreen;
 
 import java.awt.event.*;
 
+/**
+* La classe PlayScreenControler est le contrôleur de la classe PlayScreen.
+* Ce contrôleur permet de gérer les JButton disposés en bas de la fenêtre de jeu,
+* permettant de réaliser des actions durant la partie.
+* 
+* @see PlayScreen
+*/
+
 public class PlayScreenControler implements ActionListener{
 
 	public PlayScreen ps;

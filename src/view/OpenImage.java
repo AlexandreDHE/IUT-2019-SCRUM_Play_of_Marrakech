@@ -8,18 +8,27 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+* Cette classe permet d'ouvrir une image dans un JLabel.
+ */
+
 public class OpenImage extends JLabel{
 
-	String baseimg = new String("img/noimg.png");
+         /**
+         * Constructeur de la classe OpenImage.
+         *
+         * @param width
+         *            Largeur de l'image.
+         * @param height
+         *            Hauteur de l'image.
+         * @param imgpath
+         *            Chemin de l'image.
+         */
 
 	public OpenImage(int width, int height, String imgpath){
 		File path = new File(imgpath);
-
 		if(path.exists()){
 			displayImage(width, height, imgpath, path);
-		}else{
-			File newpath = new File(baseimg);
-			displayImage(width, height, baseimg, newpath);
 		}
 	}
 

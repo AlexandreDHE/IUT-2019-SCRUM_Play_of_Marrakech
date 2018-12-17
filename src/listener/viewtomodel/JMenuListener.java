@@ -8,6 +8,13 @@ import javax.swing.event.*;
 import view.PlayScreen;
 import view.SelectPlayer;
 
+/**
+* La classe JMenuListener est le contrôleur des JMenu de la classe PlayScreen.
+* Ce contrôleur permet de gérer les actions liées aux JMenu de la JMenuBar.
+* 
+* @see PlayScreen
+*/
+
 public class JMenuListener implements MenuListener {
 
     PlayScreen ps;

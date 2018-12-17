@@ -11,6 +11,15 @@ import listener.modeltoview.*;
 
 import event.*;
 
+/**
+* La classe MessagePanelControler est le contrôleur de la classe MessagePanel.
+* Ce contrôleur permet de gérer les messages à afficher au cours de la partie, 
+* liés aux actions des joueurs et au déroulement du jeu.
+* 
+* @see MessagePanel
+* @see GameState
+*/
+
 public class MessagePanelControler implements GameListener, DiceListener, AssamListener, CarpetListener
 {
 	private MessagePanel messagepanel;
