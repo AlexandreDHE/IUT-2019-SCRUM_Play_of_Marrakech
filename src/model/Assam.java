@@ -80,7 +80,7 @@ public class Assam implements Cloneable
 	public void avancer(int babouche)
 	{
 
-		/*for(int i = 0; i < babouche; i++)
+		for(int i = 0; i < babouche; i++)
 		{
 			switch(orientation)
 			{
@@ -89,18 +89,7 @@ public class Assam implements Cloneable
 				case SUD : this.coord.setY(this.coord.getY() + 1); break;
 				case OUEST : this.coord.setX(this.coord.getX() - 1); break;
 			}
-
-
-		}*/
-
-		switch(orientation)
-			{
-				case NORD : this.coord.setY(this.coord.getY() - 1); break;
-				case EST : this.coord.setX(this.coord.getX() + 1); break;
-				case SUD : this.coord.setY(this.coord.getY() + 1); break;
-				case OUEST : this.coord.setX(this.coord.getX() - 1); break;
-			}
-		
+		}
 
 		if(this.coord.getX() < 0)
 		{
