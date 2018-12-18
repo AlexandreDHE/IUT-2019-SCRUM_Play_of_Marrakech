@@ -89,3 +89,8 @@ Jeu Marrakech.
 ```
 ./ant run
 ```
+
+## Lancer les tests
+```
+./ant test
+```
