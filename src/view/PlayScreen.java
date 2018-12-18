@@ -266,6 +266,12 @@ public class PlayScreen extends JFrame{
 		return this.lancerde;
 
 	}
+	
+	public Game getGame() {
+		
+		return this.game;
+		
+	}
 
 	public AssamPanel getAssamPanel(){ 
 
