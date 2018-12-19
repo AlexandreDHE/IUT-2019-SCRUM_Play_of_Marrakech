@@ -1,4 +1,4 @@
-package model;
+package view;
 
 import java.awt.Color;
 
@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import model.Player;
 import view.PlayScreen;
 
 /**
@@ -28,7 +29,7 @@ public class CustomWinDialog{
     *			@see Game
  	*/
 
-  public CustomWinDialog(PlayScreen ps, Joueur j){
+  public CustomWinDialog(PlayScreen ps, Player j){
 	  
 	  PlayScreen newGame = new PlayScreen(ps.getGame());
 	  
