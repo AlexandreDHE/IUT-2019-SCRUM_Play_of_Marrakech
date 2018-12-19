@@ -20,7 +20,7 @@ import event.*;
 * @see GameState
 */
 
-public class MessagePanelControler implements GameListener, DiceListener, AssamListener, CarpetListener
+public class MessagePanelControler implements GameListener, DiceListener, AssamListener, CarpetListener, PlayerListener
 {
 	private MessagePanel messagepanel;
 	private PlayScreen playScreen;
@@ -39,7 +39,7 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
   		{
   			this.messagepanel.setMessage("La partie a commence !");
   		}
-  		else if(gameState == GameState.ASSAMORIENTED)
+  		else if(gameState == GameState.CARPETPUTVALIDATE)
   		{
   			this.playScreen.getScorePanel(event.getOldPlayer()).refreshCarpetDisplay();
   			this.messagepanel.setMessage("Au tour du joueur " + (event.getNewPlayer() + 1) + " d'orienter Assam");
@@ -71,7 +71,7 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 	public void assamMoved(AssamEvent event)
 	{
 		this.messagepanel.setMessage("Assam a avance de " + event.getValue() + " cases.");
-		this.playScreen.drawCenter();
+		this.playScreen.drawCenter(null);
 	}
 
 	public void assamOriented(AssamEvent event)
@@ -95,7 +95,7 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 	{
 		if(event.getState())
 		{
-			this.playScreen.drawCenter();
+			this.playScreen.drawCenter(event.getNewCarpet());
 			this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a posé son tapis.");
 		}
 		else
@@ -109,6 +109,20 @@ public class MessagePanelControler implements GameListener, DiceListener, AssamL
 	public void carpetOriented(CarpetEvent event) {
 
 		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a oriente son tapis.");
+		
+	}
+
+	@Override
+	public void playerPaid(PlayerEvent event) 
+	{
+		this.messagepanel.setMessage("Le joueur " + (event.getPlayer()+1) + " a paye une de dime de " + event.getPrice() + ".");
+		this.playScreen.getScorePanel(event.getPlayer()).refreshDirhams1Display();
+		this.playScreen.getScorePanel(event.getPlayer()).refreshDirhams5Display();
+	}
+
+	@Override
+	public void playerLost(PlayerEvent event) {
+		// TODO Auto-generated method stub
 		
 	}
 }

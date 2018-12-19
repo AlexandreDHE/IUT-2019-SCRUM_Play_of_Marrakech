@@ -1,5 +1,8 @@
 package model.game;
 
+/**
+ * Classe enumeration representant les differents etats du jeu
+*/
 public enum GameState 
 {
   NOTSTARTED(0),

@@ -1,4 +1,4 @@
-package model.parameter;
+package model.game.parameter;
 
 /**
   * Classe enumeration representant les differents parametres du jeu concernant le de

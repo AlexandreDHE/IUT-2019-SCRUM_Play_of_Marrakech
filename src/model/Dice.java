@@ -10,15 +10,15 @@ import model.de.*;
     * Ce dé a certaines caractéristiques imposées par le jeu
     */
 
-public class De
+public class Dice
 {
-	protected static De de = null;
+	protected static Dice de = null;
 	private ArrayList<Integer> values;
 	protected  static Random aleatoire;
 
 	protected int[] valeurs;
 	
-	private De(int size)
+	private Dice(int size)
 	{
 		aleatoire = new Random();
 		this.values = new ArrayList<Integer>();
@@ -59,11 +59,11 @@ public class De
 		};
 	}
 
-	public static De getDe(int size)
+	public static Dice getDe(int size)
 	{
 		if(de == null)
 		{
-			de = new De(size);
+			de = new Dice(size);
 		}
 		return de;
 	}
@@ -75,7 +75,7 @@ public class De
 
 	public int getValeur()
 	{
-		int nombre = De.aleatoire.nextInt(this.values.size());
+		int nombre = Dice.aleatoire.nextInt(this.values.size());
 		return this.values.get(nombre);
 	}
 }

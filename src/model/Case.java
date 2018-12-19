@@ -6,7 +6,7 @@ public class Case implements Cloneable{
     /**
      * le tapis sur la case
      */
-    private Tapis tapi;
+    private Carpet tapi;
 
     /**
      * permet de construire la case
@@ -19,7 +19,7 @@ public class Case implements Cloneable{
      * permet de placer un tapis
      * @param t le tapis
      */
-    public void placerTapis(Tapis t){
+    public void placerTapis(Carpet t){
         tapi = t;
     }
 
@@ -32,14 +32,14 @@ public class Case implements Cloneable{
      * permet de récupérer le tapis
      * @return un tapis
      */
-    public Tapis recupererTapis(){
+    public Carpet recupererTapis(){
         return tapi;
     }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
         Case c = (Case) super.clone();
-        c.tapi = (Tapis)this.tapi.clone();
+        c.tapi = (Carpet)this.tapi.clone();
         return c;
     }
 

@@ -10,14 +10,14 @@ import java.util.Collections;
     *pour les 2, 3 ou 4 joueurs 
     */
 
-public class PaquetTapis implements Cloneable
+public class CarpetList implements Cloneable
 {
-	private ArrayList<Tapis> listeTapis;
+	private ArrayList<Carpet> listeTapis;
 	private int curseur;
 
-	public PaquetTapis()
+	public CarpetList()
 	{
-		this.listeTapis = new ArrayList<Tapis>();
+		this.listeTapis = new ArrayList<Carpet>();
 		this.curseur = 0;
 	}
 
@@ -25,7 +25,7 @@ public class PaquetTapis implements Cloneable
 	Cette méthode permet à l'utilisateur de poser un tapis contenu dans 
     *sa liste de tapis
     */
-	public void addTapis(Tapis tapis)
+	public void addTapis(Carpet tapis)
 	{
 		listeTapis.add(tapis);
 	}
@@ -34,7 +34,7 @@ public class PaquetTapis implements Cloneable
 	Permet de recuperer le tapis designé par le curseur 
     */
     
-	public Tapis getTapis()
+	public Carpet getTapis()
 	{
 		return this.listeTapis.get(this.curseur);
 	}
@@ -69,7 +69,7 @@ public class PaquetTapis implements Cloneable
 
 	public int getCarpetsLeft()
 	{
-		return this.listeTapis.size() - this.curseur;
+		return this.listeTapis.size() - this.curseur - 1;
 	}
 
 
@@ -91,8 +91,8 @@ public class PaquetTapis implements Cloneable
 
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
-		PaquetTapis p = (PaquetTapis)super.clone();
-		p.listeTapis = (ArrayList<Tapis>)this.listeTapis.clone();
+		CarpetList p = (CarpetList)super.clone();
+		p.listeTapis = (ArrayList<Carpet>)this.listeTapis.clone();
 		return (Object)p;
 	}
 }

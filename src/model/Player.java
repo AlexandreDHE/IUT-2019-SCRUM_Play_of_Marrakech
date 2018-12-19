@@ -8,16 +8,16 @@ import model.dirham.*;
     * La couleur du joueur, son paquet de tapis, et le gestionnaire de dirham
     */
 
-public class Joueur implements Cloneable
+public class Player implements Cloneable
 {
 	public final static int PIECEUN = 0;
 	public final static int PIECECINQ = 1;
 
 	protected int couleur;
 	protected int[] argent;
-	protected PaquetTapis paquet;
+	protected CarpetList paquet;
 
-	public Joueur(int couleur, PaquetTapis paquet, DirhamManager dir)
+	public Player(int couleur, CarpetList paquet, DirhamManager dir)
 	{
 		this.couleur = couleur;
 		this.paquet = paquet;
@@ -43,7 +43,7 @@ public class Joueur implements Cloneable
 	*Connaitre le paquet du joueur 
     *@return paquet 
     */
-	public PaquetTapis getPaquet() {
+	public CarpetList getPaquet() {
 		return paquet;
 	}
 
@@ -54,7 +54,7 @@ public class Joueur implements Cloneable
 		this.argent = argent;
 	}
 
-	public void setPaquet(PaquetTapis paquet) {
+	public void setPaquet(CarpetList paquet) {
 		this.paquet = paquet;
 	}
 
@@ -63,7 +63,7 @@ public class Joueur implements Cloneable
 		return this.argent[typePiece];
 	}
 
-	public int lancerDe(De de)
+	public int lancerDe(Dice de)
 	{
 		return de.getValeur();
 	}
@@ -103,7 +103,7 @@ public class Joueur implements Cloneable
 	*Méthode qui permet de payer et d'effectuer des transactions entre les joeurs
     */
    
-	public void payerDime(int cout, Joueur adversaire)
+	public void payerDime(int cout, Player adversaire)
 	{
 		if(this.getArgentTotal() <= cout)
 		{
@@ -137,7 +137,7 @@ public class Joueur implements Cloneable
 		return this.paquet.getCarpetsLeft();
 	}
 
-	public Tapis getTapis()
+	public Carpet getTapis()
 	{
 		return this.paquet.getTapis();
 	}
@@ -147,7 +147,7 @@ public class Joueur implements Cloneable
 		return this.paquet.getSize();
 	}
 	
-	public PaquetTapis getCarpets()
+	public CarpetList getCarpets()
 	{
 		return this.paquet;
 	}
@@ -155,9 +155,9 @@ public class Joueur implements Cloneable
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 
-		Joueur j = (Joueur)super.clone();
+		Player j = (Player)super.clone();
 		j.argent = this.argent.clone();
-		j.paquet = (PaquetTapis)this.paquet.clone();
+		j.paquet = (CarpetList)this.paquet.clone();
 
 		return (Object)j;
 		

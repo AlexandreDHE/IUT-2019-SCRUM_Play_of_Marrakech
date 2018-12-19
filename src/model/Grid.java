@@ -6,7 +6,7 @@ import model.Position;
 /**
  * class contenant le plateau du jeu
  */
-public class PlateauJeu implements Cloneable{
+public class Grid implements Cloneable{
 
     /* x,y */
     /**
@@ -36,7 +36,7 @@ public class PlateauJeu implements Cloneable{
     /**
      * initialise le plateau du jeu
      */
-    public PlateauJeu() {
+    public Grid() {
         cases = new Case[7][7];
         casecompter = new boolean[7][7];
         for (int i = 0; i < 7; i++) {
@@ -46,7 +46,7 @@ public class PlateauJeu implements Cloneable{
         }
     }
 
-    public PlateauJeu(int lignes) {
+    public Grid(int lignes) {
         cases = new Case[lignes+2][lignes+2];
         casecompter = new boolean[lignes+2][lignes+2];
         for (int i = 0; i < lignes; i++) {
@@ -62,7 +62,7 @@ public class PlateauJeu implements Cloneable{
      * 
      * @param tapi le tapis avec ses coordonnées
      */
-    public void placerTapis(Tapis tapi) {
+    public void placerTapis(Carpet tapi) {
 
         Position[] pos = tapi.position();
         cases[pos[0].getX()][pos[0].getY()].placerTapis(tapi);
@@ -76,13 +76,22 @@ public class PlateauJeu implements Cloneable{
      * @param tapi le tapis avec ses coordonnées
      * @return si c'est possible
      */
-    public boolean peutPlacerTapis(Tapis tapi) {
+    public boolean peutPlacerTapis(Carpet tapi) {
 
         Position[] pos = tapi.position();
-        Tapis tapi1, tapi2;
+        if((pos[0].getX() >= this.cases.length) || (pos[0].getY() >= this.cases.length)
+        		|| (pos[1].getX() >= this.cases.length) || (pos[1].getY() >= this.cases.length))
+        {
+        	return false;
+        }
+        Carpet tapi1, tapi2;
         tapi1 = cases[pos[0].getX()][pos[0].getY()].recupererTapis();
         tapi2 = cases[pos[1].getX()][pos[1].getY()].recupererTapis();
-        if ((tapi1 == tapi2) && (tapi1 != null)) {
+        if ((tapi1 == null) || (tapi2 == null))
+        {
+        	return true;
+        }
+        else if ((tapi1 == tapi2)) {
             return false;
         }
         return true;
@@ -94,27 +103,28 @@ public class PlateauJeu implements Cloneable{
      * @param ass la position d'assam
      * @param j   le joueur qui est arrivé sur la case
      */
-    public int payerDime(Assam ass, Joueur j) {
+    public int payerDime(Assam ass, Player j) {
 
         Position coord = ass.getCoord();
 
-        Tapis tapi = cases[coord.getX()][coord.getY()].recupererTapis();
-        int cjoueur = j.getCouleur();
-        int cadversaire = tapi.getCouleur();
+        Carpet tapi = cases[coord.getY()][coord.getX()].recupererTapis();
 
-        if (cjoueur == cadversaire) {
-            return 0;
-        }
+    	 int cjoueur = j.getCouleur();
+         int cadversaire = tapi.getCouleur();
 
-        for (int i = 0; i < 7; i++) {
-            for (int jc = 0; jc < 7; jc++) {
-                casecompter[i][jc] = false;
-            }
-        }
+         if (cjoueur == cadversaire) {
+             return 0;
+         }
 
-        int du = compter(cadversaire, coord, 1);
+         for (int i = 0; i < 7; i++) {
+             for (int jc = 0; jc < 7; jc++) {
+                 casecompter[i][jc] = false;
+             }
+         }
 
-        return du;
+         int du = compter(cadversaire, coord, 1);
+
+         return du;	
 
     }
 
@@ -168,6 +178,8 @@ public class PlateauJeu implements Cloneable{
                 }
             }
         }
+        
+        
 
         return i;
     }
@@ -176,10 +188,15 @@ public class PlateauJeu implements Cloneable{
     {
         return this.cases;
     }
+    
+    public Carpet getCarpet(int row, int col)
+    {
+    	return this.cases[row][col].recupererTapis();
+    }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        PlateauJeu p = (PlateauJeu)super.clone();
+        Grid p = (Grid)super.clone();
         for (int i = 0; i < p.cases.length; i++) {
             for (int j = 0; j < p.cases[0].length; j++) {
                 p.cases[i][j] = this.cases[i][j];

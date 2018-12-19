@@ -8,42 +8,94 @@ import model.dirham.*;
 import listener.modeltoview.*;
 
 /**
-	* Cette classe est responsable du bon fonctionnement de la partie 
-    */
+ * Représente une partie
+ * Cette classe a pour rôle de servir d'intermediaires entre les differents modeles et la vue
+*/
     
-
 public class Game
 {
+	/**
+	 * state est l'etat du jeu
+	*/
 	protected GameState state;
 	
+	/**
+	 * le singleton Assam
+	*/
 	protected Assam assam;
-	protected De de;
-	protected Joueur[] joueurs;
+	
+	/**
+	 * le singleton de
+	*/
+	protected Dice dice;
+	
+	/**
+	 * un tableau de joueurs
+	*/
+	protected Player[] players;
+	
+	/**
+	 * le joueur actuel
+	*/
 	protected int currentPlayer;
-	protected int valeurDe;
-	protected PlateauJeu plateau;
+	
+	/**
+	 * la valeur du de apres l'avoir lance
+	*/
+	protected int diceValue;
+	
+	/**
+	 * le plateau de jeu
+	*/
+	protected Grid grid;
+	
+	/**
+	 * la position du nouveau tapis
+	*/
 	protected Position carpetPosition;
+	
+	/**
+	 * les positions envisageables de la deuxieme case du nouveau tapis
+	*/
 	protected Position[] carpetOrientations;
+	
+	/**
+	 * la position de la deuxieme case du nouveau tapis
+	*/
 	protected Position carpetOrientation;
-
+	
+	/**
+	 * le nouveau tapis a pose sur la plateau de jeu
+	*/
+	protected Carpet newCarpet;
+	
+	/**
+	 * liste de listeners
+	*/
 	protected final EventListenerList listeners;
-
+	
+	/**
+	 * Constructeur permettant de creer une partie 
+	 * @param nombreJoueurs est le nombre de joueur dans la partie
+	 * @param size est la taille du plateau de jeu
+	 * @param DirhamManager est la strategie a adopter pour distribuer aux joueurs les dirham
+	*/
 	public Game(int nombreJoueurs, int size, DirhamManager dirhamManager)
 	{
 		this.listeners = new EventListenerList();
-		this.joueurs = new Joueur[nombreJoueurs];
+		this.players = new Player[nombreJoueurs];
 		this.currentPlayer = 0;
-		this.plateau = new PlateauJeu();
+		this.grid = new Grid();
 
 		if (nombreJoueurs == 2)
 		{
-			PaquetTapis paquet = new PaquetTapis();
+			CarpetList paquet = new CarpetList();
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, paquet, dirhamManager);
+				players[i] = new Player(i, paquet, dirhamManager);
 				for(int j = 0; j < 24; j++)
 				{
-					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+					paquet.addTapis(new Carpet(players[i].getCouleur()));
 				}
 			}
 			paquet.melanger();
@@ -53,11 +105,11 @@ public class Game
 		{
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, dirhamManager);
+				CarpetList paquet = new CarpetList();
+				players[i] = new Player(i, paquet, dirhamManager);
 				for(int j = 0; j < 15; j++)
 				{
-					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+					paquet.addTapis(new Carpet(players[i].getCouleur()));
 				}
 			}
 		}
@@ -66,17 +118,17 @@ public class Game
 		{
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, dirhamManager);
+				CarpetList paquet = new CarpetList();
+				players[i] = new Player(i, paquet, dirhamManager);
 				for(int j = 0; j < 12; j++)
 				{
-					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+					paquet.addTapis(new Carpet(players[i].getCouleur()));
 				}
 			}
 		}
 
 		assam = Assam.getAssam();
-		de = De.getDe(6);
+		dice = Dice.getDe(6);
 		this.state = GameState.NOTSTARTED;
 	}
 
@@ -86,23 +138,22 @@ public class Game
     * ou des differentes options choisies
  */
   
- 	// surcharge paramÃ©trer taille du jeu
 	public Game(int nombreJoueurs, int taille)
 	{
 		this.listeners = new EventListenerList();
-		this.joueurs = new Joueur[nombreJoueurs];
+		this.players = new Player[nombreJoueurs];
 		this.currentPlayer = 0;
-		this.plateau = new PlateauJeu(taille);
+		this.grid = new Grid(taille);
 
 		if (nombreJoueurs == 2)
 		{
-			PaquetTapis paquet = new PaquetTapis();
+			CarpetList paquet = new CarpetList();
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				joueurs[i] = new Joueur(i, paquet, new DirhamManagerVar());
+				players[i] = new Player(i, paquet, new DirhamManagerVar());
 				for(int j = 0; j < ((taille * taille)/nombreJoueurs); j++)
 				{
-					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+					paquet.addTapis(new Carpet(players[i].getCouleur()));
 				}
 			}
 			paquet.melanger();
@@ -112,11 +163,11 @@ public class Game
 		{
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, new DirhamManagerVar());
+				CarpetList paquet = new CarpetList();
+				players[i] = new Player(i, paquet, new DirhamManagerVar());
 				for(int j = 0; j < ((taille * taille)/nombreJoueurs); j++)
 				{
-					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+					paquet.addTapis(new Carpet(players[i].getCouleur()));
 				}
 			}
 		}
@@ -125,22 +176,22 @@ public class Game
 		{
 			for(int i = 0; i < nombreJoueurs; i++)
 			{
-				PaquetTapis paquet = new PaquetTapis();
-				joueurs[i] = new Joueur(i, paquet, new DirhamManagerVar());
+				CarpetList paquet = new CarpetList();
+				players[i] = new Player(i, paquet, new DirhamManagerVar());
 				for(int j = 0; j < ((taille * taille)/nombreJoueurs); j++)
 				{
-					paquet.addTapis(new Tapis(joueurs[i].getCouleur()));
+					paquet.addTapis(new Carpet(players[i].getCouleur()));
 				}
 			}
 		}
 
 		assam = Assam.getAssam();
-		de = De.getDe(6);
+		dice = Dice.getDe(6);
 		this.state = GameState.NOTSTARTED;
 	}
 	
  /** 
- 	mÃ©thode appellÃ©e lors du lancement de la partie 
+ 	* methode appellee lors du lancement de la partie 
 	*/
 	public void start()
 	{
@@ -148,47 +199,97 @@ public class Game
 		this.state = GameState.STARTED;
 		this.fireGameStateChanged(oldState,this.state);
 	}
-
+	
+	 /** 
+ 	* permet d'ajouter un assamListener dans la liste des listeners 
+ 	* @param AssamListener
+	*/
 	public void addAssamListener(AssamListener listener)
 	{
 		this.listeners.add(AssamListener.class, listener);
 	}
-
+	
+	 /** 
+ 	* permet d'ajouter un GameListener dans la liste des listeners 
+ 	* @param GameListener
+	*/
 	public void addGameListener(GameListener listener)
 	{
 		this.listeners.add(GameListener.class, listener);
 	}
-
+	
+	 /** 
+ 	* permet d'ajouter un DiceListener dans la liste des listeners 
+ 	* @param DiceListener
+	*/
 	public void addDiceListener(DiceListener listener)
 	{
 		this.listeners.add(DiceListener.class, listener);
 	}
 
+	 /** 
+ 	* permet d'ajouter un CarpetListener dans la liste des listeners 
+ 	* @param CarpetListener
+	*/
 	public void addCarpetListener(CarpetListener listener)
 	{
 		this.listeners.add(CarpetListener.class, listener);
 	}
-
+	
+	 /** 
+ 	* permet d'ajouter un PlayerListener dans la liste des listeners 
+ 	* @param PlayerListener
+	*/
+	public void addPlayerListener(PlayerListener listener)
+	{
+		this.listeners.add(PlayerListener.class, listener);
+	}
+	
+	 /** 
+ 	* @return les GameListeners
+	*/
 	public GameListener[] getGameListeners() 
 	{
         return listeners.getListeners(GameListener.class);
     }
 
+	 /** 
+ 	* @return les AssamListeners
+	*/
     public AssamListener[] getAssamListeners() 
 	{
         return listeners.getListeners(AssamListener.class);
     }
 
+    /** 
+ 	* @return les DiceListeners
+	*/
     public DiceListener[] getDiceListeners() 
 	{
         return listeners.getListeners(DiceListener.class);
     }
 
+    /** 
+ 	* @return les CarpetListeners
+	*/
     public CarpetListener[] getCarpetListeners() 
-	 {
+	{
         return listeners.getListeners(CarpetListener.class);
     }
+    
+    /** 
+ 	* @return les PlayerListeners
+	*/
+    public PlayerListener[] getPlayerListeners() 
+	{
+        return listeners.getListeners(PlayerListener.class);
+    }
 
+    /** 
+ 	* previent les GameListeners d'un changement d'etat de jeu
+ 	* @param oldState est l'ancient etat
+ 	* @param newState est le nouvel etat
+	*/
     public void fireGameStateChanged(GameState oldState, GameState newState)
 	{
 		for(GameListener listener : this.getGameListeners()) 
@@ -197,6 +298,10 @@ public class Game
         }
 	}
 
+    /** 
+ 	* previent les AssamListeners que l'orientation d'Assam a changée
+ 	* @param event est un objet possedant la nouvelle orientation d'Assam
+	*/
     public void fireAssamOriented(AssamEvent event)
 	{
 		for(AssamListener listener : this.getAssamListeners()) 
@@ -205,6 +310,10 @@ public class Game
         }
 	}
 
+    /** 
+ 	* previent les AssamListeners que la position d'Assam a changée
+ 	* @param event est un objet possedant la nouvelle position d'Assam
+	*/
 	public void fireAssamMoved(AssamEvent event)
 	{
 		for(AssamListener listener : this.getAssamListeners()) 
@@ -212,7 +321,11 @@ public class Game
             listener.assamMoved(event);
         }
 	}
-
+	
+	/** 
+ 	* previent les DiceListeners que le de a ete lance
+ 	* @param event est un objet possedant la valeur du de et le joueur qui l'a lance
+	*/
 	public void fireDiceThrown(DiceEvent event)
 	{
 		for(DiceListener listener : this.getDiceListeners()) 
@@ -221,6 +334,10 @@ public class Game
         }
 	}
 
+	/** 
+ 	* previent les CarpetListeners qu'un tapis a ete pose ou non
+ 	* @param event est un objet possedant une reference vers le tapis pose
+	*/
 	public void fireCarpetPut(CarpetEvent event)
 	{
 		for(CarpetListener listener : this.getCarpetListeners()) 
@@ -228,75 +345,123 @@ public class Game
             listener.carpetPut(event);
         }
 	}
-
-
-	public Joueur[] getJoueurs()
+	
+	/** 
+ 	* previent les PlayerListeners qu'un joueur a paye
+ 	* @param event est un objet possedant le prix de la dime
+	*/
+	public void firePlayerPaid(PlayerEvent event)
 	{
-		return this.joueurs;
+		for(PlayerListener listener : this.getPlayerListeners()) 
+		{
+            listener.playerPaid(event);
+        }
 	}
 
-	public De getDe()
+	/** 
+ 	* @return les joueurs
+	*/
+	public Player[] getPlayers()
 	{
-		return this.de;
+		return this.players;
 	}
 
+	/** 
+ 	* @return le de
+	*/
+	public Dice getDice()
+	{
+		return this.dice;
+	}
+	
+	/** 
+ 	* deplace Assam
+	*/
 	public void moveAssam()
 	{
-		this.assam.avancer(this.valeurDe);
-		this.fireAssamMoved(new AssamEvent(this.valeurDe, this.currentPlayer));
+		this.assam.avancer(this.diceValue);
+		this.fireAssamMoved(new AssamEvent(this.diceValue, this.currentPlayer));
+		
+		/*if(this.isAssamOnCarpet() != -1)
+		{
+			int price = this.plateau.payerDime(this.assam, this.joueurs[this.currentPlayer]);
+			this.joueurs[this.currentPlayer].payerDime(price, this.joueurs[this.currentPlayer]);
+			firePlayerPaid(new PlayerEvent(this.currentPlayer, price));
+		}*/
+	}
+	
+	/** 
+ 	* @return -1 si Assam n'est pas sur un tapis
+ 	* @return le numero du joueur si Assam est sur un tapis
+	*/
+	private int isAssamOnCarpet()
+	{
+		Position assamPosition = this.assam.getCoord();
+		Case[][] grid = this.grid.getGameGrid();
+		if(grid[assamPosition.getY()][assamPosition.getX()].recupererTapis() != null)
+		{
+			return grid[assamPosition.getY()][assamPosition.getX()].recupererTapis().getCouleur();
+		}
+		
+		return -1;
 	}
   
+	/** 
+ 	* deplace Assam
+ 	* @param babouche pour la variante
+	*/
   	public void moveAssam(int babouche)
 	{
 		this.assam.avancer(babouche);
 		this.fireAssamMoved(new AssamEvent(babouche, this.currentPlayer));
 	}
   
+  	/** 
+ 	* fait tourner Assam dans le sens anti-horaire
+	*/
 	public void rotateAssamCounterClockwise()
 	{
 		this.assam.tournerAntiHorraire();
 		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation(), this.currentPlayer));
 	}
 
+	/** 
+ 	* fait tourner Assam dans le sens horaire
+	*/
 	public void rotateAssamClockwise()
 	{
 		this.assam.tournerHorraire();
 		this.fireAssamOriented(new AssamEvent(this.assam.getOrientation(), this.currentPlayer));
 	}
 
-
+	/** 
+ 	* lance le de
+	*/
 	public void throwDice()
 	{
-		this.valeurDe = this.de.getValeur();
-		this.fireDiceThrown(new DiceEvent(this.valeurDe));
+		this.diceValue = this.dice.getValeur();
+		this.fireDiceThrown(new DiceEvent(this.diceValue));
 		this.moveAssam();
 		GameState oldState = this.state;
 		this.state = GameState.CARPETPUT;
 		this.fireGameStateChanged(oldState, this.state);
 	}
-
+	
+	/** 
+ 	* @return true si le tapis peut etre pose
+ 	* @return false sinon
+	*/	
 	public boolean checkCarpet(Position coord1, Position coord2)
 	{	
-		Tapis carpet = new Tapis(this.currentPlayer, coord1, coord2);
-		return this.plateau.peutPlacerTapis(carpet);
+		Carpet carpet = new Carpet(this.currentPlayer, coord1, coord2);
+		return this.grid.peutPlacerTapis(carpet);
 	}
-
-	public void removeCarpet()
-	{
-		Tapis carpet = this.joueurs[this.currentPlayer].getTapis();
-		Case[][] gameGrid = this.plateau.getGameGrid();
-		for(int i = 0; i < gameGrid.length; i++)
-		{
-			for(int j = 0; j < gameGrid.length; j++)
-			{
-				if(carpet == gameGrid[i][j].recupererTapis())
-				{
-					gameGrid[i][j].removeCarpet();
-				}
-			}
-		}
-	}
-
+	
+	/**
+	 * @param la position du tapis 
+ 	* @return true si le tapis est pose dans un case adjacente a celle d'Assam
+ 	* @return false sinon
+	*/	
 	private boolean isGoodPosition(Position position)
 	{
 		int assamY = this.assam.getCoord().getX();
@@ -319,6 +484,12 @@ public class Game
 		return false;
 	}
 
+	/**
+	 * @param la position1 de la premiere case du tapis 
+	 * @param la position2 de la deuxieme case du tapis 
+ 	* @return true si le tapis peut etre oriente de cette maniere
+ 	* @return false sinon
+	*/	
 	private boolean isGoodOrientation(Position position1, Position position2)
 	{	
 		if ((position2.getX() == -1) || (position2.getY() == -1))
@@ -330,13 +501,24 @@ public class Game
 			return false;
 		}
 
-		Tapis carpet = new Tapis(this.currentPlayer, position1, position2);
-		return this.plateau.peutPlacerTapis(carpet);
+		Carpet carpet = new Carpet(this.currentPlayer, position1, position2);
+		return this.grid.peutPlacerTapis(carpet);
+	}
+	
+	/**
+ 	* @return le nouveau tapis a pose
+	*/
+	public Carpet getNewCarpet()
+	{	
+		return this.newCarpet;
 	}
 
+	/**
+ 	* creer un nouveau tapis a pose dans le plateau de jeu
+	*/
 	public void putCarpet(Position position)
 	{
-		if(isGoodPosition(position))
+		if(this.isGoodPosition(position))
 		{
 			int positionX = position.getX();
 			int positionY = position.getY();
@@ -350,48 +532,54 @@ public class Game
 			this.carpetOrientations = positions;
 
 			Position coord2 = null;
+			boolean orientation = false;
 
 			for(int i = 0; i < positions.length; i++)
 			{
-				if(isGoodOrientation(position, positions[i]))
+				if(!orientation)
 				{
-					coord2 = positions[i];
-					break;
+					if(this.isGoodOrientation(position, positions[i]))
+					{
+						orientation = true;
+						coord2 = positions[i];
+					}
 				}
 			}
-
-			if(coord2 != null)
+			
+			if(orientation)
 			{
-				this.removeCarpet();
-				Tapis carpet = new Tapis(this.currentPlayer, position, coord2);
-				if(this.plateau.peutPlacerTapis(carpet))
+				Carpet carpet = new Carpet(this.currentPlayer, position, coord2);
+				if(this.grid.peutPlacerTapis(carpet))
 				{
-					carpet = this.joueurs[this.currentPlayer].getTapis();
-					carpet.setPosition(position, coord2);
-					this.plateau.placerTapis(carpet);
+					this.newCarpet = this.players[this.currentPlayer].getTapis();
+					this.newCarpet.setPosition(position, coord2);
 					this.carpetPosition = position;
 					this.carpetOrientation = coord2;
-					this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
+					this.fireCarpetPut(new CarpetEvent(this.currentPlayer, this.newCarpet, true));
 					GameState oldState = this.state;
 					this.state = GameState.CARPETPUT;
 					this.fireGameStateChanged(oldState, this.state);
 				}
 				else
 				{
-					this.fireCarpetPut(new CarpetEvent(this.currentPlayer, false));
+					this.fireCarpetPut(new CarpetEvent(this.currentPlayer, null, false));
 				}
 			}
 			else
 			{
-				this.fireCarpetPut(new CarpetEvent(this.currentPlayer, false));
+				this.fireCarpetPut(new CarpetEvent(this.currentPlayer, null, false));
 			}
+			
 		}
 		else
 		{
-			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, false));
+			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, null, false));
 		}
 	}
-
+	
+	/**
+ 	* tourne le tapis dans le sens horaire
+	*/
 	public void rotateCarpetClockwise()
 	{
 		int index = 0;
@@ -421,17 +609,18 @@ public class Game
 
 		if(this.carpetOrientations[index] != this.carpetOrientation)
 		{
-			this.removeCarpet();
-			Tapis carpet = this.joueurs[this.currentPlayer].getTapis();
-			carpet.setPosition(this.carpetPosition, this.carpetOrientations[index]);
-			this.plateau.placerTapis(carpet);
+			this.newCarpet = this.players[this.currentPlayer].getTapis();
+			this.newCarpet.setPosition(this.carpetPosition, this.carpetOrientations[index]);
 			this.carpetOrientation = this.carpetOrientations[index];
-			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
+			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, this.newCarpet, true));
 		}
 		
 		
 	}
 
+	/**
+ 	* tourne le tapis dans le sens anti-horaire
+	*/
 	public void rotateCarpetCounterClockwise()
 	{
 		int index = 0;
@@ -461,45 +650,61 @@ public class Game
 
 		if(this.carpetOrientations[index] != this.carpetOrientation)
 		{
-			this.removeCarpet();
-			Tapis carpet = this.joueurs[this.currentPlayer].getTapis();
-			carpet.setPosition(this.carpetPosition, this.carpetOrientations[index]);
-			this.plateau.placerTapis(carpet);
+			this.newCarpet = this.players[this.currentPlayer].getTapis();
+			this.newCarpet.setPosition(this.carpetPosition, this.carpetOrientations[index]);
 			this.carpetOrientation = this.carpetOrientations[index];
-			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, true));
+			this.fireCarpetPut(new CarpetEvent(this.currentPlayer, this.newCarpet, true));
 		}
-		
 	}
 
+	/**
+ 	* pose definitivement le nouveau tapis dans le plateau de jeu
+	*/
 	public void nextCarpet()
 	{
-		this.joueurs[this.currentPlayer].getCarpets().next();
+		this.grid.placerTapis(this.newCarpet);
+		GameState oldState = this.state;
+		this.state = GameState.CARPETPUTVALIDATE;
+		this.fireGameStateChanged(oldState, this.state);
+		this.players[this.currentPlayer].getCarpets().next();
 		this.currentPlayer++;
-		if(this.currentPlayer == this.joueurs.length)
+		if(this.currentPlayer == this.players.length)
 		{
 			this.currentPlayer = 0;
 		}
 		
-		GameState oldState = this.state;
+		oldState = this.state;
 		this.state = GameState.ASSAMORIENTED;
 		this.fireGameStateChanged(oldState, this.state);
 	}
 
+	/**
+ 	* @return la position d'Assam dans la grille
+	*/
 	public Position getAssamCoord()
 	{
 		return this.assam.getCoord();
 	}
 
+	/**
+ 	* @return Assam
+	*/
 	public Assam getAssam()
 	{
 		return this.assam;
 	}
 	
+	/**
+ 	* @return le plateau de jeu
+	*/
 	public Case[][] getGameGrid()
 	{
-		return this.plateau.getGameGrid();
+		return this.grid.getGameGrid();
 	}
 
+	/**
+ 	* @return l'etat de 
+	*/
 	public GameState getState()
 	{
 		return this.state;

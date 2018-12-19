@@ -9,7 +9,7 @@ public class UndoRedo {
 
 	private class JoueurDonne{
 		public int[] argent;
-		public PaquetTapis paquet;
+		public CarpetList paquet;
 	}
 
 	private class Donne {
@@ -21,8 +21,8 @@ public class UndoRedo {
 
 	}
 
-	private Joueur[] joueur;
-	private PlateauJeu plateau;
+	private Player[] joueur;
+	private Grid plateau;
 	private Assam assam;
 
 	private int nbsave;
@@ -31,7 +31,7 @@ public class UndoRedo {
 	private Stack<Donne> undo;
 	private Stack<Donne> redo;
 
-	public UndoRedo(Joueur[] j, PlateauJeu p, Assam a) {
+	public UndoRedo(Player[] j, Grid p, Assam a) {
 		joueur = j;
 		plateau = p;
 		assam = a;
@@ -103,17 +103,17 @@ public class UndoRedo {
 		JoueurDonne[] joueurs = new JoueurDonne[joueur.length];
 
 		try {
-			Joueur j;
+			Player j;
 			for (int i = 0; i < joueur.length; i++) {
 				joueurs[i] = new JoueurDonne();
-				j = (Joueur)joueur[i].clone();
+				j = (Player)joueur[i].clone();
 				joueurs[i].argent = j.getArgent();
 				joueurs[i].paquet = j.getPaquet();
 			}
 	
 			donne.joueur = joueurs;
 	
-			PlateauJeu p = (PlateauJeu)plateau.clone();
+			Grid p = (Grid)plateau.clone();
 			donne.cases = p.getCases();
 
 			Assam a = (Assam)assam.clone();

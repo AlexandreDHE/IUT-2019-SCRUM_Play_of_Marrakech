@@ -1,6 +1,6 @@
 package model;
 
-public class Tapis implements Cloneable{
+public class Carpet implements Cloneable{
 
     /**
      * la couleur du tapis
@@ -24,7 +24,7 @@ public class Tapis implements Cloneable{
      * @param coord1 les coord 1
      * @param coord2 les coord 2
      */
-    public Tapis(int c, Position coord1, Position coord2) {
+    public Carpet(int c, Position coord1, Position coord2) {
         couleur = c;
         this.coord1 = coord1;
         this.coord2 = coord2;
@@ -36,7 +36,7 @@ public class Tapis implements Cloneable{
      * 
      * @param c la couleur du joueur
      */
-    public Tapis(int c) {
+    public Carpet(int c) {
         couleur = c;
         this.coord1 = new Position(-1, -1);
         this.coord2 = new Position(-1, -1);
@@ -52,6 +52,13 @@ public class Tapis implements Cloneable{
     public void setPosition(Position coord1, Position coord2) {
         this.coord1 = coord1;
         this.coord2 = coord2;
+    }
+    
+    public Position[] getPosition() {
+    	Position[] positions = new Position[2];
+    	positions[0] = this.coord1;
+    	positions[1] = this.coord2;
+        return positions;
     }
 
     /**
@@ -72,7 +79,7 @@ public class Tapis implements Cloneable{
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        Tapis t = (Tapis)super.clone();
+        Carpet t = (Carpet)super.clone();
         t.coord1 = (Position)this.coord1.clone();
         t.coord2 = (Position)this.coord2.clone();
         return t;

@@ -203,8 +203,9 @@ public class PlayScreen extends JFrame{
 		game.addAssamListener(new MessagePanelControler(this.mp, this));
 		game.addDiceListener(new MessagePanelControler(this.mp, this));
 		game.addCarpetListener(new MessagePanelControler(this.mp, this));
+		game.addPlayerListener(new MessagePanelControler(this.mp, this));
 		
-		this.drawCenter();
+		this.drawCenter(null);
 
 		this.add(mp, BorderLayout.NORTH);
 		this.add(leftpanel, BorderLayout.WEST);
@@ -222,7 +223,7 @@ public class PlayScreen extends JFrame{
 		}
 		lancerde.addActionListener(new PlayScreenControler(this,game));
 
-		Joueur[] players = game.getJoueurs();
+		Player[] players = game.getPlayers();
 
 		this.scorePanel = new ScorePanel[players.length];
 
@@ -318,11 +319,11 @@ public class PlayScreen extends JFrame{
 		Color color;
 		switch(colorPlayer)
 		{
-			case Couleur.NONE : color = new Color(255, 203, 153); break;
-			case Couleur.JOUEUR1 : color = new Color(255,0,0); break;
-			case Couleur.JOUEUR2 : color = new Color(0,255,0); break;
-			case Couleur.JOUEUR3 : color = new Color(0,0,255); break;
-			case Couleur.JOUEUR4 : color = new Color(255,255,255); break;
+			case ColorModel.NONE : color = new Color(255, 203, 153); break;
+			case ColorModel.JOUEUR1 : color = new Color(255,0,0); break;
+			case ColorModel.JOUEUR2 : color = new Color(0,255,0); break;
+			case ColorModel.JOUEUR3 : color = new Color(0,0,255); break;
+			case ColorModel.JOUEUR4 : color = new Color(255,255,255); break;
 			default: color = new Color(255, 203, 153); break;
 		}
 		JPanel casePanel = new JPanel();
@@ -333,31 +334,54 @@ public class PlayScreen extends JFrame{
 		return casePanel;
 	}
 	
-	public void drawCenter(){
+	public void drawCenter(Carpet newCarpet){
 		this.centercenter.removeAll();
 		Case[][] grid = this.game.getGameGrid();
 		Position assamCoord = this.game.getAssamCoord();
+
 		for(int i = 0; i < grid.length; i++)
 		{
 			for(int j = 0; j < grid.length; j++)
 			{
 				JPanel casePanel;
-
-				if(grid[i][j].recupererTapis() == null)
+				
+				if (newCarpet == null)
 				{
+					if(grid[i][j].recupererTapis() == null)
+					{
+						casePanel = this.getCase(ColorModel.NONE,i,j);
+					}
+					else
+					{
+						casePanel = this.getCase(grid[i][j].recupererTapis().getCouleur(),i,j);
+					}
+				}
 
-					casePanel = this.getCase(Couleur.NONE,i,j);
-
-				}else{
-
-					casePanel = this.getCase(grid[i][j].recupererTapis().getCouleur(),i,j);
+				else
+				{
+					Position[] newCarpetPositions = newCarpet.getPosition();
+					if ((newCarpetPositions[0].getX() == i) && (newCarpetPositions[0].getY() == j) ||
+							(newCarpetPositions[1].getX() == i) && (newCarpetPositions[1].getY() == j))
+					{
+						casePanel = this.getCase(newCarpet.getCouleur(),i,j);
+					}
+					else
+					{
+						if(grid[i][j].recupererTapis() == null)
+						{
+							casePanel = this.getCase(ColorModel.NONE,i,j);
+						}
+						else
+						{
+							casePanel = this.getCase(grid[i][j].recupererTapis().getCouleur(),i,j);
+						}
+					}
 				}
 
 				if((i==assamCoord.getY()) && (j==assamCoord.getX())){
 					
 					casePanel.add(assamPanel);
 				}
-
 				allcases[i][j] = casePanel;
 				centercenter.add(allcases[i][j]);
 			}

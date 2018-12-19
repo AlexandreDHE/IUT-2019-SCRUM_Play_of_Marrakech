@@ -4,5 +4,5 @@ import model.*;
 
 public interface DirhamManager 
 {
-	public void deal(Joueur player);
+	public void deal(Player player);
 }

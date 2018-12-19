@@ -1,6 +1,6 @@
 package model.game;
 
-import model.parameter.*;
+import model.game.parameter.*;
 
 /**
   * Classe representant les differents parametres du jeu

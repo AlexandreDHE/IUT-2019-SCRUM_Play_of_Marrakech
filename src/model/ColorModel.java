@@ -1,5 +1,5 @@
 package model;
-public class Couleur
+public class ColorModel
 {
 	public static final int JOUEUR1 = 0;
 	public static final int JOUEUR2 = 1;

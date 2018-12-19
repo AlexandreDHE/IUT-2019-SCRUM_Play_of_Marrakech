@@ -4,7 +4,7 @@ import model.*;
 
 public class DirhamManagerClassic implements DirhamManager 
 {
-	public void deal(Joueur player) 
+	public void deal(Player player) 
 	{
 		player.ajouterPiece(5, 5);
 	}

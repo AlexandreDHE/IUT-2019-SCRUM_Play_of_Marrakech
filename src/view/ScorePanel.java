@@ -3,8 +3,8 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
-import model.Couleur;
-import model.Joueur;  
+import model.ColorModel;
+import model.Player;  
 
 /**
  * Cette classe est un JPanel ou sont affichés toutes les informations relatives
@@ -14,7 +14,7 @@ import model.Joueur;
 
 public class ScorePanel extends JPanel{
 
-	private Joueur j;
+	private Player j;
 	private	JLabel nbtapis = new JLabel();
 	private JLabel nbdirham1 = new JLabel();
 	private JLabel nbdirham5 = new JLabel();
@@ -33,7 +33,7 @@ public class ScorePanel extends JPanel{
     *			int permettant d'afficher ou non une bordure à droite d'un ScorePanel.
  	*/
 
-	public ScorePanel(Joueur j, int top, int left, int bottom, int right){
+	public ScorePanel(Player j, int top, int left, int bottom, int right){
 
 		this.j = j;
 
@@ -51,8 +51,8 @@ public class ScorePanel extends JPanel{
 		this.setBorder(BorderFactory.createMatteBorder(top, left, bottom, right, Color.BLACK));
 
 		nbtapis.setText(j.getNombreTapis()+" tapis.");
-		nbdirham5.setText(j.getArgent(Joueur.PIECECINQ)+" pièces de 5 dirhams.");
-		nbdirham1.setText(j.getArgent(Joueur.PIECEUN)+" pièces de 1 dirham.");
+		nbdirham5.setText(j.getArgent(Player.PIECECINQ)+" pièces de 5 dirhams.");
+		nbdirham1.setText(j.getArgent(Player.PIECEUN)+" pièces de 1 dirham.");
 
 		numplayer.setFont(new Font("Serif", Font.PLAIN, 20));
 		nbtapis.setFont(new Font("Serif", Font.PLAIN, 15));
@@ -61,13 +61,13 @@ public class ScorePanel extends JPanel{
 
 		switch (j.getCouleur()) {
 
-			case Couleur.JOUEUR1:  numplayer.setForeground(Color.RED); break;
+			case ColorModel.JOUEUR1:  numplayer.setForeground(Color.RED); break;
 
-			case Couleur.JOUEUR2:  numplayer.setForeground(Color.BLUE); break;
+			case ColorModel.JOUEUR2:  numplayer.setForeground(new Color(1,147,93)); break;
 
-			case Couleur.JOUEUR3:  numplayer.setForeground(new Color(1,147,93)); break;
+			case ColorModel.JOUEUR3:  numplayer.setForeground(Color.BLUE); break;
 
-			case Couleur.JOUEUR4:  numplayer.setForeground(new Color(137,42,254)); break;
+			case ColorModel.JOUEUR4:  numplayer.setForeground(Color.WHITE); break;
 
 			default: break;
 		}
@@ -103,7 +103,7 @@ public class ScorePanel extends JPanel{
 
 	public void refreshDirhams1Display(){
 
-		this.nbdirham1.setText(j.getArgent(Joueur.PIECEUN)+" pièces de 1 dirham.");
+		this.nbdirham1.setText(j.getArgent(Player.PIECEUN)+" pièces de 1 dirham.");
 		this.nbdirham1.repaint();
 
 
@@ -111,7 +111,7 @@ public class ScorePanel extends JPanel{
 
 	public void refreshDirhams5Display(){
 
-		this.nbdirham5.setText(j.getArgent(Joueur.PIECECINQ)+" pièces de 5 dirhams.");
+		this.nbdirham5.setText(j.getArgent(Player.PIECECINQ)+" pièces de 5 dirhams.");
 		this.nbdirham5.repaint();
 
 	}
