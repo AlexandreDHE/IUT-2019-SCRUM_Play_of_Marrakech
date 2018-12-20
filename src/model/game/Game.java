@@ -8,8 +8,8 @@ import model.dirham.*;
 import listener.modeltoview.*;
 
 /**
- * Représente une partie
- * Cette classe a pour rôle de servir d'intermediaires entre les differents modeles et la vue
+ * Represente une partie
+ * Cette classe a pour role de servir d'intermediaires entre les differents modeles et la vue
 */
     
 public class Game
@@ -299,7 +299,7 @@ public class Game
 	}
 
     /** 
- 	* previent les AssamListeners que l'orientation d'Assam a changée
+ 	* previent les AssamListeners que l'orientation d'Assam a changee
  	* @param event est un objet possedant la nouvelle orientation d'Assam
 	*/
     public void fireAssamOriented(AssamEvent event)
@@ -311,7 +311,7 @@ public class Game
 	}
 
     /** 
- 	* previent les AssamListeners que la position d'Assam a changée
+ 	* previent les AssamListeners que la position d'Assam a changee
  	* @param event est un objet possedant la nouvelle position d'Assam
 	*/
 	public void fireAssamMoved(AssamEvent event)
