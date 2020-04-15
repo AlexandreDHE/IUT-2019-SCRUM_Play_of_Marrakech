@@ -1,10 +1,10 @@
 # IUT-2019-SCRUM_Play_of_Marrakech.
 
-## Description:
-Jeu Marrakech.  
+## Numbers of players : 
+2-4
 
-**Nombre de joueurs: 
-**2 à 4
+## Description
+Marrakesh is a multiple award-winning game where each player takes the role of a salesperson who tries to outwit the others. On their turn, each player rolls the dice and then moves Assam, the market organizer. If Assam stops on an opponent's rug, the player must make a payment to its owner before putting one of their own rugs on an adjacent space. When the last rug has been uggled, the total number of visible rugs and the number one by the salesperson are added up. Marrakesh provides an interesting challenge for lovers of strategy games.
 
 ## Scrum Master
 **Rabah DJADI** _alias_ [@djadi](https://dwarves.iut-fbleau.fr/git/djadi)  
